@@ -213,3 +213,14 @@
 	<GL/glu.h>
 	<GL/glut.h>
 
+1288052019 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
+	"TNCamera.h"
+
+1288052019 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
+	<TNObject.h>
+
+1288052088 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
+	"TNPoint.h"
+
+1288052102 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
+

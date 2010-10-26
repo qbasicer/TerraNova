@@ -2,8 +2,8 @@
 
 TNPoint::TNPoint(float x, float y, float z)
 {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->tx = x;
+    this->ty = y;
+    this->tz = z;
 }
 

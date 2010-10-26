@@ -6,13 +6,13 @@ class TNPoint
 {
     public:
         TNPoint(float x, float y, float z);
-        float x(){return x;};
-        float y(){return y;};
-        float z(){return z;};
+        float x(){return tx;};
+        float y(){return ty;};
+        float z(){return tz;};
     protected:
-        float x;
-        float y;
-        float z;
+        float tx;
+        float ty;
+        float tz;
     private:
 };
 

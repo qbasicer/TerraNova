@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1286035450 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288464566 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -217,12 +217,12 @@
 1288052019 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	"TNCamera.h"
 
-1288454228 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
+1288464615 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
 	<TNObject.h>
 	<TNVector.h>
 	<TNPoint.h>
 
-1288454277 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
+1288454497 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
 	"TNPoint.h"
 
 1288454515 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h

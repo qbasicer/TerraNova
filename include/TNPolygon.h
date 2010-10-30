@@ -1,19 +1,22 @@
 #ifndef TNPOLYGON_H
 #define TNPOLYGON_H
 
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <TNObject.h>
+#include "TNPoint.h"
 
 
 class TNPolygon : public TNObject
 {
     public:
-        TNPolygon(float x, float y, float z);
+        TNPolygon(TNPoint p1, TNPoint p2, TNPoint p3);
         virtual ~TNPolygon();
         virtual void render();
     protected:
-        float x;
-        float y;
-        float z;
+        TNPoint p1;
+        TNPoint p2;
+        TNPoint p3;
     private:
 };
 

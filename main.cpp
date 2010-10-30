@@ -11,6 +11,10 @@
 
 
 #include "TNRenderEngine.h"
+#include "TNPolygon.h"
+#include <cstdlib>
+#include <cstdio>
+#include <unistd.h>
 
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
@@ -79,6 +83,10 @@ int main ( int argc, char** argv )
     re.setCamera(&cam);
 
     re.init();
+    TNPoint p1(-0.2,0,0);
+    TNPoint p2(0.2,0,0);
+    TNPoint p3(0.0,0.2,0);
+    TNPolygon poly(p1,p2,p3);
 
     // program main loop
     bool done = false;
@@ -107,6 +115,7 @@ int main ( int argc, char** argv )
             } // end switch
         } // end of message processing
         re.render();
+        sleep(1);
 
     } // end main loop
 

@@ -208,7 +208,7 @@
 1286036820 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPolygon.h
 	<TNObject.h>
 
-1286035747 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1288454288 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -225,7 +225,7 @@
 1288454277 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
 	"TNPoint.h"
 
-1288454258 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
+1288454515 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
 
 1288052346 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNVector.h
 

@@ -19,7 +19,7 @@ class TNCamera : public TNObject
         float getYaw(){return yaw;}
         void setYaw(float angle){yaw = angle;}
         void lookAt(float x, float y, float z);
-        void render(){}
+        void render();
     protected:
         TNPoint loc;
         float pitch;

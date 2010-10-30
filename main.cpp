@@ -73,7 +73,10 @@ int main ( int argc, char** argv )
 	}
 
     TNRenderEngine re;
-    TNCamera cam;
+    TNCamera cam(0,0,1);
+    cam.setPitch(0);
+    cam.setYaw(0);
+    re.setCamera(&cam);
 
     re.init();
 

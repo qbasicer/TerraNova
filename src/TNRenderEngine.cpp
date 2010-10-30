@@ -6,7 +6,7 @@
 
 TNRenderEngine::TNRenderEngine()
 {
-    //ctor
+    camera = NULL;
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -35,7 +35,7 @@ void TNRenderEngine::init(){
 }
 
 void TNRenderEngine::render(){
-    for(int i = 0; i < objects.size();i++){
+    for(unsigned int i = 0; i < objects.size();i++){
         objects[i]->render();
     }
 }

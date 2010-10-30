@@ -3,6 +3,7 @@
 
 #include <TNObject.h>
 #include <TNVector.h>
+#include <TNPoint.h>
 
 
 class TNCamera : public TNObject

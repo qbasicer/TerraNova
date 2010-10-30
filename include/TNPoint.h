@@ -5,6 +5,7 @@
 class TNPoint
 {
     public:
+        TNPoint();
         TNPoint(float x, float y, float z);
         float x(){return tx;};
         float y(){return ty;};

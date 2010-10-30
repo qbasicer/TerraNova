@@ -186,9 +186,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1286035034 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
+1288454075 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
 	<vector>
 	"TNObject.h"
+	"TNCamera.h"
 
 1285263465 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
 
@@ -216,14 +217,18 @@
 1288052019 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	"TNCamera.h"
 
-1288052434 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
+1288454228 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
 	<TNObject.h>
 	<TNVector.h>
+	<TNPoint.h>
 
-1288052088 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
+1288454277 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
 	"TNPoint.h"
 
-1288052102 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
+1288454258 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
 
 1288052346 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNVector.h
+
+1288052347 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNVector.cpp
+	"TNVector.h"
 

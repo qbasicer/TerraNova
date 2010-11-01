@@ -16,6 +16,7 @@
 #include <cstdio>
 #include <unistd.h>
 #include <iostream>
+#include <time.h>
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -398,6 +399,10 @@ int main( int argc, char **argv )
     cout << "Entering event loop" << endl;
 
     /* wait for events */
+    float rot = 0;
+    float sleepTime = 10000;
+    int t = time(0);
+    int frames = 0;
     while ( !done )
 	{
 	    /* handle the events in the queue */
@@ -442,11 +447,29 @@ int main( int argc, char **argv )
 		}
 
 	    /* draw the scene */
+        if(t != time(0)){
+            cout << "FPS: "<<frames << endl;
+            if(isActive && frames > 60){
 
+                sleepTime += 100;
+            }else if(isActive && frames < 30){
+                sleepTime -= 100;
+                if(sleepTime < 0){
+                    sleepTime = 0;
+                    cout << "ERROR! Can't meet deadline..." << endl;
+                }
+            }
+            t = time(0);
+            frames = 0;
+
+        }
 	    if ( isActive ){
-            re.render();''
+            re.render();
+            rot += 1;
+            cam.setYaw(rot);
             SDL_GL_SwapBuffers( );
-            usleep(10000);
+            usleep(sleepTime);
+            frames++;
 	    }
 		//drawGLScene( );
 	}

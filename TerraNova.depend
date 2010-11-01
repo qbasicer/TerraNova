@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1288570627 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288579592 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -10,6 +10,7 @@
 	<cstdio>
 	<unistd.h>
 	<iostream>
+	<time.h>
 	<GL/gl.h>
 	<GL/glu.h>
 
@@ -209,7 +210,7 @@
 1285263195 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNObject.cpp
 	"TNObject.h"
 
-1288570376 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
+1288578705 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
 	"TNPolygon.h"
 	<iostream>
 
@@ -225,7 +226,7 @@
 	<GL/glu.h>
 	<GL/glut.h>
 
-1288568596 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
+1288578953 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	"TNCamera.h"

@@ -1,10 +1,17 @@
 # depslib dependency file v1.0
-1288464781 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288570627 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
 	<SDL.h>
 	"TNRenderEngine.h"
+	"TNPolygon.h"
+	<cstdlib>
+	<cstdio>
+	<unistd.h>
+	<iostream>
+	<GL/gl.h>
+	<GL/glu.h>
 
 1281338867 /usr/include/SDL/SDL.h
 	"SDL_main.h"
@@ -202,8 +209,9 @@
 1285263195 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNObject.cpp
 	"TNObject.h"
 
-1288466183 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
+1288570376 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
 	"TNPolygon.h"
+	<iostream>
 
 1288466157 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPolygon.h
 	<GL/gl.h>
@@ -211,13 +219,13 @@
 	<TNObject.h>
 	"TNPoint.h"
 
-1288465910 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1288570141 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
 
-1288465829 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
+1288568596 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	"TNCamera.h"

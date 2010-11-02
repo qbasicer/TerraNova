@@ -42,18 +42,24 @@
 		<Unit filename="cb.bmp" />
 		<Unit filename="include/TNBitmapOverlay.h" />
 		<Unit filename="include/TNCamera.h" />
+		<Unit filename="include/TNInputManager.h" />
+		<Unit filename="include/TNManager.h" />
 		<Unit filename="include/TNObject.h" />
 		<Unit filename="include/TNPoint.h" />
 		<Unit filename="include/TNPolygon.h" />
 		<Unit filename="include/TNRenderEngine.h" />
+		<Unit filename="include/TNSDLInput.h" />
 		<Unit filename="include/TNVector.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/TNBitmapOverlay.cpp" />
 		<Unit filename="src/TNCamera.cpp" />
+		<Unit filename="src/TNInputManager.cpp" />
+		<Unit filename="src/TNManager.cpp" />
 		<Unit filename="src/TNObject.cpp" />
 		<Unit filename="src/TNPoint.cpp" />
 		<Unit filename="src/TNPolygon.cpp" />
 		<Unit filename="src/TNRenderEngine.cpp" />
+		<Unit filename="src/TNSDLInput.cpp" />
 		<Unit filename="src/TNVector.cpp" />
 		<Extensions>
 			<code_completion />

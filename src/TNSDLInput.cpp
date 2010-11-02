@@ -1,6 +1,17 @@
+#ifdef __APPLE__
+#include <SDL/SDL.h>
+#else
+#include <SDL.h>
+#endif
+
+
+#include <unistd.h>
+#include <iostream>
+#include <time.h>
+
 #include "TNSDLInput.h"
 
-TNSDLInput::TNSDLInput()
+TNSDLInput::TNSDLInput(TNManager *imgr):TNInputManager(imgr)
 {
     //ctor
 }
@@ -10,13 +21,11 @@ TNSDLInput::~TNSDLInput()
     //dtor
 }
 
-
-static void *inputThread(void *clazz){
-    TNSDLInput *input = (TNSDLInput*)clazz;
+void TNSDLInput::run(){
     int done = 0;
     while ( !done ){
 	    /* handle the events in the queue */
-
+        SDL_Event event;
 	    while ( SDL_PollEvent( &event ) )
 		{
 		    switch( event.type )
@@ -37,7 +46,7 @@ static void *inputThread(void *clazz){
 			    break;
 			case SDL_QUIT:
 			    /* handle quit requests */
-			    done = TRUE;
+			    done = 1;
 			    break;
 			default:
 			    break;

@@ -7,9 +7,12 @@
 class TNSDLInput : public TNInputManager
 {
     public:
-        TNSDLInput();
+        TNSDLInput(TNManager *imgr);
         virtual ~TNSDLInput();
+
+
     protected:
+        virtual void run();
     private:
 };
 

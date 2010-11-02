@@ -1,11 +1,13 @@
 # depslib dependency file v1.0
-1288661882 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288739665 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
 	<SDL.h>
 	"TNRenderEngine.h"
 	"TNPolygon.h"
+	"TNSDLInput.h"
+	"TNManager.h"
 	<cstdlib>
 	<cstdio>
 	<unistd.h>
@@ -210,7 +212,7 @@
 1285263195 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNObject.cpp
 	"TNObject.h"
 
-1288662098 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
+1288662533 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
 	"TNPolygon.h"
 	<iostream>
 
@@ -246,4 +248,21 @@
 
 1288052347 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNVector.cpp
 	"TNVector.h"
+
+1288740601 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
+	<TNInputManager.h>
+
+1288740854 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNInputManager.h
+	<pthread.h>
+	"TNManager.h"
+
+1288739575 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
+	"TNInputManager.h"
+	"TNRenderEngine.h"
+
+1288740870 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNInputManager.cpp
+	"TNInputManager.h"
+
+1288666211 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
+	"TNManager.h"
 

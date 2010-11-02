@@ -12,6 +12,9 @@
 
 #include "TNRenderEngine.h"
 #include "TNPolygon.h"
+#include "TNSDLInput.h"
+#include "TNManager.h"
+
 #include <cstdlib>
 #include <cstdio>
 #include <unistd.h>
@@ -369,8 +372,14 @@ int main( int argc, char **argv )
 	    Quit( 1 );
 	}
 
+	TNManager mgr;
+	TNRenderEngine re;
+	TNSDLInput in(&mgr);
+	mgr.setInput(&in);
+	mgr.setRenderEngine(&re);
+
     /* initialize OpenGL */
-    TNRenderEngine re;
+
     TNCamera cam( -1.5f, 0.0f, -6.0f );
     cam.setPitch(0);
     cam.setYaw(0);

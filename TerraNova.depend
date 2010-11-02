@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1288579592 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288661882 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -210,7 +210,7 @@
 1285263195 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNObject.cpp
 	"TNObject.h"
 
-1288578705 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
+1288662098 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
 	"TNPolygon.h"
 	<iostream>
 

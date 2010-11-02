@@ -448,16 +448,47 @@ int main( int argc, char **argv )
 
 	    /* draw the scene */
         if(t != time(0)){
-            cout << "FPS: "<<frames << endl;
+            cout << "FPS: "<<frames << " spend " << sleepTime*frames << "us sleeping" << endl;
             if(isActive && frames > 60){
+                //Calculate amount of time sleeping
+                float timePerFrame = (sleepTime * frames);
+                //Time we spent rendering frames is 1 - sleepTime
+                timePerFrame = 1000000 - timePerFrame;
+                //How much time was spend rendering a single frame
+                timePerFrame = timePerFrame / frames;
+                //Now calculate how much time we'd have to spend if we were to render 60 frames
+                timePerFrame = timePerFrame * 60;
+                //Now calculate how much time we'd have to sleep
+                timePerFrame = 1000000 - timePerFrame;
+                sleepTime = timePerFrame / 60;
 
-                sleepTime += 100;
+                cout << "Changing sleep to " << sleepTime << endl;
             }else if(isActive && frames < 30){
-                sleepTime -= 100;
+                //Calculate amount of time sleeping
+                float timePerFrame = (sleepTime * frames);
+                //Time we spent rendering frames is 1 - sleepTime
+                timePerFrame = 1000000 - timePerFrame;
+                //How much time was spend rendering a single frame
+                timePerFrame = timePerFrame / frames;
+                //Now calculate how much time we'd have to spend if we were to render 60 frames
+                timePerFrame = timePerFrame * 30;
+                //Now calculate how much time we'd have to sleep
+                timePerFrame = 1000000 - timePerFrame;
+                sleepTime = timePerFrame /30;
+
                 if(sleepTime < 0){
                     sleepTime = 0;
                     cout << "ERROR! Can't meet deadline..." << endl;
                 }
+            //If the sleepTime is rather low right now, lets not try and modify the sleep time
+            //mainly because the machine is already having a difficult time keeping up
+            //and rendering too aggressively will cause problems elsewhere
+            }else if(isActive && (frames > 30 && frames < 55) && sleepTime > 1000){
+                sleepTime -= 100;
+                if(sleepTime < 0){
+                    sleepTime = 0;
+                }
+
             }
             t = time(0);
             frames = 0;

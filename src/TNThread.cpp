@@ -2,7 +2,7 @@
 
 TNThread::TNThread()
 {
-    //ctor
+     shutDownRequested = 0;
 }
 
 TNThread::~TNThread()
@@ -17,4 +17,9 @@ void TNThread::start(){
 void* TNThread::start_thread(void *obj){
     reinterpret_cast<TNThread *>(obj)->run();
     return NULL;
+}
+
+void TNThread::wait(){
+    void *ret;
+    pthread_join(thread, &ret);
 }

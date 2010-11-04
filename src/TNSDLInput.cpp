@@ -9,6 +9,10 @@
 #include <iostream>
 #include <time.h>
 
+#include <iostream>
+
+using namespace std;
+
 #include "TNSDLInput.h"
 
 TNSDLInput::TNSDLInput(TNManager *imgr):TNInputManager(imgr)
@@ -23,7 +27,9 @@ TNSDLInput::~TNSDLInput()
 
 void TNSDLInput::run(){
     int done = 0;
-    while ( !done ){
+    sleep(5);
+    cout << "Starting input processing" << endl;
+    while ( !shutdownRequested() ){
 	    /* handle the events in the queue */
         SDL_Event event;
 	    while ( SDL_PollEvent( &event ) )
@@ -55,5 +61,9 @@ void TNSDLInput::run(){
 		usleep(1000);
 
     }
+
+    cout << "TNSDLInput shutting down" << endl;
+
+
 }
 

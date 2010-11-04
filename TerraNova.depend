@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1288739665 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288914454 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -196,10 +196,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1288454075 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
+1288914205 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
+	<SDL/SDL.h>
+	<SDL.h>
 	<vector>
 	"TNObject.h"
 	"TNCamera.h"
+	"TNThread.h"
 
 1285263465 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
 
@@ -222,11 +225,12 @@
 	<TNObject.h>
 	"TNPoint.h"
 
-1288570141 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1288914472 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
+	<iostream>
 
 1288578953 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
@@ -257,27 +261,29 @@
 	"TNManager.h"
 	"TNThread.h"
 
-1288739575 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
+1288743655 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
 	"TNInputManager.h"
 	"TNRenderEngine.h"
 
 1288741404 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNInputManager.cpp
 	"TNInputManager.h"
 
-1288666211 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
+1288744876 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
 	"TNManager.h"
+	<iostream>
 
-1288741248 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
+1288743514 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
 	<pthread.h>
 
-1288740896 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
+1288914429 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
 	<SDL/SDL.h>
 	<SDL.h>
 	<unistd.h>
 	<iostream>
 	<time.h>
+	<iostream>
 	"TNSDLInput.h"
 
-1288741449 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNThread.cpp
+1288743583 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNThread.cpp
 	"TNThread.h"
 

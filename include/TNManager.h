@@ -16,7 +16,7 @@ class TNManager
         void setInput(TNInputManager *in){input = in;}
         TNRenderEngine *getRenderEngine(){return re;}
         void setRenderEngine(TNRenderEngine *eng){re = eng;}
-
+        void exec();
         void shutdown();
     protected:
         TNInputManager *input;

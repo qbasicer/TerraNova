@@ -26,138 +26,6 @@
 
 using namespace std;
 
-#define SCREEN_WIDTH    680
-#define SCREEN_HEIGHT   480
-#define SCREEN_BPP      24
-
-#ifdef alasdf
-int main ( int argc, char** argv )
-{
-    int videoFlags;
-    const SDL_VideoInfo *videoInfo;
-
-    // initialize SDL video
-    if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-    {
-        printf( "Unable to init SDL: %s\n", SDL_GetError() );
-        return 1;
-    }
-
-    // make sure SDL cleans up before exit
-    atexit(SDL_Quit);
-
-
-    /* Fetch the video info */
-    videoInfo = SDL_GetVideoInfo( );
-
-    if ( !videoInfo )
-	{
-	    fprintf( stderr, "Video query failed: %s\n",
-		     SDL_GetError( ) );
-	    exit( 1 );
-	}
-
-    /* the flags to pass to SDL_SetVideoMode */
-    videoFlags  = SDL_OPENGL;          /* Enable OpenGL in SDL */
-    videoFlags |= SDL_GL_DOUBLEBUFFER; /* Enable double buffering */
-    videoFlags |= SDL_HWPALETTE;       /* Store the palette in hardware */
-    videoFlags |= SDL_RESIZABLE;       /* Enable window resizing */
-
-    /* This checks to see if surfaces can be stored in memory */
-    if ( videoInfo->hw_available )
-	videoFlags |= SDL_HWSURFACE;
-    else
-	videoFlags |= SDL_SWSURFACE;
-
-    /* This checks if hardware blits can be done */
-    if ( videoInfo->blit_hw )
-	videoFlags |= SDL_HWACCEL;
-
-    /* Sets up OpenGL double buffering */
-    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-
-    /* get a SDL surface */
-    SDL_Surface* surface = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP,
-				videoFlags );
-
-    /* Verify there is a surface */
-    if ( !surface )
-	{
-	    fprintf( stderr,  "Video mode set failed: %s\n", SDL_GetError( ) );
-	    exit( 1 );
-	}
-
-    TNRenderEngine re;
-    TNCamera cam(0,0,1);
-    cam.setPitch(0);
-    cam.setYaw(0);
-    re.setCamera(&cam);
-
-    re.init();
-
-    TNPoint p1(-0.2, 0.0, -3.0);
-    TNPoint p2( 0.2, 0.0, -3.0);
-    TNPoint p3( 0.0, 0.2, -3.0);
-    TNPolygon poly(p1,p2,p3);
-    re.addObject(&poly);
-
-    // program main loop
-    bool done = false;
-    float rot = 0;
-    while (!done)
-    {
-        // message processing loop
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {
-            // check for messages
-            switch (event.type)
-            {
-                // exit if the window is closed
-            case SDL_QUIT:
-                done = true;
-                break;
-
-                // check for keypresses
-            case SDL_KEYDOWN:
-                {
-                    // exit if ESCAPE is pressed
-                    if (event.key.keysym.sym == SDLK_ESCAPE)
-                        done = true;
-                    break;
-                }
-            } // end switch
-        } // end of message processing
-        glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-        glLoadIdentity( );
-        glRotatef(rot, 0.0f, 1.0f , 0.0f );
-        glColor3f(0.0,0.75,0.0);
-        glBegin(GL_TRIANGLES);
-            glVertex3f(100, 0,  -10);
-            glVertex3f(-100, 0, -10);
-
-            glVertex3f(0, 100,   -10);
-        glEnd();
-        glFlush();
-
-        rot += 1;
-        cout << "Looking at "<<rot<< endl;
-        //cam.setYaw(rot);
-        //re.render();
-        SDL_GL_SwapBuffers( );
-        usleep(10000);
-
-    } // end main loop
-
-    // free loaded bitmap
-    SDL_FreeSurface(surface);
-
-    // all is well ;)
-    printf("Exited cleanly\n");
-    return 0;
-}
-#endif
-
 /* screen width, height, and bit depth */
 #define SCREEN_WIDTH  640
 #define SCREEN_HEIGHT 480
@@ -305,72 +173,8 @@ int drawGLScene( void )
 
 int main( int argc, char **argv )
 {
-    /* Flags to pass to SDL_SetVideoMode */
-    int videoFlags;
-    /* main loop variable */
-    int done = FALSE;
-    /* used to collect events */
-    SDL_Event event;
-    /* this holds some info about our display */
-    const SDL_VideoInfo *videoInfo;
-    /* whether or not the window is active */
-    int isActive = TRUE;
-
-    cout << "SDL_Init()" << endl;
-
-    /* initialize SDL */
-    if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
-	{
-	    fprintf( stderr, "Video initialization failed: %s\n",
-		     SDL_GetError( ) );
-	    Quit( 1 );
-	}
-
-	cout << "SDL_GetVideoInfo()" << endl;
-
-    /* Fetch the video info */
-     videoInfo = SDL_GetVideoInfo( );
-
-     if ( !videoInfo )
-	{
-	    fprintf( stderr, "Video query failed: %s\n",
-		     SDL_GetError( ) );
-	    Quit( 1 );
-	}
-
-    /* the flags to pass to SDL_SetVideoMode */
-    videoFlags  = SDL_OPENGL;          /* Enable OpenGL in SDL */
-    videoFlags |= SDL_GL_DOUBLEBUFFER; /* Enable double buffering */
-    videoFlags |= SDL_HWPALETTE;       /* Store the palette in hardware */
-    videoFlags |= SDL_RESIZABLE;       /* Enable window resizing */
-
-    /* This checks to see if surfaces can be stored in memory */
-    if ( videoInfo->hw_available )
-	videoFlags |= SDL_HWSURFACE;
-    else
-	videoFlags |= SDL_SWSURFACE;
-
-    /* This checks if hardware blits can be done */
-    if ( videoInfo->blit_hw )
-	videoFlags |= SDL_HWACCEL;
-
-    cout << "SDL_GL_SetAttribute()" << endl;
-
-    /* Sets up OpenGL double buffering */
-    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-
-    cout << "SDL_SetVideoMode()" << endl;
-
-    /* get a SDL surface */
-    surface = SDL_SetVideoMode( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP,
-				videoFlags );
-
-    /* Verify there is a surface */
-    if ( !surface )
-	{
-	    fprintf( stderr,  "Video mode set failed: %s\n", SDL_GetError( ) );
-	    Quit( 1 );
-	}
+    int done = 0;
+    int isActive;
 
 	TNManager mgr;
 	TNRenderEngine re;
@@ -385,20 +189,6 @@ int main( int argc, char **argv )
     cam.setYaw(0);
     re.setCamera(&cam);
 
-    cout << "e.init()" << endl;
-
-    //initGL( );
-    re.init();
-
-    cout << "resizeWindow()" << endl;
-
-    /* resize the initial window */
-    resizeWindow( SCREEN_WIDTH, SCREEN_HEIGHT );
-
-
-
-    //re.init();
-
     TNPoint p1(0.0,1.0,0.0);
     TNPoint p2(-1.0,-1.0,0.0);
     TNPoint p3(1.0,-1.0,0.0);
@@ -406,6 +196,12 @@ int main( int argc, char **argv )
     re.addObject(&poly);
 
     cout << "Entering event loop" << endl;
+
+    //re.bounce();
+
+    mgr.exec();
+
+    cout << "Finished event loop" << endl;
 
     /* wait for events */
     float rot = 0;
@@ -415,7 +211,7 @@ int main( int argc, char **argv )
     while ( !done )
 	{
 	    /* handle the events in the queue */
-
+        SDL_Event event;
 	    while ( SDL_PollEvent( &event ) )
 		{
 		    switch( event.type )
@@ -432,15 +228,6 @@ int main( int argc, char **argv )
 			    break;
 			case SDL_VIDEORESIZE:
 			    /* handle resize event */
-			    surface = SDL_SetVideoMode( event.resize.w,
-							event.resize.h,
-							16, videoFlags );
-			    if ( !surface )
-				{
-				    fprintf( stderr, "Could not get a surface after resize: %s\n", SDL_GetError( ) );
-				    Quit( 1 );
-				}
-			    resizeWindow( event.resize.w, event.resize.h );
 			    break;
 			case SDL_KEYDOWN:
 			    /* handle key presses */

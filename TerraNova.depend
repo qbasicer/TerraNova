@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1288914454 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1288914780 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -225,7 +225,7 @@
 	<TNObject.h>
 	"TNPoint.h"
 
-1288914472 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1288914504 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -253,7 +253,7 @@
 1288052347 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNVector.cpp
 	"TNVector.h"
 
-1288740601 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
+1288914693 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
 	<TNInputManager.h>
 
 1288741422 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNInputManager.h

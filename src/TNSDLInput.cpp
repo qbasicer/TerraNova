@@ -25,6 +25,28 @@ TNSDLInput::~TNSDLInput()
     //dtor
 }
 
+/* function to handle key press events */
+void TNSDLInput::handleKeyPress( SDL_keysym *keysym ){
+    switch ( keysym->sym )
+	{
+	case SDLK_ESCAPE:
+	    /* ESC key was pressed */
+	    cout << "Asking manager to shutdown" << endl;
+	    manager->shutdown();
+	    break;
+	case SDLK_F1:
+	    /* F1 key was pressed
+	     * this toggles fullscreen mode
+	     */
+	    //SDL_WM_ToggleFullScreen( surface );
+	    break;
+	default:
+	    break;
+	}
+
+    return;
+}
+
 void TNSDLInput::run(){
     int done = 0;
     sleep(5);
@@ -48,7 +70,7 @@ void TNSDLInput::run(){
 			    break;
 			case SDL_KEYDOWN:
 			    /* handle key presses */
-			    //handleKeyPress( &event.key.keysym );
+			    handleKeyPress(&event.key.keysym);
 			    break;
 			case SDL_QUIT:
 			    /* handle quit requests */

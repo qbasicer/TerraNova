@@ -13,6 +13,7 @@ class TNSDLInput : public TNInputManager
 
     protected:
         virtual void run();
+        void handleKeyPress(SDL_keysym *keysym);
     private:
 };
 

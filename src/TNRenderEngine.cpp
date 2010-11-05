@@ -12,13 +12,20 @@
 
 using namespace std;
 
-TNRenderEngine::TNRenderEngine()
-{
+/* Snatched from CS4745 lab */
+/* double meTime(){
+ *	struct timeval tv;
+ *	gettimeofday(&tv, NULL);
+ *	return (1000000*tv.tv_sec+tv.tv_usec)/1.0e6;
+ * }
+ */
+
+
+TNRenderEngine::TNRenderEngine(){
     camera = NULL;
 }
 
-TNRenderEngine::~TNRenderEngine()
-{
+TNRenderEngine::~TNRenderEngine(){
     //dtor
 }
 

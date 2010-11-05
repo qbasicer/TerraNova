@@ -132,7 +132,7 @@ void TNRenderEngine::run(){
     while(!shutdownRequested()){
         /* draw the scene */
         if(t != time(0)){
-            cout << "FPS: "<<frames << " spend " << sleepTime*frames << "us sleeping" << endl;
+            cout << "FPS: "<<frames << " " << ((1000000 - sleepTime*frames) / 10000) << "%" << endl;
             if(isActive && frames > 60){
                 //Calculate amount of time sleeping
                 float timePerFrame = (sleepTime * frames);

@@ -275,15 +275,21 @@
 1288743514 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
 	<pthread.h>
 
-1288914429 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
+1288916807 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
 	<SDL/SDL.h>
 	<SDL.h>
 	<unistd.h>
 	<iostream>
 	<time.h>
+	"util.h"
 	<iostream>
 	"TNSDLInput.h"
 
 1288743583 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNThread.cpp
 	"TNThread.h"
+
+1288916875 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/util.h
+
+1288916861 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/util.c
+	<stdio.h>
 

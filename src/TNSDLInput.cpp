@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <time.h>
+#include "util.h"
 
 #include <iostream>
 
@@ -49,9 +50,13 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym ){
 
 void TNSDLInput::run(){
     int done = 0;
-    sleep(5);
+    sleep(2);
     cout << "Starting input processing" << endl;
+    int t = time(0);
+    int cycles = 0;
+    int sleepTime = 10000;
     while ( !shutdownRequested() ){
+        cycles++;
 	    /* handle the events in the queue */
         SDL_Event event;
 	    while ( SDL_PollEvent( &event ) )
@@ -80,7 +85,13 @@ void TNSDLInput::run(){
 			    break;
 			}
 		}
-		usleep(1000);
+		if(t != time(0)){
+		    sleepTime = calcSleeptime(1, sleepTime, cycles, 50, 60);
+		    cout << cycles << " cycles" << endl;
+		    cycles = 0;
+		    t = time(0);
+		}
+		usleep(sleepTime);
 
     }
 

@@ -47,9 +47,14 @@
 		<Unit filename="include/TNObject.h" />
 		<Unit filename="include/TNPoint.h" />
 		<Unit filename="include/TNPolygon.h" />
+		<Unit filename="include/TNQuad.h" />
 		<Unit filename="include/TNRenderEngine.h" />
 		<Unit filename="include/TNSDLInput.h" />
+		<Unit filename="include/TNTexture.h" />
+		<Unit filename="include/TNTextureManager.h" />
+		<Unit filename="include/TNThread.h" />
 		<Unit filename="include/TNVector.h" />
+		<Unit filename="include/util.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/TNBitmapOverlay.cpp" />
 		<Unit filename="src/TNCamera.cpp" />
@@ -58,9 +63,16 @@
 		<Unit filename="src/TNObject.cpp" />
 		<Unit filename="src/TNPoint.cpp" />
 		<Unit filename="src/TNPolygon.cpp" />
+		<Unit filename="src/TNQuad.cpp" />
 		<Unit filename="src/TNRenderEngine.cpp" />
 		<Unit filename="src/TNSDLInput.cpp" />
+		<Unit filename="src/TNTexture.cpp" />
+		<Unit filename="src/TNTextureManager.cpp" />
+		<Unit filename="src/TNThread.cpp" />
 		<Unit filename="src/TNVector.cpp" />
+		<Unit filename="src/util.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />

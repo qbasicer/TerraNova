@@ -14,6 +14,7 @@
 #include "TNPolygon.h"
 #include "TNSDLInput.h"
 #include "TNManager.h"
+#include "TNQuad.h"
 
 #include <cstdlib>
 #include <cstdio>
@@ -37,11 +38,9 @@ using namespace std;
 
 int main( int argc, char **argv )
 {
-    int done = 0;
-    int isActive;
 
 	TNManager mgr;
-	TNRenderEngine re;
+	TNRenderEngine re(&mgr);
 	TNSDLInput in(&mgr);
 	mgr.setInput(&in);
 	mgr.setRenderEngine(&re);
@@ -58,6 +57,8 @@ int main( int argc, char **argv )
     TNPoint p3(1.0,-1.0,0.0);
     TNPolygon poly(p1,p2,p3);
     re.addObject(&poly);
+
+    int size = 10;
 
     cout << "Entering event loop" << endl;
 

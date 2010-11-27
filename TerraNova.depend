@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1288914780 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1290647907 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -8,6 +8,7 @@
 	"TNPolygon.h"
 	"TNSDLInput.h"
 	"TNManager.h"
+	"TNQuad.h"
 	<cstdlib>
 	<cstdio>
 	<unistd.h>
@@ -196,13 +197,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1288914205 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
+1290647758 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<vector>
 	"TNObject.h"
 	"TNCamera.h"
 	"TNThread.h"
+	"TNManager.h"
 
 1285263465 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
 
@@ -225,12 +227,13 @@
 	<TNObject.h>
 	"TNPoint.h"
 
-1288914504 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1290647987 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
 	<iostream>
+	"TNQuad.h"
 
 1288578953 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
@@ -238,7 +241,7 @@
 	"TNCamera.h"
 	<iostream>
 
-1288465738 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
+1290635120 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
 	<TNObject.h>
 	<TNVector.h>
 	<TNPoint.h>
@@ -261,21 +264,22 @@
 	"TNManager.h"
 	"TNThread.h"
 
-1288743655 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
+1290641986 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
 	"TNInputManager.h"
 	"TNRenderEngine.h"
+	"TNTextureManager.h"
 
 1288741404 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNInputManager.cpp
 	"TNInputManager.h"
 
-1288744876 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
+1290641362 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
 	"TNManager.h"
 	<iostream>
 
 1288743514 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
 	<pthread.h>
 
-1288916807 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
+1290646749 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
 	<SDL/SDL.h>
 	<SDL.h>
 	<unistd.h>
@@ -292,4 +296,34 @@
 
 1288916861 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/util.c
 	<stdio.h>
+
+1290647651 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTexture.cpp
+	"TNTexture.h"
+	<iostream>
+
+1290643085 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNTexture.h
+	<SDL/SDL.h>
+	<SDL.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<string>
+
+1290644443 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTextureManager.cpp
+	"TNTextureManager.h"
+	<iostream>
+
+1290643050 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNTextureManager.h
+	<string>
+	"TNTexture.h"
+	<vector>
+
+1290646497 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNQuad.cpp
+	"TNQuad.h"
+	<iostream>
+
+1290644163 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNQuad.h
+	<GL/gl.h>
+	<GL/glu.h>
+	<TNObject.h>
+	"TNPoint.h"
 

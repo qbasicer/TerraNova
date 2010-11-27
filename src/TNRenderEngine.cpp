@@ -5,6 +5,8 @@
 #include <GL/glut.h>
 #include <iostream>
 
+#include "TNQuad.h"
+
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
 #define SCREEN_BPP      24
@@ -12,9 +14,12 @@
 
 using namespace std;
 
-TNRenderEngine::TNRenderEngine()
+TNRenderEngine::TNRenderEngine(TNManager *manager)
 {
+    width = SCREEN_WIDTH;
+    height = SCREEN_HEIGHT;
     camera = NULL;
+    this->manager = manager;
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -26,13 +31,8 @@ void TNRenderEngine::init(){
     /* Flags to pass to SDL_SetVideoMode */
     int videoFlags;
     /* main loop variable */
-    int done = 0;
-    /* used to collect events */
-    SDL_Event event;
     /* this holds some info about our display */
     const SDL_VideoInfo *videoInfo;
-    /* whether or not the window is active */
-    int isActive = 1;
 
     cout << "SDL_Init()" << endl;
 
@@ -102,6 +102,16 @@ void TNRenderEngine::init(){
     /* Enables Depth Testing */
     glEnable( GL_DEPTH_TEST );
 
+    glEnable( GL_TEXTURE_2D );
+
+    glDisable(GL_TEXTURE_3D);
+
+    glDisable(GL_BLEND);
+
+    glDisable(GL_LIGHTING);
+
+    glColor4f(1,0,1,0);
+
     /* The Type Of Depth Test To Do */
     glDepthFunc( GL_LEQUAL );
 
@@ -127,8 +137,23 @@ void TNRenderEngine::run(){
     unsigned long long frames = 0;
     int sleepTime = 100000;
     int isActive = 1;
-    float rot = 0;
     init();
+
+    int size = 10;
+    TNPoint qp1(-size,-1.0,-size);
+    TNPoint qp2(size,-1.0,-size);
+    TNPoint qp3(size,-1.0,size);
+    TNPoint qp4(-size,-1.0,size);
+
+    manager->getTextureManager()->addTexture("grass_small","grass_small.bmp");
+    manager->getTextureManager()->addTexture("grass","grass.bmp");
+    TNQuad quad(qp1,qp2,qp3,qp4);
+    GLuint textId = manager->getTextureManager()->getTextureIdByName("grass");
+    addObject(&quad);
+
+
+    quad.setTexture(textId);
+
     while(!shutdownRequested()){
         /* draw the scene */
         if(t != time(0)){
@@ -180,8 +205,6 @@ void TNRenderEngine::run(){
         }
 	    if ( isActive ){
             render();
-            rot += 1;
-            camera->setYaw(rot);
             SDL_GL_SwapBuffers( );
             usleep(sleepTime);
             frames++;

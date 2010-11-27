@@ -5,7 +5,13 @@
 		<Cursor position="76" topLine="0" />
 	</File>
 	<File name="include/TNCamera.h" open="0" top="0" tabpos="3">
-		<Cursor position="598" topLine="0" />
+		<Cursor position="526" topLine="0" />
+	</File>
+	<File name="include/TNInputManager.h" open="0" top="0" tabpos="0">
+		<Cursor position="319" topLine="0" />
+	</File>
+	<File name="include/TNManager.h" open="1" top="0" tabpos="9">
+		<Cursor position="341" topLine="0" />
 	</File>
 	<File name="include/TNObject.h" open="0" top="0" tabpos="1">
 		<Cursor position="160" topLine="0" />
@@ -14,19 +20,37 @@
 		<Cursor position="309" topLine="0" />
 	</File>
 	<File name="include/TNPolygon.h" open="0" top="0" tabpos="6">
-		<Cursor position="81" topLine="0" />
+		<Cursor position="43" topLine="0" />
 	</File>
-	<File name="include/TNRenderEngine.h" open="1" top="0" tabpos="2">
-		<Cursor position="374" topLine="0" />
+	<File name="include/TNQuad.h" open="1" top="0" tabpos="4">
+		<Cursor position="16" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="13758" topLine="413" />
+	<File name="include/TNRenderEngine.h" open="1" top="0" tabpos="8">
+		<Cursor position="144" topLine="0" />
+	</File>
+	<File name="include/TNSDLInput.h" open="0" top="0" tabpos="0">
+		<Cursor position="271" topLine="0" />
+	</File>
+	<File name="include/TNTexture.h" open="0" top="0" tabpos="0">
+		<Cursor position="269" topLine="0" />
+	</File>
+	<File name="include/TNTextureManager.h" open="0" top="0" tabpos="0">
+		<Cursor position="434" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="683" topLine="16" />
 	</File>
 	<File name="src/TNBitmapOverlay.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="27" topLine="0" />
 	</File>
 	<File name="src/TNCamera.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="468" topLine="0" />
+	</File>
+	<File name="src/TNInputManager.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="27" topLine="0" />
+	</File>
+	<File name="src/TNManager.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="215" topLine="0" />
 	</File>
 	<File name="src/TNObject.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
@@ -35,9 +59,21 @@
 		<Cursor position="211" topLine="0" />
 	</File>
 	<File name="src/TNPolygon.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="659" topLine="0" />
+		<Cursor position="428" topLine="0" />
 	</File>
-	<File name="src/TNRenderEngine.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="838" topLine="0" />
+	<File name="src/TNQuad.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="1389" topLine="0" />
+	</File>
+	<File name="src/TNRenderEngine.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="3227" topLine="122" />
+	</File>
+	<File name="src/TNSDLInput.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="846" topLine="48" />
+	</File>
+	<File name="src/TNTexture.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="429" topLine="1" />
+	</File>
+	<File name="src/TNTextureManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="429" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

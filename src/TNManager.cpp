@@ -7,7 +7,7 @@ using namespace std;
 
 TNManager::TNManager()
 {
-    //ctor
+    textures = new TNTextureManager();
 }
 
 TNManager::~TNManager()

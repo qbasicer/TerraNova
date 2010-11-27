@@ -27,6 +27,16 @@ TNRenderEngine::~TNRenderEngine()
     //dtor
 }
 
+
+/* Snatched from CS4745 lab */
+/* double meTime(){
+ *	struct timeval tv;
+ *	gettimeofday(&tv, NULL);
+ *	return (1000000*tv.tv_sec+tv.tv_usec)/1.0e6;
+ * }
+ */
+
+
 void TNRenderEngine::init(){
     /* Flags to pass to SDL_SetVideoMode */
     int videoFlags;

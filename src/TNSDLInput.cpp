@@ -35,6 +35,9 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym ){
 	    cout << "Asking manager to shutdown" << endl;
 	    manager->shutdown();
 	    break;
+    case SDLK_w:
+        manager->getRenderEngine()->forward(1.0);
+        break;
 	case SDLK_F1:
 	    /* F1 key was pressed
 	     * this toggles fullscreen mode

@@ -33,6 +33,9 @@ class TNRenderEngine : public TNThread
         int getScreenHeight(){return height;}
         void pitchBy(double y){camera->setPitch(camera->getPitch() + y);}
         void yawBy(double x){camera->setYaw(camera->getYaw() + x);}
+
+        void forward(float dist);
+
     protected:
         virtual void run();
     private:

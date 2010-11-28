@@ -5,6 +5,7 @@
 class TNVector
 {
     public:
+        TNVector(float x, float y, float z, float h = 0){tx = x;ty = y; tz = z; th = h;}
         TNVector();
         virtual ~TNVector();
         float Gettx() { return tx; }
@@ -15,6 +16,8 @@ class TNVector
         void Settz(float val) { tz = val; }
         float Getth() { return th; }
         void Setth(float val) { th = val; }
+        void setLength(float length);
+        float getLength();
     protected:
     private:
         float tx;

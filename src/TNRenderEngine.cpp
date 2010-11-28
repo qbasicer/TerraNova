@@ -4,9 +4,11 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <iostream>
+#include <math.h>
 
 #include "TNQuad.h"
 #include "TNSubdivideQuad.h"
+#include "TNAxisLines.h"
 
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
@@ -167,6 +169,9 @@ void TNRenderEngine::run(){
     GLuint textId = manager->getTextureManager()->getTextureIdByName("grass");
     addObject(&quad);
 
+    TNAxisLines lines(TNPoint(0,0,0));
+    addObject(&lines);
+
 
     quad.setTexture(textId);
 
@@ -233,6 +238,18 @@ void TNRenderEngine::run(){
 
 void TNRenderEngine::addObject(TNObject *obj){
     objects.push_back(obj);
+}
+
+void TNRenderEngine::forward(float dist){
+    TNPoint loc = camera->getLocation();
+    float yaw = camera->getYaw();
+    float pitch = camera->getPitch();
+
+    TNVector vec(sin(yaw),cos(pitch),cos(yaw),0);
+    vec.setLength(dist);
+
+    loc = TNPoint(loc.x() + vec.Gettx(), loc.y() + vec.Getty(), loc.z() + vec.Gettz());
+    camera->setLocation(loc);
 }
 
 /* function to reset our viewport after a window resize */

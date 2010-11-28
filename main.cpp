@@ -58,8 +58,6 @@ int main( int argc, char **argv )
     TNPolygon poly(p1,p2,p3);
     re.addObject(&poly);
 
-    int size = 10;
-
     cout << "Entering event loop" << endl;
 
     //re.bounce();

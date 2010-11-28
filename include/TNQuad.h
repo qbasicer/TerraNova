@@ -14,12 +14,13 @@ class TNQuad : public TNObject
         virtual void render();
         void setTexture(GLuint tex){textureId = tex;}
     protected:
-    private:
         GLuint textureId;
         TNPoint p1;
         TNPoint p2;
         TNPoint p3;
         TNPoint p4;
+    private:
+
 };
 
 #endif // TNQUAD_H

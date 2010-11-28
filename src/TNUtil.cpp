@@ -1,4 +1,11 @@
-#include <stdio.h>
+#include "TNUtil.h"
+#include "TNPoint.h"
+
+TNPoint lerp(TNPoint a, TNPoint b, float perc){
+    return TNPoint((b.x() - a.x())*perc + a.x(),  (b.y() - a.y())*perc + a.y(), (b.z() - a.z())*perc + a.z());
+}
+
+
 
 int calcSleeptime(int elapsed, int sleepTime, int frames, int lframes, int tframes){
     if(frames > tframes){

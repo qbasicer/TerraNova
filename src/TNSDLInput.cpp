@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <time.h>
-#include "util.h"
+#include "TNUtil.h"
 
 #include <iostream>
 
@@ -79,8 +79,8 @@ void TNSDLInput::run(){
                     SDL_GetMouseState(&x,&y);
                     SDL_WarpMouse(c_x,c_y);
 
-                    x = c_x - x;
-                    y = c_y - y;
+                    x = -c_x + x;
+                    y = -c_y + y;
 
                     SDL_EventState(SDL_MOUSEMOTION, SDL_ENABLE);
                     manager->getRenderEngine()->yawBy((double)x*0.1);

@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "TNQuad.h"
+#include "TNSubdivideQuad.h"
 
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
@@ -157,7 +158,12 @@ void TNRenderEngine::run(){
 
     manager->getTextureManager()->addTexture("grass_small","grass_small.bmp");
     manager->getTextureManager()->addTexture("grass","grass.bmp");
-    TNQuad quad(qp1,qp2,qp3,qp4);
+
+    TNSubdivideQuad quad(qp1,qp2,qp3,qp4);
+    quad.subdivideBy(100);
+
+    //TNQuad quad(qp1,qp2,qp3,qp4);
+
     GLuint textId = manager->getTextureManager()->getTextureIdByName("grass");
     addObject(&quad);
 

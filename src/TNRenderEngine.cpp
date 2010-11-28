@@ -9,6 +9,7 @@
 #include "TNQuad.h"
 #include "TNSubdivideQuad.h"
 #include "TNAxisLines.h"
+#include "TNUtil.h"
 
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
@@ -245,7 +246,7 @@ void TNRenderEngine::forward(float dist){
     float yaw = camera->getYaw();
     float pitch = camera->getPitch();
 
-    TNVector vec(sin(yaw),cos(pitch),cos(yaw),0);
+    TNVector vec(SIN_DEG(yaw),COS_DEG(pitch),COS_DEG(yaw),0);
     vec.setLength(dist);
 
     loc = TNPoint(loc.x() + vec.Gettx(), loc.y() + vec.Getty(), loc.z() + vec.Gettz());

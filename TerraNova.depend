@@ -227,7 +227,7 @@
 	<TNObject.h>
 	"TNPoint.h"
 
-1290910607 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1290991944 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -237,6 +237,7 @@
 	"TNQuad.h"
 	"TNSubdivideQuad.h"
 	"TNAxisLines.h"
+	"TNUtil.h"
 
 1288578953 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
@@ -261,7 +262,7 @@
 	<math.h>
 	<iostream>
 
-1288914693 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
+1290992269 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
 	<TNInputManager.h>
 
 1288741422 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNInputManager.h
@@ -284,7 +285,7 @@
 1288743514 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
 	<pthread.h>
 
-1290910694 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
+1290992602 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
 	<SDL/SDL.h>
 	<SDL.h>
 	<unistd.h>
@@ -344,11 +345,12 @@
 1290905184 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/util.cpp
 	"TNPoint.h"
 
-1290905903 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNUtil.cpp
+1290994392 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNUtil.cpp
 	"TNUtil.h"
 	"TNPoint.h"
+	<sys/time.h>
 
-1290966778 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNUtil.h
+1290994273 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNUtil.h
 	<TNPoint.h>
 
 1290909872 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNAxisLines.cpp
@@ -359,4 +361,13 @@
 1290909696 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNAxisLines.h
 	"TNPoint.h"
 	"TNObject.h"
+
+1290994354 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsObject.cpp
+	"TNPhysicsObject.h"
+	<cmath>
+	<cstdlib>
+
+1290994183 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPhysicsObject.h
+	<TNVector.h>
+	<TNPoint.h>
 

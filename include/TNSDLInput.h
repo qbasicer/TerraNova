@@ -4,6 +4,8 @@
 #include <TNInputManager.h>
 
 
+enum SDLKeyState{SDL_KEY_UP, SDL_KEY_DOWN};
+
 class TNSDLInput : public TNInputManager
 {
     public:
@@ -13,7 +15,7 @@ class TNSDLInput : public TNInputManager
 
     protected:
         virtual void run();
-        void handleKeyPress(SDL_keysym *keysym);
+        void handleKeyPress(SDL_keysym *keysym, enum SDLKeyState state );
     private:
 };
 

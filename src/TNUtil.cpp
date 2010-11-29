@@ -1,5 +1,6 @@
 #include "TNUtil.h"
 #include "TNPoint.h"
+#include <sys/time.h>
 
 TNPoint lerp(TNPoint a, TNPoint b, float perc){
     return TNPoint((b.x() - a.x())*perc + a.x(),  (b.y() - a.y())*perc + a.y(), (b.z() - a.z())*perc + a.z());
@@ -53,3 +54,8 @@ int calcSleeptime(int elapsed, int sleepTime, int frames, int lframes, int tfram
 
 
 
+double meTime(){
+    struct timeval tv;
+    gettimeofday(&tv, 0);
+    return (1000000*tv.tv_sec+tv.tv_usec)/1.0e6;
+}

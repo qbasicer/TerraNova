@@ -244,12 +244,14 @@ void TNRenderEngine::addObject(TNObject *obj){
 void TNRenderEngine::forward(float dist){
     TNPoint loc = camera->getLocation();
     float yaw = camera->getYaw();
-    float pitch = camera->getPitch();
+    float pitch = -camera->getPitch();
 
-    TNVector vec(SIN_DEG(yaw),COS_DEG(pitch),COS_DEG(yaw),0);
+    TNVector vec(SIN_DEG(yaw),SIN_DEG(pitch),COS_DEG(yaw),0);
+    cout << "Pitch: " << pitch << endl;
+    cout << "Y component: " << vec.Getty() << endl;
     vec.setLength(dist);
 
-    loc = TNPoint(loc.x() + vec.Gettx(), loc.y() + vec.Getty(), loc.z() + vec.Gettz());
+    loc = TNPoint(loc.x() - vec.Gettx(), loc.y() - vec.Getty(), loc.z() + vec.Gettz());
     camera->setLocation(loc);
 }
 

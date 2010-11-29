@@ -27,7 +27,7 @@ TNSDLInput::~TNSDLInput()
 }
 
 /* function to handle key press events */
-void TNSDLInput::handleKeyPress( SDL_keysym *keysym ){
+void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
     switch ( keysym->sym )
 	{
 	case SDLK_ESCAPE:
@@ -36,6 +36,7 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym ){
 	    manager->shutdown();
 	    break;
     case SDLK_w:
+
         manager->getRenderEngine()->forward(1.0);
         break;
 	case SDLK_F1:
@@ -109,9 +110,13 @@ void TNSDLInput::run(){
 			    /* handle resize event */
 
 			    break;
-			case SDL_KEYDOWN:
+            case SDL_KEYUP:
+                /* handle key presses */
+			    handleKeyPress(&event.key.keysym, SDL_KEY_UP);
+			    break;
+            case SDL_KEYDOWN:
 			    /* handle key presses */
-			    handleKeyPress(&event.key.keysym);
+			    handleKeyPress(&event.key.keysym, SDL_KEY_DOWN);
 			    break;
 			case SDL_QUIT:
 			    /* handle quit requests */

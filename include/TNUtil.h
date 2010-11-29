@@ -5,6 +5,7 @@
 
 TNPoint lerp(TNPoint a, TNPoint b, float perc);
 int calcSleeptime(int elapsed, int sleepTime, int frames, int lframes, int tframes);
+double meTime();
 
 #define SIN_DEG(x)  (sin(x * 0.0174532925))
 #define COS_DEG(x)  (cos(x * 0.0174532925))

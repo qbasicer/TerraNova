@@ -14,6 +14,8 @@
 
 using namespace std;
 
+//#define USE_WAIT
+
 #include "TNSDLInput.h"
 
 TNSDLInput::TNSDLInput(TNManager *imgr):TNInputManager(imgr)
@@ -36,8 +38,11 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 	    manager->shutdown();
 	    break;
     case SDLK_w:
-
-        manager->getRenderEngine()->forward(1.0);
+        if(state == SDL_KEY_UP){
+            manager->getRenderEngine()->forward(0.0);
+        }else{
+            manager->getRenderEngine()->forward(1.0);
+        }
         break;
 	case SDLK_F1:
 	    /* F1 key was pressed
@@ -65,8 +70,13 @@ void TNSDLInput::run(){
 	    /* handle the events in the queue */
         SDL_Event event;
 
-	    while ( SDL_PollEvent( &event ) )
-		{
+#ifndef USE_WAIT
+        while ( SDL_PollEvent( &event ) )
+
+#else
+        SDL_WaitEvent(&event);
+#endif
+        {
 		    switch(event.type){
             case SDL_MOUSEMOTION:
                 if(useMouse){
@@ -126,13 +136,18 @@ void TNSDLInput::run(){
 			    break;
 			}
 		}
+#ifndef USE_WAIT
 		if(t != time(0)){
-		    sleepTime = calcSleeptime(1, sleepTime, cycles, 50, 60);
-		    cout << cycles << " cycles" << endl;
+		    sleepTime = calcSleeptime(1, sleepTime, cycles, 80, 100);
+		    cout << cycles << " cycles, sleep time: " << sleepTime << endl;
 		    cycles = 0;
+		    if(sleepTime < 1000){
+		        cerr << "WARNING!!! Can't keep input up! (" << sleepTime << ")" << endl;
+		    }
 		    t = time(0);
 		}
 		usleep(sleepTime);
+#endif
 
     }
 

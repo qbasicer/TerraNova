@@ -47,10 +47,9 @@ int main( int argc, char **argv )
 
     /* initialize OpenGL */
 
-    TNCamera cam( -1.5f, 0.0f, -6.0f );
-    cam.setPitch(0);
-    cam.setYaw(0);
-    re.setCamera(&cam);
+    TNCamera *cam = re.getCamera();
+    cam->setPitch(0);
+    cam->setYaw(0);
 
     TNPoint p1(0.0,1.0,0.0);
     TNPoint p2(-1.0,-1.0,0.0);

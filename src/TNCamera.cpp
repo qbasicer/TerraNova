@@ -25,5 +25,6 @@ void TNCamera::lookAt(float x, float y, float z){
 void TNCamera::render(){
     glRotatef( pitch, 1.0f, 0.0f , 0.0f );
     glRotatef( yaw, 0.0, 1.0f , 0.0f );
-    glTranslatef(loc.x(), loc.y(), loc.z());
+    TNPoint cLoc = getLocation();
+    glTranslatef(cLoc.x(), cLoc.y(), cLoc.z());
 }

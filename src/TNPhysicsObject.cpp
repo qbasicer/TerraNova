@@ -3,6 +3,9 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <iostream>
+
+using namespace std;
 
 TNPhysicsObject::TNPhysicsObject()
 {
@@ -12,15 +15,22 @@ TNPhysicsObject::TNPhysicsObject()
     useAccel = 0;
     useFriction = 0;
     last = 0;
+    engine = NULL;
 }
 
 TNPhysicsObject::~TNPhysicsObject()
 {
-    //dtor
+    if(engine){
+        engine->removeObject(this);
+    }
 }
 
 
-
+void TNPhysicsObject::registerWithEngine(TNPhysicsEngine *eng){
+    if(engine == NULL){
+        engine = eng;
+    }
+}
 
 void TNPhysicsObject::physicsFrame(){
     //Bail if we don't need to be here
@@ -29,12 +39,13 @@ void TNPhysicsObject::physicsFrame(){
     //If this is the first call, note the time so we can calculate elapsed next time around
     if(last == 0){
         last = meTime();
+        cout << "First run, bailing" << endl;
         return;
     }
 
     //Get elapsed time and update last update
-    float newLast = meTime();
-    float elapsed = newLast - last;
+    double newLast = meTime();
+    double elapsed = newLast - last;
     last = newLast;
 
     //If the values are close enough to zero, shut-em-off
@@ -56,12 +67,13 @@ void TNPhysicsObject::physicsFrame(){
         velocity.Settx(velocity.Gettx() * (1.0 - friction));
         velocity.Setty(velocity.Getty() * (1.0 - friction));
         velocity.Settz(velocity.Gettz() * (1.0 - friction));
+
     }
 
     if(useVelocity){
         loc.setX(loc.x() + (velocity.Gettx() * elapsed));
-        loc.setY(loc.x() + (velocity.Getty() * elapsed));
-        loc.setZ(loc.x() + (velocity.Gettz() * elapsed));
+        loc.setY(loc.y() + (velocity.Getty() * elapsed));
+        loc.setZ(loc.z() + (velocity.Gettz() * elapsed));
     }
 
 

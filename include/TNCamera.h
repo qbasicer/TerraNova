@@ -12,14 +12,14 @@ class TNCamera : public TNObject
         TNCamera();
         TNCamera(float x, float y, float z);
         virtual ~TNCamera();
-        void setLocation(TNPoint point){loc = point;}
-        TNPoint getLocation(){return loc;}
+        virtual void setLocation(TNPoint point){loc = point;}
+        virtual TNPoint getLocation(){return loc;}
         float getPitch(){return pitch;}
         void setPitch(float angle){pitch = angle;}
         float getYaw(){return yaw;}
         void setYaw(float angle){yaw = angle;}
         void lookAt(float x, float y, float z);
-        void render();
+        virtual void render();
     protected:
         TNPoint loc;
         float pitch;

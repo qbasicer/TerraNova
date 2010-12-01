@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1290905663 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1291162713 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -197,14 +197,14 @@
 	"begin_code.h"
 	"close_code.h"
 
-1290909294 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
+1291162691 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<vector>
 	"TNObject.h"
-	"TNCamera.h"
 	"TNThread.h"
 	"TNManager.h"
+	"TNPlayer.h"
 
 1285263465 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
 
@@ -227,7 +227,7 @@
 	<TNObject.h>
 	"TNPoint.h"
 
-1290991944 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1291167950 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -239,13 +239,13 @@
 	"TNAxisLines.h"
 	"TNUtil.h"
 
-1288578953 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
+1291166906 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	"TNCamera.h"
 	<iostream>
 
-1290635120 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
+1291162387 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCamera.h
 	<TNObject.h>
 	<TNVector.h>
 	<TNPoint.h>
@@ -270,22 +270,23 @@
 	"TNManager.h"
 	"TNThread.h"
 
-1290641986 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
+1291088098 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
 	"TNInputManager.h"
 	"TNRenderEngine.h"
 	"TNTextureManager.h"
+	"TNPhysicsEngine.h"
 
 1288741404 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNInputManager.cpp
 	"TNInputManager.h"
 
-1290641362 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
+1291160964 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
 	"TNManager.h"
 	<iostream>
 
 1288743514 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
 	<pthread.h>
 
-1290992602 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
+1291168331 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
 	<SDL/SDL.h>
 	<SDL.h>
 	<unistd.h>
@@ -362,12 +363,45 @@
 	"TNPoint.h"
 	"TNObject.h"
 
-1290994354 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsObject.cpp
+1291162834 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsObject.cpp
 	"TNPhysicsObject.h"
+	<TNUtil.h>
 	<cmath>
 	<cstdlib>
+	<iostream>
 
-1290994183 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPhysicsObject.h
+1291161422 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPhysicsObject.h
 	<TNVector.h>
 	<TNPoint.h>
+	"TNPhysicsEngine.h"
+
+1291162812 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsEngine.cpp
+	"TNPhysicsEngine.h"
+	<unistd.h>
+	"TNUtil.h"
+	<iostream>
+
+1291161244 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPhysicsEngine.h
+	<vector>
+	"TNPhysicsObject.h"
+	"TNThread.h"
+
+1291168086 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPlayer.cpp
+	"TNPlayer.h"
+	"TNPlayerCamera.h"
+	"TNUtil.h"
+	"math.h"
+	<iostream>
+
+1291165702 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPlayer.h
+	<TNPhysicsObject.h>
+	"TNCamera.h"
+
+1291162853 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPlayerCamera.cpp
+	"TNPlayerCamera.h"
+	<iostream>
+
+1291162392 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPlayerCamera.h
+	<TNCamera.h>
+	"TNPlayer.h"
 

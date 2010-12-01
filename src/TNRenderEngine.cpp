@@ -24,6 +24,12 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     height = SCREEN_HEIGHT;
     camera = NULL;
     this->manager = manager;
+    player = new TNPlayer();
+    camera = player->getCamera();
+    player->setActive(true);
+    player->setVelocity(true);
+    manager->getPhysicsEngine()->addObject(player);
+
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -163,7 +169,7 @@ void TNRenderEngine::run(){
     manager->getTextureManager()->addTexture("grass","grass.bmp");
 
     TNSubdivideQuad quad(qp1,qp2,qp3,qp4);
-    quad.subdivideBy(100);
+    quad.subdivideBy(10);
 
     //TNQuad quad(qp1,qp2,qp3,qp4);
 
@@ -178,6 +184,7 @@ void TNRenderEngine::run(){
 
     while(!shutdownRequested()){
         /* draw the scene */
+        player->updateDirectionVelocity();
         if(t != time(0)){
             cout << "FPS: "<<frames << " " << ((1000000 - sleepTime*frames) / 10000) << "%" << endl;
             if(isActive && frames > 60){
@@ -221,6 +228,7 @@ void TNRenderEngine::run(){
                 }
 
             }
+
             t = time(0);
             frames = 0;
 
@@ -242,17 +250,8 @@ void TNRenderEngine::addObject(TNObject *obj){
 }
 
 void TNRenderEngine::forward(float dist){
-    TNPoint loc = camera->getLocation();
-    float yaw = camera->getYaw();
-    float pitch = -camera->getPitch();
+    player->setForwardSpeed(dist);
 
-    TNVector vec(SIN_DEG(yaw),SIN_DEG(pitch),COS_DEG(yaw),0);
-    cout << "Pitch: " << pitch << endl;
-    cout << "Y component: " << vec.Getty() << endl;
-    vec.setLength(dist);
-
-    loc = TNPoint(loc.x() - vec.Gettx(), loc.y() - vec.Getty(), loc.z() + vec.Gettz());
-    camera->setLocation(loc);
 }
 
 /* function to reset our viewport after a window resize */

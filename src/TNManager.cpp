@@ -8,6 +8,7 @@ using namespace std;
 TNManager::TNManager()
 {
     textures = new TNTextureManager();
+    physics = new TNPhysicsEngine();
 }
 
 TNManager::~TNManager()

@@ -12,9 +12,9 @@ class TNRenderEngine;
 
 #include <vector>
 #include "TNObject.h"
-#include "TNCamera.h"
 #include "TNThread.h"
 #include "TNManager.h"
+#include "TNPlayer.h"
 
 using namespace std;
 
@@ -27,6 +27,10 @@ class TNRenderEngine : public TNThread
         void render();
         void addObject(TNObject *obj);
         void setCamera(TNCamera *cam){camera = cam;}
+        TNCamera* getCamera(){return camera;}
+
+        TNPlayer* getPlayer(){return player;}
+
         int resizeWindow(int width, int height);
         void bounce(){run();}
         int getScreenWidth(){return width;}
@@ -40,8 +44,8 @@ class TNRenderEngine : public TNThread
         virtual void run();
     private:
         vector<TNObject*> objects;
+        TNPlayer *player;
         TNCamera *camera;
-
         SDL_Surface *surface;
         int width;
         int height;

@@ -23,6 +23,7 @@ void TNSubdivideQuad::subdivideBy(int divisions){
 }
 
 void TNSubdivideQuad::render(){
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
     if(textureId){
         glBindTexture( GL_TEXTURE_2D, textureId);
@@ -49,7 +50,9 @@ void TNSubdivideQuad::render(){
     if(textureId){
         glBindTexture( GL_TEXTURE_2D, 0);
     }
+
     glFlush();
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void TNSubdivideQuad::fastRenderQuad(TNPoint p1,TNPoint p2, TNPoint p3, TNPoint p4){

@@ -46,7 +46,10 @@
 		<Unit filename="include/TNInputManager.h" />
 		<Unit filename="include/TNManager.h" />
 		<Unit filename="include/TNObject.h" />
+		<Unit filename="include/TNPhysicsEngine.h" />
 		<Unit filename="include/TNPhysicsObject.h" />
+		<Unit filename="include/TNPlayer.h" />
+		<Unit filename="include/TNPlayerCamera.h" />
 		<Unit filename="include/TNPoint.h" />
 		<Unit filename="include/TNPolygon.h" />
 		<Unit filename="include/TNQuad.h" />
@@ -65,7 +68,10 @@
 		<Unit filename="src/TNInputManager.cpp" />
 		<Unit filename="src/TNManager.cpp" />
 		<Unit filename="src/TNObject.cpp" />
+		<Unit filename="src/TNPhysicsEngine.cpp" />
 		<Unit filename="src/TNPhysicsObject.cpp" />
+		<Unit filename="src/TNPlayer.cpp" />
+		<Unit filename="src/TNPlayerCamera.cpp" />
 		<Unit filename="src/TNPoint.cpp" />
 		<Unit filename="src/TNPolygon.cpp" />
 		<Unit filename="src/TNQuad.cpp" />

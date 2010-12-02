@@ -20,6 +20,16 @@ class TNVector
         void setLength(float length);
         float getLength();
 
+        void setx(float val){tx = val;}
+        void sety(float val){ty = val;}
+        void setz(float val){tz = val;}
+
+        float x(){return tx;}
+        float y(){return ty;}
+        float z(){return tz;}
+
+
+        TNVector norm();
 
         static TNVector subtract(TNPoint a, TNPoint b);
         static TNVector crossProduct(TNVector a, TNVector b);

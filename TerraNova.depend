@@ -207,8 +207,9 @@
 	"TNManager.h"
 	"TNPlayer.h"
 
-1291258360 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
+1291322163 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
 	"TNPoint.h"
+	"TNMaterial.h"
 
 1286035461 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNBitmapOverlay.cpp
 	"TNBitmapOverlay.h"
@@ -219,17 +220,18 @@
 1285263195 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNObject.cpp
 	"TNObject.h"
 
-1288662533 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
+1291323223 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPolygon.cpp
 	"TNPolygon.h"
 	<iostream>
 
-1288466157 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPolygon.h
+1291323015 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPolygon.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<TNObject.h>
 	"TNPoint.h"
+	"TNVector.h"
 
-1291259899 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1291323933 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -257,10 +259,10 @@
 
 1290905363 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
 
-1291265351 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNVector.h
+1291320019 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNVector.h
 	"TNPoint.h"
 
-1290910672 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNVector.cpp
+1291320053 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNVector.cpp
 	"TNVector.h"
 	<math.h>
 	<iostream>
@@ -328,35 +330,38 @@
 	"TNTexture.h"
 	<vector>
 
-1291265383 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNQuad.cpp
+1291323893 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNQuad.cpp
 	"TNQuad.h"
 	<iostream>
 
-1291265366 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNQuad.h
+1291323022 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNQuad.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<TNObject.h>
 	"TNPoint.h"
 	"TNVector.h"
 
-1291259660 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSubdivideQuad.cpp
+1291324367 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSubdivideQuad.cpp
 	"TNSubdivideQuad.h"
 	"TNUtil.h"
 	<iostream>
 
-1290906182 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSubdivideQuad.h
+1291324443 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSubdivideQuad.h
 	<TNQuad.h>
+	"TNVector.h"
 
 1290905184 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/util.cpp
 	"TNPoint.h"
 
-1290994392 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNUtil.cpp
+1291324456 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNUtil.cpp
 	"TNUtil.h"
 	"TNPoint.h"
+	"TNVector.h"
 	<sys/time.h>
 
-1290994273 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNUtil.h
+1291324399 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNUtil.h
 	<TNPoint.h>
+	<TNVector.h>
 
 1290909872 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNAxisLines.cpp
 	"TNAxisLines.h"
@@ -418,11 +423,18 @@
 	"TNObject.h"
 	"TNCube.h"
 
-1291258060 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCube.h
+1291320589 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCube.h
 	<TNObject.h>
+	"TNQuad.h"
 
-1291258680 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCube.cpp
+1291322888 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCube.cpp
 	"TNCube.h"
 	<GL/gl.h>
+	<GL/glu.h>
+
+1291322186 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNMaterial.h
+
+1291322018 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNMaterial.cpp
+	"TNMaterial.h"
 	<GL/glu.h>
 

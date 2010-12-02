@@ -68,6 +68,15 @@ void TNRenderEngine::yawBy(double x){
     camera->setYaw(yaw);
 }
 
+
+/* Ambient Light Values */
+GLfloat LightAmbient[]  = { 0.8f, 0.8f, 0.8f, 1.0f };
+/* Diffuse Light Values */
+GLfloat LightDiffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+/* Light Position */
+GLfloat LightPosition[] = { 0.0f, 0.0f, 2.0f, 1.0f };
+
+
 void TNRenderEngine::init(){
     /* Flags to pass to SDL_SetVideoMode */
     int videoFlags;
@@ -147,9 +156,27 @@ void TNRenderEngine::init(){
 
     glDisable(GL_TEXTURE_3D);
 
-    glDisable(GL_BLEND);
+    glEnable(GL_BLEND);
 
-    glDisable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);
+
+
+
+
+        /* Setup The Ambient Light */
+    glLightfv( GL_LIGHT1, GL_AMBIENT, LightAmbient );
+
+    /* Setup The Diffuse Light */
+    glLightfv( GL_LIGHT1, GL_DIFFUSE, LightDiffuse );
+
+    /* Position The Light */
+
+
+    /* Enable Light One */
+    glEnable( GL_LIGHT1 );
+
+
+
 
     glColor4f(1,0,1,0);
 
@@ -166,6 +193,7 @@ void TNRenderEngine::render(){
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity( );
     camera->render();
+    glLightfv( GL_LIGHT1, GL_POSITION, LightPosition );
     for(unsigned int i = 0; i < objects.size();i++){
         glPushMatrix();
         objects[i]->render();
@@ -182,9 +210,9 @@ void TNRenderEngine::run(){
 
     int size = 10;
     TNPoint qp1(-size,-1.0,-size);
-    TNPoint qp2(size,-1.0,-size);
+    TNPoint qp2(-size,-1.0,size);
     TNPoint qp3(size,-1.0,size);
-    TNPoint qp4(-size,-1.0,size);
+    TNPoint qp4(size,-1.0,-size);
 
     manager->getTextureManager()->addTexture("grass_small","grass_small.bmp");
     manager->getTextureManager()->addTexture("grass","grass.bmp");

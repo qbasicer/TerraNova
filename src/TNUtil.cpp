@@ -1,5 +1,6 @@
 #include "TNUtil.h"
 #include "TNPoint.h"
+#include "TNVector.h"
 #include <sys/time.h>
 
 TNPoint lerp(TNPoint a, TNPoint b, float perc){
@@ -7,6 +8,9 @@ TNPoint lerp(TNPoint a, TNPoint b, float perc){
 }
 
 
+TNVector vlerp(TNVector a, TNVector b, float perc){
+    return TNVector((b.x() - a.x())*perc + a.x(),  (b.y() - a.y())*perc + a.y(), (b.z() - a.z())*perc + a.z());
+}
 
 int calcSleeptime(int elapsed, int sleepTime, int frames, int lframes, int tframes){
     if(frames > tframes){

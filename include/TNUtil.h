@@ -2,8 +2,10 @@
 #define TNUTIL_H_INCLUDED
 
 #include <TNPoint.h>
+#include <TNVector.h>
 
 TNPoint lerp(TNPoint a, TNPoint b, float perc);
+TNVector vlerp(TNVector a, TNVector b, float perc);
 int calcSleeptime(int elapsed, int sleepTime, int frames, int lframes, int tframes);
 double meTime();
 

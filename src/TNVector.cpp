@@ -40,6 +40,15 @@ TNVector TNVector::subtract(TNPoint a, TNPoint b){
 
 TNVector TNVector::crossProduct(TNVector a, TNVector b){
     TNVector ret;
-    // TODO: Implement!
+    ret.setx(a.y() * b.z() - a.z() * b.y());
+    ret.sety(a.z() * b.x() - a.x() * b.z());
+    ret.setz(a.x() * b.y() - a.y() * b.x());
+
+    return ret;
+}
+
+TNVector TNVector::norm(){
+    TNVector ret = *this;
+    ret.setLength(1.0);
     return ret;
 }

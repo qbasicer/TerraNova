@@ -3,6 +3,7 @@
 
 #include <TNQuad.h>
 
+#include "TNVector.h"
 
 class TNSubdivideQuad : public TNQuad
 {
@@ -13,7 +14,7 @@ class TNSubdivideQuad : public TNQuad
         void subdivideBy(int divisions);
     protected:
         int divisions;
-        inline void fastRenderQuad(TNPoint p1,TNPoint p2, TNPoint p3, TNPoint p4);
+        inline void fastRenderQuad(TNPoint p1,TNVector nl1, TNPoint p2, TNVector nl2, TNPoint p3, TNVector nl3, TNPoint p4,TNVector nl4);
     private:
 };
 

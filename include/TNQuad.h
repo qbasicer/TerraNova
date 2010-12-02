@@ -14,6 +14,7 @@ class TNQuad : public TNObject
         virtual ~TNQuad();
         virtual void render();
         void setTexture(GLuint tex){textureId = tex;}
+        void useMaterial(int enabled){useMat = enabled;}
     protected:
         GLuint textureId;
         TNPoint p1;
@@ -25,6 +26,8 @@ class TNQuad : public TNObject
         TNVector n2;
         TNVector n3;
         TNVector n4;
+
+        int useMat;
     private:
 
 };

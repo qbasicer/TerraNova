@@ -16,6 +16,7 @@ class TNPlayer : public TNPhysicsObject
     protected:
         TNCamera *camera;
         float forwardSpeed;
+        int isFlying;
     private:
 };
 

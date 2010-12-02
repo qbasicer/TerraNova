@@ -13,6 +13,7 @@ using namespace std;
 TNPlayer::TNPlayer()
 {
     camera = new TNPlayerCamera(this);
+    isFlying = 0;
 }
 
 TNPlayer::~TNPlayer()
@@ -27,9 +28,11 @@ void TNPlayer::updateDirectionVelocity(){
     }else{
         float yaw = camera->getYaw();
         float pitch = -camera->getPitch();
-
-        TNVector vec(-SIN_DEG(yaw),-SIN_DEG(pitch),COS_DEG(yaw),0);
-        cout << "Vec: " << vec.Gettx() << "," << vec.Getty() << "," << vec.Gettz() << endl;
+        float y = 0;
+        if(isFlying){
+            y = -SIN_DEG(pitch);
+        }
+        TNVector vec(-SIN_DEG(yaw),y,COS_DEG(yaw),0);
         setVelocity(vec);
     }
 }

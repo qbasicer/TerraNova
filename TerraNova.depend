@@ -231,7 +231,7 @@
 	"TNPoint.h"
 	"TNVector.h"
 
-1291323933 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1291331533 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -402,7 +402,7 @@
 	"math.h"
 	<iostream>
 
-1291165702 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPlayer.h
+1291331646 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPlayer.h
 	<TNPhysicsObject.h>
 	"TNCamera.h"
 

@@ -29,3 +29,17 @@ void TNVector::setLength(float length){
 float TNVector::getLength(){
     return sqrtf(Gettx()*Gettx() + Getty() * Getty() + Gettz() * Gettz());
 }
+
+TNVector TNVector::subtract(TNPoint a, TNPoint b){
+    TNVector ret;
+    ret.Settx(a.x() - b.x());
+    ret.Setty(a.y() - b.y());
+    ret.Settz(a.z() - b.z());
+    return ret;
+}
+
+TNVector TNVector::crossProduct(TNVector a, TNVector b){
+    TNVector ret;
+    // TODO: Implement!
+    return ret;
+}

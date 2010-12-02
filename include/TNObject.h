@@ -1,6 +1,7 @@
 #ifndef TNOBJECT_H
 #define TNOBJECT_H
 
+#include "TNPoint.h"
 
 class TNObject
 {
@@ -9,6 +10,7 @@ class TNObject
         virtual ~TNObject();
         virtual void render() = 0;
     protected:
+        TNPoint location;
     private:
 };
 

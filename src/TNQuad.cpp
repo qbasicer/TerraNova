@@ -12,7 +12,23 @@ TNQuad::TNQuad(TNPoint p1, TNPoint p2, TNPoint p3, TNPoint p4)
     this->p3 = p3;
     this->p4 = p4;
     textureId = 0;
-    //ctor
+
+    TNVector v1;
+    TNVector v2;
+    TNVector cross;
+    v1 = TNVector::subtract(p2,p1);
+    v2 = TNVector::subtract(p4,p1);
+
+
+
+    //Looking from front
+    /*
+      p1     p4
+
+
+
+      p2     p3
+    */
 }
 
 TNQuad::~TNQuad()

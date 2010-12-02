@@ -24,6 +24,7 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <GL/glut.h>
 
 using namespace std;
 
@@ -40,10 +41,13 @@ int main( int argc, char **argv )
 {
 
 	TNManager mgr;
+
 	TNRenderEngine re(&mgr);
 	TNSDLInput in(&mgr);
 	mgr.setInput(&in);
 	mgr.setRenderEngine(&re);
+
+
 
     /* initialize OpenGL */
 

@@ -1,6 +1,7 @@
 #ifndef TNVECTOR_H
 #define TNVECTOR_H
 
+#include "TNPoint.h"
 
 class TNVector
 {
@@ -18,6 +19,10 @@ class TNVector
         void Setth(float val) { th = val; }
         void setLength(float length);
         float getLength();
+
+
+        static TNVector subtract(TNPoint a, TNPoint b);
+        static TNVector crossProduct(TNVector a, TNVector b);
     protected:
     private:
         float tx;

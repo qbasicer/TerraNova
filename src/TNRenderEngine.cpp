@@ -2,7 +2,6 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include <GL/glut.h>
 #include <iostream>
 #include <math.h>
 
@@ -10,6 +9,7 @@
 #include "TNSubdivideQuad.h"
 #include "TNAxisLines.h"
 #include "TNUtil.h"
+#include "TNTurret.h"
 
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
@@ -46,6 +46,27 @@ TNRenderEngine::~TNRenderEngine()
  * }
  */
 
+
+void TNRenderEngine::pitchBy(double y){
+    float pitch = camera->getPitch() + y;
+
+    if(pitch > 90){
+        pitch = 90;
+    }else if(pitch < -90){
+        pitch = -90;
+    }
+    camera->setPitch(pitch);
+}
+
+void TNRenderEngine::yawBy(double x){
+    float yaw = camera->getYaw() + x;
+    if(yaw > 360){
+        yaw -= 360;
+    }else if(yaw < 0){
+        yaw += 360;
+    }
+    camera->setYaw(yaw);
+}
 
 void TNRenderEngine::init(){
     /* Flags to pass to SDL_SetVideoMode */
@@ -169,7 +190,10 @@ void TNRenderEngine::run(){
     manager->getTextureManager()->addTexture("grass","grass.bmp");
 
     TNSubdivideQuad quad(qp1,qp2,qp3,qp4);
-    quad.subdivideBy(200);
+    quad.subdivideBy(20);
+
+    TNTurret turret(TNPoint(0,-1,3));
+    addObject(&turret);
 
     //TNQuad quad(qp1,qp2,qp3,qp4);
 

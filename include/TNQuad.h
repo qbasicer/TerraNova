@@ -5,6 +5,7 @@
 #include <GL/glu.h>
 #include <TNObject.h>
 #include "TNPoint.h"
+#include "TNVector.h"
 
 class TNQuad : public TNObject
 {
@@ -19,6 +20,11 @@ class TNQuad : public TNObject
         TNPoint p2;
         TNPoint p3;
         TNPoint p4;
+
+        TNVector n1;
+        TNVector n2;
+        TNVector n3;
+        TNVector n4;
     private:
 
 };

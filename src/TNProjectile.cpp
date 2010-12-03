@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TNProjectile::TNProjectile(TNPoint origin, TNVector vec, TNManager *mgr)
+TNProjectile::TNProjectile(TNPoint origin, TNVector vec, TNObject *immune, TNManager *mgr)
 {
     this->origin = origin;
     this->vector = vec;
@@ -23,9 +23,11 @@ TNProjectile::TNProjectile(TNPoint origin, TNVector vec, TNManager *mgr)
     fire.setShiny(100.0f);
 
     ball->setMaterial(fire);
+    this->immune = immune;
 
     manager->getRenderEngine()->addObject(this);
     manager->getPhysicsEngine()->addObject(this);
+
 
 
 }
@@ -40,18 +42,28 @@ void TNProjectile::physicsFrame(){
     TNPhysicsObject::physicsFrame();
     ball->setObjectLocation(loc);
 
-    cout << "Dist: " << TNVector::subtract(loc,origin).getLength() << endl;
 
     if(TNVector::subtract(loc,origin).getLength() > 20){
         manager->getRenderEngine()->getLock();
         manager->getPhysicsEngine()->queueForRemoval(this);
         manager->getRenderEngine()->removeObject(this);
-
-
-
         setVelocity(false);
         manager->getRenderEngine()->releaseLock();
         delete this;
+    }
+    if(immune != manager->getRenderEngine()->getPlayer()){
+
+        cout << "Player Distance: " << TNVector::subtract(loc,manager->getRenderEngine()->getPlayer()->getLocation()).getLength() << endl;
+
+        if(TNVector::subtract(loc,manager->getRenderEngine()->getPlayer()->getLocation()).getLength() < 1){
+            manager->getRenderEngine()->getPlayer()->hurt(50);
+            manager->getRenderEngine()->getLock();
+            manager->getPhysicsEngine()->queueForRemoval(this);
+            manager->getRenderEngine()->removeObject(this);
+            manager->getRenderEngine()->releaseLock();
+            delete this;
+
+        }
     }
 
 }

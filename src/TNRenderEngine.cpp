@@ -25,7 +25,7 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     height = SCREEN_HEIGHT;
     camera = NULL;
     this->manager = manager;
-    player = new TNPlayer();
+    player = new TNPlayer(manager);
     camera = player->getCamera();
     player->setActive(true);
     player->setVelocity(true);
@@ -194,6 +194,17 @@ void TNRenderEngine::init(){
 
 void TNRenderEngine::render(){
     getLock();
+
+    if(player->getHealth() <= 0){
+        cout << "*************" << endl;
+        cout << "* You died! *" << endl;
+        cout << "*************" << endl;
+        cout << "Insert coin to play again!" << endl;
+
+        manager->shutdown();
+        return;
+    }
+
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity( );
     camera->render();

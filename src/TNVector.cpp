@@ -21,9 +21,6 @@ void TNVector::setLength(float length){
     ty = (ty/unit)*length;
     tz = (tz/unit)*length;
 
-    if(getLength() != length){
-        cerr << "Saddd Vector is sad" << endl;
-    }
 }
 
 float TNVector::getLength(){

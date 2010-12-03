@@ -103,7 +103,7 @@ void TNTurret::render(){
 void TNTurret::fireGun(){
     TNPoint fireLoc(location.x(), location.y()+(BASE_SIZE)+(TOP_SIZE/2), location.z());
     TNVector fireVector(3*SIN_DEG(rot),0,3*COS_DEG(rot));
-    TNProjectile *proj = new TNProjectile(fireLoc, fireVector,manager);
+    TNProjectile *proj = new TNProjectile(fireLoc, fireVector,this,manager);
 }
 
 

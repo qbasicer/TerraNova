@@ -9,7 +9,7 @@
 class TNProjectile : public TNObject, public TNPhysicsObject
 {
     public:
-        TNProjectile(TNPoint origin, TNVector vec, TNManager *mgr);
+        TNProjectile(TNPoint origin, TNVector vec, TNObject *immune, TNManager *mgr);
         virtual ~TNProjectile();
         virtual void physicsFrame();
         virtual void render(){ball->render();}
@@ -19,6 +19,7 @@ class TNProjectile : public TNObject, public TNPhysicsObject
         TNManager *manager;
         TNSphere *ball;
         TNMaterial fire;
+        TNObject *immune;
     private:
 };
 

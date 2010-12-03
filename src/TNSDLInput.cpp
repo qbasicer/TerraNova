@@ -99,6 +99,10 @@ void TNSDLInput::run(){
 #endif
         {
 		    switch(event.type){
+            case SDL_MOUSEBUTTONDOWN:
+                if(event.button.button == SDL_BUTTON_LEFT){
+                    manager->getRenderEngine()->getPlayer()->fireGun();
+                }
             case SDL_MOUSEMOTION:
                 if(useMouse){
                     int x;

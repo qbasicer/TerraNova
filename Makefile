@@ -17,7 +17,7 @@ terranova: $(OBJFILES) main.o
 main.o: main.cpp
 	$(COMPILE) -o main.o main.cpp
 
-%.o: %.cpp
+%.o: %.cpp include/*.h
 	$(COMPILE) -o $@ $<
 
 .PHONY: clean

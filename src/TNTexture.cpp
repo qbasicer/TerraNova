@@ -48,6 +48,7 @@ TNTexture::TNTexture(string name, const char* file, GLuint id)
         OPENGL_ERROR_CHECK();
         //SDL_FreeSurface(texture);
         cout << "Bound "<<name<<" from " << file << " to " << textureId << " (" << texture->w << "x" << texture->h << ")" <<endl;
+	}else{
         cerr << "Failed to load texture named "<<name<< " from "<<file<<endl;
     }
 

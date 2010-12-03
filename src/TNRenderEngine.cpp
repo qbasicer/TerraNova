@@ -316,35 +316,38 @@ void TNRenderEngine::run(){
     addObject(&quad);
 
     quad.setTexture(textId);
+	double last = meTime();
 
     while(!shutdownRequested()){
         /* draw the scene */
         player->updateDirectionVelocity();
-        if(t != time(0)){
-            cout << "FPS: "<<frames << " " << ((1000000 - sleepTime*frames) / 10000) << "%" << endl;
+        if(t != time(0) || frames > 60){
+			double base = meTime();
+			double delta = base - last;
+            cout << "FPS: "<<frames << " " << ((1000000*delta - sleepTime*frames) / 10000*delta) << "%" << endl;
             if(isActive && frames > 60){
                 //Calculate amount of time sleeping
                 float timePerFrame = (sleepTime * frames);
                 //Time we spent rendering frames is 1 - sleepTime
-                timePerFrame = 1000000 - timePerFrame;
+                timePerFrame = 1000000*delta - timePerFrame;
                 //How much time was spend rendering a single frame
                 timePerFrame = timePerFrame / frames;
                 //Now calculate how much time we'd have to spend if we were to render 60 frames
                 timePerFrame = timePerFrame * 60;
                 //Now calculate how much time we'd have to sleep
-                timePerFrame = 1000000 - timePerFrame;
+                timePerFrame = 1000000*delta - timePerFrame;
                 sleepTime = timePerFrame / 60;
             }else if(isActive && frames < 30){
                 //Calculate amount of time sleeping
                 float timePerFrame = (sleepTime * frames);
                 //Time we spent rendering frames is 1 - sleepTime
-                timePerFrame = 1000000 - timePerFrame;
+                timePerFrame = 1000000*delta - timePerFrame;
                 //How much time was spend rendering a single frame
                 timePerFrame = timePerFrame / frames;
                 //Now calculate how much time we'd have to spend if we were to render 60 frames
                 timePerFrame = timePerFrame * 30;
                 //Now calculate how much time we'd have to sleep
-                timePerFrame = 1000000 - timePerFrame;
+                timePerFrame = 1000000*delta - timePerFrame;
                 sleepTime = timePerFrame /30;
 
                 if(sleepTime < 0){
@@ -363,6 +366,7 @@ void TNRenderEngine::run(){
             }
 
             t = time(0);
+			last = meTime();
             frames = 0;
 
         }

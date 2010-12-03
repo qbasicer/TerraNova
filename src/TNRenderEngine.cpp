@@ -29,10 +29,11 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     camera = player->getCamera();
     player->setActive(true);
     player->setVelocity(true);
-    manager->getPhysicsEngine()->addObject(player);
+    manager->getPhysicsEngine()->queueForAddition(player);
     pthread_mutexattr_t attr;
     pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
     pthread_mutex_init(&mut,&attr);
+    owner = NULL;
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -111,7 +112,7 @@ void TNRenderEngine::init(){
     videoFlags  = SDL_OPENGL;          /* Enable OpenGL in SDL */
     videoFlags |= SDL_GL_DOUBLEBUFFER; /* Enable double buffering */
     videoFlags |= SDL_HWPALETTE;       /* Store the palette in hardware */
-    videoFlags |= SDL_RESIZABLE;       /* Enable window resizing */
+    //videoFlags |= SDL_RESIZABLE;       /* Enable window resizing */
 
     /* This checks to see if surfaces can be stored in memory */
     if ( videoInfo->hw_available )
@@ -413,7 +414,13 @@ void TNRenderEngine::right(float dist){
 }
 
 void TNRenderEngine::getLock(){
-    pthread_mutex_lock(&mut);
+    if(pthread_mutex_trylock(&mut)){
+        if(owner != pthread_self()){
+            pthread_mutex_lock(&mut);
+        }
+    }
+    //printf("pthread %p got lock\n",pthread_self());
+    owner = pthread_self();
 }
 
 void TNRenderEngine::releaseLock(){
@@ -422,6 +429,7 @@ void TNRenderEngine::releaseLock(){
 
 /* function to reset our viewport after a window resize */
 int TNRenderEngine::resizeWindow( int width, int height ){
+
     /* Height / width ration */
     GLfloat ratio;
 
@@ -446,6 +454,7 @@ int TNRenderEngine::resizeWindow( int width, int height ){
 
     /* Reset The View */
     glLoadIdentity( );
+
 
     return 1;
 }

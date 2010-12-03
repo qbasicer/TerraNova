@@ -48,6 +48,7 @@ class TNRenderEngine : public TNThread
         void getLock();
         void releaseLock();
 
+        pthread_t owner;
     protected:
         virtual void run();
     private:

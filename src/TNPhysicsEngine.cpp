@@ -65,6 +65,13 @@ void TNPhysicsEngine::run(){
             TNPhysicsObject *obj = *itr;
             removeObject(obj);
         }
+        rq.clear();
+
+        for(itr = aq.begin(); itr != aq.end(); itr++){
+            TNPhysicsObject *obj = *itr;
+            addObject(obj);
+        }
+        aq.clear();
         pthread_mutex_unlock(&mq);
 
         if(t != time(0)){
@@ -83,9 +90,17 @@ void TNPhysicsEngine::queueForRemoval(TNPhysicsObject *obj){
     pthread_mutex_unlock(&mq);
 }
 
+void TNPhysicsEngine::queueForAddition(TNPhysicsObject *obj){
+    pthread_mutex_lock(&mq);
+    aq.push_back(obj);
+    pthread_mutex_unlock(&mq);
+}
+
 void TNPhysicsEngine::getLock(){
     if(pthread_mutex_trylock(&mut)){
-        pthread_mutex_lock(&mut);
+        if(owner != pthread_self()){
+            pthread_mutex_lock(&mut);
+        }
     }
 
     owner = pthread_self();

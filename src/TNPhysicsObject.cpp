@@ -21,7 +21,7 @@ TNPhysicsObject::TNPhysicsObject()
 TNPhysicsObject::~TNPhysicsObject()
 {
     if(engine){
-        engine->removeObject(this);
+        engine->queueForRemoval(this);
     }
 }
 

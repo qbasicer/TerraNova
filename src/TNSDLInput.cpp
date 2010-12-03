@@ -67,6 +67,14 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
             manager->getRenderEngine()->right(-WSPEED);
         }
         break;
+    case SDLK_r:
+        if(state == SDL_KEY_DOWN){
+            useMouse = !useMouse;
+            if(!useMouse){
+                SDL_ShowCursor(SDL_ENABLE);
+            }
+        }
+        break;
 	case SDLK_F1:
 	    /* F1 key was pressed
 	     * this toggles fullscreen mode
@@ -87,7 +95,8 @@ void TNSDLInput::run(){
     int t = time(0);
     int cycles = 0;
     int sleepTime = 10000;
-    int useMouse = 0;
+    useMouse = 1;
+    SDL_ShowCursor(SDL_DISABLE);
     while ( !shutdownRequested() ){
         cycles++;
 	    /* handle the events in the queue */
@@ -102,8 +111,21 @@ void TNSDLInput::run(){
         {
 		    switch(event.type){
             case SDL_MOUSEBUTTONDOWN:
-                if(event.button.button == SDL_BUTTON_LEFT){
-                    manager->getRenderEngine()->getPlayer()->fireGun();
+                if(useMouse){
+                    if(event.button.button == SDL_BUTTON_LEFT){
+                        manager->getRenderEngine()->getPlayer()->fireGun();
+                    }
+                }else{
+                    useMouse = 1;
+                    int x,y,c_x,c_y;
+                    SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
+                    SDL_GetMouseState(&x,&y);
+                    SDL_WarpMouse(c_x,c_y);
+
+                    x = -c_x + x;
+                    y = -c_y + y;
+                    SDL_ShowCursor(SDL_DISABLE);
+                    SDL_EventState(SDL_MOUSEMOTION, SDL_ENABLE);
                 }
             case SDL_MOUSEMOTION:
                 if(useMouse){
@@ -133,20 +155,32 @@ void TNSDLInput::run(){
 			     * If we lost focus or we are iconified, we
 			     * shouldn't draw the screen
 			     */
-                if(event.active.state != SDL_APPMOUSEFOCUS) {
-                    if(event.active.gain == 1) {
+			     if(useMouse){
+                    if(event.active.state != SDL_APPMOUSEFOCUS) {
+                        if(useMouse){
+                            if(event.active.gain == 1) {
 
-                        SDL_ShowCursor(SDL_ENABLE);
-                        useMouse = 1;
-                    }else{
-                        SDL_ShowCursor(SDL_DISABLE);
-                        useMouse = 1;
+                                SDL_ShowCursor(SDL_ENABLE);
+                                //useMouse = 1;
+                            }else{
+                                SDL_ShowCursor(SDL_DISABLE);
+                                //useMouse = 0;
+                            }
+                        }else{
+                            SDL_ShowCursor(SDL_ENABLE);
+                        }
                     }
                 }
 			case SDL_VIDEORESIZE:
-			    /* handle resize event */
-
-			    break;
+                {
+                    /* handle resize event */
+                    int w = event.resize.w;
+                    int h = event.resize.h;
+                    if(w > 0 && h > 0){
+                        //manager->getRenderEngine()->resizeWindow(w,h);
+                    }
+                    break;
+                }
             case SDL_KEYUP:
                 /* handle key presses */
 			    handleKeyPress(&event.key.keysym, SDL_KEY_UP);

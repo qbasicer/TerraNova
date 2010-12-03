@@ -30,7 +30,7 @@ TNProjectile::TNProjectile(TNPoint origin, TNVector vec, TNObject *immune, TNMan
     this->immune = immune;
 
     manager->getRenderEngine()->addObject(this);
-    manager->getPhysicsEngine()->addObject(this);
+    manager->getPhysicsEngine()->queueForAddition(this);
 
 
 

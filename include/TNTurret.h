@@ -3,12 +3,13 @@
 
 #include "TNObject.h"
 #include "TNCube.h"
+#include "TNManager.h"
 
 class TNTurret : public TNObject
 {
 
     public:
-        TNTurret(TNPoint loc);
+        TNTurret(TNPoint loc, TNManager *mgr);
         virtual ~TNTurret();
         virtual void render();
     protected:
@@ -16,6 +17,11 @@ class TNTurret : public TNObject
         TNCube top;
         TNCube barrel;
         float rot;
+        TNManager *manager;
+        double lastFire;
+        TNMaterial blackPlastic;
+        TNMaterial fire;
+        int hasFired;
     private:
 };
 

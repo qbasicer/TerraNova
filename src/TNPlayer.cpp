@@ -33,6 +33,7 @@ void TNPlayer::updateDirectionVelocity(){
             y = -SIN_DEG(pitch);
         }
         TNVector vec(-SIN_DEG(yaw),y,COS_DEG(yaw),0);
+        vec.setLength(forwardSpeed);
         setVelocity(vec);
     }
 }

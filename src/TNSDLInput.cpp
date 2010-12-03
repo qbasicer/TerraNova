@@ -41,7 +41,14 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->forward(0.0);
         }else{
-            manager->getRenderEngine()->forward(1.0);
+            manager->getRenderEngine()->forward(2.0);
+        }
+        break;
+    case SDLK_s:
+        if(state == SDL_KEY_UP){
+            manager->getRenderEngine()->forward(0.0);
+        }else{
+            manager->getRenderEngine()->forward(-2.0);
         }
         break;
 	case SDLK_F1:

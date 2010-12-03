@@ -15,7 +15,7 @@ TNPlayer::TNPlayer(TNManager *mgr)
 {
     camera = new TNPlayerCamera(this);
     isFlying = 0;
-    health = 100;
+    health = 10000;
     manager = mgr;
 	lastShot = 0;
 	forwardSpeed = 0;
@@ -38,7 +38,7 @@ void TNPlayer::fireGun(){
 		float pitch = -camera->getPitch();
 		float y = SIN_DEG(pitch);
 		TNVector vec(SIN_DEG(yaw)*8,y*8,-COS_DEG(yaw)*8,0);
-	
+
 		TNProjectile *proj = new TNProjectile(TNPoint(-loc.x(),loc.y(),-loc.z()), vec,this,manager);
 		lastShot = meTime();
 	}

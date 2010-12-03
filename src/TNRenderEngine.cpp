@@ -416,7 +416,9 @@ void TNRenderEngine::right(float dist){
 void TNRenderEngine::getLock(){
     if(pthread_mutex_trylock(&mut)){
         if(owner != pthread_self()){
-            pthread_mutex_lock(&mut);
+            while(!pthread_mutex_trylock(&mut)){
+                usleep(10000);
+            }
         }
     }
     //printf("pthread %p got lock\n",pthread_self());

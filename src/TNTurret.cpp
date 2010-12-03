@@ -69,11 +69,15 @@ void TNTurret::render(){
 
     TNPoint player = manager->getRenderEngine()->getPlayer()->getLocation();
     player.setZ(-player.z());
+    player.setX(-player.x());
     float opp = (location.x() - player.x()) / (location.z()  - player.z());
 
+    cout << "Player is at (" << player.x() << "," << player.z() << ")" << endl;
+    cout << "Turret is at (" << location.x() << "," << location.z() << ")" << endl;
+    cout << "Delta: " << (location.x() - player.x()) << "," << (location.z()  - player.z()) << endl;
 
     float radians = atan(opp);
-    float deg = 0-57.2957795*radians;
+    float deg = 57.2957795*radians;
 
     if(location.z() > player.z()){
         deg += 180;

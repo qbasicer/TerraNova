@@ -225,14 +225,14 @@ void TNRenderEngine::run(){
     TNSubdivideQuad quad(qp1,qp2,qp3,qp4);
     quad.subdivideBy(20);
 
-    TNTurret turret(TNPoint(0,-1,3), manager);
-    addObject(&turret);
+    //TNTurret turret(TNPoint(0,-1,3), manager);
+    //addObject(&turret);
 
-    TNTurret turret2(TNPoint(10,-1,-10), manager);
-    addObject(&turret2);
+    //TNTurret turret2(TNPoint(10,-1,-10), manager);
+    //addObject(&turret2);
 
-    TNTurret turret3(TNPoint(10,-1,10), manager);
-    addObject(&turret3);
+    //TNTurret turret3(TNPoint(10,-1,10), manager);
+    //addObject(&turret3);
 
     TNTurret turret4(TNPoint(-10,-1,10), manager);
     addObject(&turret4);

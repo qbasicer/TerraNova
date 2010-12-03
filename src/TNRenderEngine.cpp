@@ -12,8 +12,8 @@
 #include "TNTurret.h"
 #include "TNSphere.h"
 
-#define SCREEN_WIDTH    680
-#define SCREEN_HEIGHT   480
+#define SCREEN_WIDTH    1024
+#define SCREEN_HEIGHT   768
 #define SCREEN_BPP      24
 
 

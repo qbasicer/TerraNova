@@ -10,6 +10,7 @@
 #include "TNAxisLines.h"
 #include "TNUtil.h"
 #include "TNTurret.h"
+#include "TNSphere.h"
 
 #define SCREEN_WIDTH    680
 #define SCREEN_HEIGHT   480
@@ -231,6 +232,8 @@ void TNRenderEngine::run(){
     TNAxisLines lines(TNPoint(0,0,0));
     addObject(&lines);
 
+    TNSphere sphereTest(TNPoint(0,0,-1),0.25);
+    addObject(&sphereTest);
 
     quad.setTexture(textId);
 

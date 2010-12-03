@@ -231,7 +231,7 @@
 	"TNPoint.h"
 	"TNVector.h"
 
-1291332698 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1291339447 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -242,6 +242,7 @@
 	"TNAxisLines.h"
 	"TNUtil.h"
 	"TNTurret.h"
+	"TNSphere.h"
 
 1291166906 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
@@ -414,7 +415,7 @@
 	<TNCamera.h>
 	"TNPlayer.h"
 
-1291335838 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTurret.cpp
+1291336099 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTurret.cpp
 	"TNTurret.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -440,5 +441,12 @@
 
 1291322018 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNMaterial.cpp
 	"TNMaterial.h"
+	<GL/glu.h>
+
+1291339354 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSphere.cpp
+	"TNSphere.h"
+
+1291339307 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSphere.h
+	"TNObject.h"
 	<GL/glu.h>
 

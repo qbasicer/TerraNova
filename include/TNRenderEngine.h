@@ -26,6 +26,8 @@ class TNRenderEngine : public TNThread
         void init();
         void render();
         void addObject(TNObject *obj);
+        void removeObject(TNObject *obj);
+
         void setCamera(TNCamera *cam){camera = cam;}
         TNCamera* getCamera(){return camera;}
 
@@ -40,6 +42,9 @@ class TNRenderEngine : public TNThread
 
         void forward(float dist);
 
+        void getLock();
+        void releaseLock();
+
     protected:
         virtual void run();
     private:
@@ -50,6 +55,7 @@ class TNRenderEngine : public TNThread
         int width;
         int height;
         TNManager *manager;
+        pthread_mutex_t mut;
 };
 
 #endif // TNRENDERENGINE_H

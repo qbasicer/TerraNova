@@ -8,6 +8,11 @@ using namespace std;
 
 TNPhysicsEngine::TNPhysicsEngine()
 {
+
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
+    pthread_mutex_init(&mut,&attr);
+
     this->start();
     //ctor
 }
@@ -45,6 +50,12 @@ void TNPhysicsEngine::run(){
             TNPhysicsObject *obj = *itr;
             obj->physicsFrame();
         }
+
+        for(itr = rq.begin(); itr != rq.end(); itr++){
+            TNPhysicsObject *obj = *itr;
+            removeObject(obj);
+        }
+
         if(t != time(0)){
             sleepTime = calcSleeptime(1, sleepTime, cycles, 30, 40);
             cout << "Physics FPS:" << cycles << endl;
@@ -53,5 +64,19 @@ void TNPhysicsEngine::run(){
 		}
 		usleep(sleepTime);
     }
+}
+
+void TNPhysicsEngine::queueForRemoval(TNPhysicsObject *obj){
+    getLock();
+    rq.push_back(obj);
+    releaseLock();
+}
+
+void TNPhysicsEngine::getLock(){
+    pthread_mutex_lock(&mut);
+}
+
+void TNPhysicsEngine::releaseLock(){
+    pthread_mutex_unlock(&mut);
 }
 

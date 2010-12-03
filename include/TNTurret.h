@@ -23,6 +23,7 @@ class TNTurret : public TNObject
         TNMaterial fire;
         int hasFired;
     private:
+        void fireGun();
 };
 
 #endif // TNTURRET_H

@@ -19,6 +19,7 @@ TNSphere::~TNSphere()
 
 void TNSphere::render(){
     glPushMatrix();
+    material.render();
     glTranslated(location.x(),location.y(),location.z());
     gluSphere(qobj,radius,20,20);
     glPopMatrix();

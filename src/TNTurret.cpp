@@ -5,6 +5,7 @@
 
 #include <math.h>
 #include "TNUtil.h"
+#include "TNProjectile.h"
 
 #define BASE_SIZE   0.75
 #define TOP_SIZE    0.50
@@ -79,21 +80,27 @@ void TNTurret::render(){
     }
 
     if(rot - deg > 1){
-        rot -= 0.1;
+        rot -= 0.5;
     }else if(rot - deg < -1){
-        rot += 0.1;
+        rot += 0.5;
     }else if(meTime() - lastFire > 10){
         cout << "FIRE!!!" << (meTime() - lastFire) << endl;
         cout << "meTime():" << meTime() << " lastFire:" << lastFire << endl;
         lastFire = meTime();
         hasFired = 1;
         barrel.getBack()->setMaterial(fire);
+        fireGun();
     }else if(meTime() - lastFire > 0.5 && hasFired){
         barrel.getBack()->setMaterial(blackPlastic);
         hasFired = 0;
     }
-
-
-
-
 }
+
+void TNTurret::fireGun(){
+    TNPoint fireLoc(location.x(), location.y()+(BASE_SIZE)+(TOP_SIZE/2), location.z());
+    TNVector fireVector(3*SIN_DEG(rot),0,3*COS_DEG(rot));
+    TNProjectile *proj = new TNProjectile(fireLoc, fireVector,manager);
+}
+
+
+

@@ -30,7 +30,9 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     player->setActive(true);
     player->setVelocity(true);
     manager->getPhysicsEngine()->addObject(player);
-
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
+    pthread_mutex_init(&mut,&attr);
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -191,6 +193,7 @@ void TNRenderEngine::init(){
 }
 
 void TNRenderEngine::render(){
+    getLock();
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity( );
     camera->render();
@@ -200,6 +203,7 @@ void TNRenderEngine::render(){
         objects[i]->render();
         glPopMatrix();
     }
+    releaseLock();
 }
 
 void TNRenderEngine::run(){
@@ -223,6 +227,15 @@ void TNRenderEngine::run(){
 
     TNTurret turret(TNPoint(0,-1,3), manager);
     addObject(&turret);
+
+    TNTurret turret2(TNPoint(10,-1,-10), manager);
+    addObject(&turret2);
+
+    TNTurret turret3(TNPoint(10,-1,10), manager);
+    addObject(&turret3);
+
+    TNTurret turret4(TNPoint(-10,-1,10), manager);
+    addObject(&turret4);
 
     //TNQuad quad(qp1,qp2,qp3,qp4);
 
@@ -301,12 +314,35 @@ void TNRenderEngine::run(){
 
 
 void TNRenderEngine::addObject(TNObject *obj){
+    getLock();
     objects.push_back(obj);
+    releaseLock();
+}
+
+void TNRenderEngine::removeObject(TNObject *obj){
+    getLock();
+    vector<TNObject*>::iterator itr;
+    for(itr = objects.begin(); itr != objects.end(); itr++){
+        if(*itr == obj){
+            objects.erase(itr);
+            break;
+        }
+    }
+    releaseLock();
+    return;
+
 }
 
 void TNRenderEngine::forward(float dist){
     player->setForwardSpeed(dist);
+}
 
+void TNRenderEngine::getLock(){
+    pthread_mutex_lock(&mut);
+}
+
+void TNRenderEngine::releaseLock(){
+    pthread_mutex_unlock(&mut);
 }
 
 /* function to reset our viewport after a window resize */

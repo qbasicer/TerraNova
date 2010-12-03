@@ -82,7 +82,7 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 
 void TNSDLInput::run(){
     int done = 0;
-    usleep(100000);
+	sleep(1);
     cout << "Starting input processing" << endl;
     int t = time(0);
     int cycles = 0;
@@ -137,7 +137,7 @@ void TNSDLInput::run(){
                     if(event.active.gain == 1) {
 
                         SDL_ShowCursor(SDL_ENABLE);
-                        useMouse = 0;
+                        useMouse = 1;
                     }else{
                         SDL_ShowCursor(SDL_DISABLE);
                         useMouse = 1;

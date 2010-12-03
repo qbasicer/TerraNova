@@ -1,14 +1,12 @@
 # depslib dependency file v1.0
-1291257542 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
+1291399129 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
 	<SDL.h>
 	"TNRenderEngine.h"
-	"TNPolygon.h"
 	"TNSDLInput.h"
 	"TNManager.h"
-	"TNQuad.h"
 	<cstdlib>
 	<cstdio>
 	<unistd.h>
@@ -198,7 +196,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1291343506 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNRenderEngine.h
 	<SDL/SDL.h>
 	<SDL.h>
 	<vector>
@@ -207,7 +205,7 @@
 	"TNManager.h"
 	"TNPlayer.h"
 
-1291340354 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNObject.h
 	"TNPoint.h"
 	"TNMaterial.h"
 
@@ -231,7 +229,7 @@
 	"TNPoint.h"
 	"TNVector.h"
 
-1291351568 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1291400367 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -255,10 +253,10 @@
 	<TNVector.h>
 	<TNPoint.h>
 
-1288454497 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
+1291399129 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPoint.cpp
 	"TNPoint.h"
 
-1290905363 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPoint.h
 
 1291320019 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNVector.h
 	"TNPoint.h"
@@ -268,7 +266,7 @@
 	<math.h>
 	<iostream>
 
-1290992269 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
+1291399340 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNSDLInput.h
 	<TNInputManager.h>
 
 1288741422 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNInputManager.h
@@ -276,7 +274,7 @@
 	"TNManager.h"
 	"TNThread.h"
 
-1291088098 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNManager.h
 	"TNInputManager.h"
 	"TNRenderEngine.h"
 	"TNTextureManager.h"
@@ -285,14 +283,15 @@
 1288741404 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNInputManager.cpp
 	"TNInputManager.h"
 
-1291160964 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
+1291401785 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
 	"TNManager.h"
 	<iostream>
+	<TNTurret.h>
 
 1288743514 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNThread.h
 	<pthread.h>
 
-1291351642 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
+1291399517 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSDLInput.cpp
 	<SDL/SDL.h>
 	<SDL.h>
 	<unistd.h>
@@ -311,7 +310,7 @@
 1290905145 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/util.c
 	<stdio.h>
 
-1290647651 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTexture.cpp
+1291399129 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTexture.cpp
 	"TNTexture.h"
 	<iostream>
 
@@ -331,7 +330,7 @@
 	"TNTexture.h"
 	<vector>
 
-1291323893 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNQuad.cpp
+1291399129 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNQuad.cpp
 	"TNQuad.h"
 	<iostream>
 
@@ -342,7 +341,7 @@
 	"TNPoint.h"
 	"TNVector.h"
 
-1291324367 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSubdivideQuad.cpp
+1291399129 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNSubdivideQuad.cpp
 	"TNSubdivideQuad.h"
 	"TNUtil.h"
 	<iostream>
@@ -385,18 +384,19 @@
 	<TNPoint.h>
 	"TNPhysicsEngine.h"
 
-1291342629 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsEngine.cpp
+1291403695 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsEngine.cpp
 	"TNPhysicsEngine.h"
 	<unistd.h>
 	"TNUtil.h"
 	<iostream>
+	<cstdio>
 
-1291342542 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPhysicsEngine.h
+1291402638 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPhysicsEngine.h
 	<vector>
 	"TNPhysicsObject.h"
 	"TNThread.h"
 
-1291352082 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPlayer.cpp
+1291399129 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPlayer.cpp
 	"TNPlayer.h"
 	"TNPlayerCamera.h"
 	"TNUtil.h"
@@ -404,7 +404,7 @@
 	"math.h"
 	<iostream>
 
-1291351781 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPlayer.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNPlayer.h
 	<TNPhysicsObject.h>
 	"TNCamera.h"
 	<TNManager.h>
@@ -417,7 +417,7 @@
 	<TNCamera.h>
 	"TNPlayer.h"
 
-1291351791 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTurret.cpp
+1291399569 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNTurret.cpp
 	"TNTurret.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -426,7 +426,7 @@
 	"TNProjectile.h"
 	<iostream>
 
-1291340491 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNTurret.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNTurret.h
 	"TNObject.h"
 	"TNCube.h"
 	"TNManager.h"
@@ -440,7 +440,7 @@
 	<GL/gl.h>
 	<GL/glu.h>
 
-1291322186 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNMaterial.h
+1291400009 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNMaterial.h
 
 1291322018 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNMaterial.cpp
 	"TNMaterial.h"
@@ -454,11 +454,13 @@
 	"TNObject.h"
 	<GL/glu.h>
 
-1291352190 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNProjectile.cpp
+1291404104 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNProjectile.cpp
 	"TNProjectile.h"
 	<iostream>
+	<vector>
+	<cstdio>
 
-1291351662 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNProjectile.h
+1291399129 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNProjectile.h
 	<TNObject.h>
 	<TNPhysicsObject.h>
 	<TNManager.h>

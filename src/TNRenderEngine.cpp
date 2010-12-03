@@ -310,7 +310,7 @@ void TNRenderEngine::run(){
 	sky.setShiny(10.0);
 	skyq.setMaterial(sky);
 	addObject(&skyq);
-	
+
 
     GLuint textId = manager->getTextureManager()->getTextureIdByName("grass");
     addObject(&quad);
@@ -321,10 +321,11 @@ void TNRenderEngine::run(){
     while(!shutdownRequested()){
         /* draw the scene */
         player->updateDirectionVelocity();
-        if(t != time(0) || frames > 60){
+        if(t != time(0)){
 			double base = meTime();
-			double delta = base - last;
+			double delta = 1.0f;
             cout << "FPS: "<<frames << " " << ((1000000*delta - sleepTime*frames) / 10000*delta) << "%" << endl;
+            cout << "Player health: " << player->getHealth() << endl;
             if(isActive && frames > 60){
                 //Calculate amount of time sleeping
                 float timePerFrame = (sleepTime * frames);

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdio>
 
 using namespace std;
 
@@ -41,43 +42,50 @@ TNProjectile::~TNProjectile()
 }
 
 void TNProjectile::remove(){
-	manager->getRenderEngine()->getLock();
+	manager->getRenderEngine()->removeObject(this);
     manager->getPhysicsEngine()->queueForRemoval(this);
-    manager->getRenderEngine()->removeObject(this);
-    manager->getRenderEngine()->releaseLock();
+
 }
 
 void TNProjectile::physicsFrame(){
     // Recalculate physics then copy that value to the renderer
     TNPhysicsObject::physicsFrame();
     ball->setObjectLocation(loc);
-
+    setVelocity(true);
 	float dist = TNVector::subtract(loc,origin).getLength();
-	if(dist > 1){
+	if(dist > 20){
+        remove();
+        delete this;
+        return;
+	}else if(dist > 1){
+	    manager->getRenderEngine()->getLock();
+
 		std::vector<TNObject*> list;
 		manager->getRenderEngine()->getObjectList(list);
 		std::vector<TNObject*>::iterator itr;
 		for(itr = list.begin(); itr != list.end(); itr++){
 			TNObject *obj = *itr;
-			if(obj != immune){
+			if(obj != immune && obj != NULL){
 				if(obj->getRadius() >= 0){
 					if(obj->getObjectLocation().isSet()){
 						TNVector v = TNVector::subtract(obj->getObjectLocation(),loc);
 						if(v.getLength() < (obj->getRadius() + 0.1)){
 							obj->hurt(50);
+
 							remove();
+							break;
 						}
 					}
 				}
 			}
 		}
-	}else if(dist > 20){
-        remove();
-		delete this;
-    }
+		manager->getRenderEngine()->releaseLock();
+	}
     if(immune != manager->getRenderEngine()->getPlayer()){
-
-        if(TNVector::subtract(loc,manager->getRenderEngine()->getPlayer()->getLocation()).getLength() < 1){
+        TNPoint play = manager->getRenderEngine()->getPlayer()->getLocation();
+        play.setX(-play.x());
+        play.setZ(-play.z());
+        if(TNVector::subtract(loc,play).getLength() < 1){
 			cout << "********" << endl;
 			cout << "********" << endl;
 			cout << "OUCH!!!" << endl;

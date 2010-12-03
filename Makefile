@@ -2,8 +2,8 @@
 
 CC = g++
 
-CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags`
-LDFLAGS=`sdl-config --libs` -L/usr/X11R6/lib -L/usr/local/lib -lGL -lGLU -lm
+CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags` -g
+LDFLAGS=`sdl-config --libs` -L/usr/X11R6/lib -L/usr/local/lib -lGL -lGLU -lm -g
 
 COMPILE = $(CC) $(CFLAGS) -c
 

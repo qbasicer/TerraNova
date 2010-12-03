@@ -26,6 +26,8 @@ class TNPhysicsEngine  : public TNThread
         std::vector<TNPhysicsObject*> objs;
         std::vector<TNPhysicsObject*> rq;
         pthread_mutex_t mut;
+        pthread_mutex_t mq;
+        pthread_t owner;
 };
 
 #endif // TNPHYSICSENGINE_H

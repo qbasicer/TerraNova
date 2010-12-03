@@ -18,15 +18,7 @@ TNManager::TNManager()
 
 void TNManager::setRenderEngine(TNRenderEngine *eng){
 	re = eng;
-	int num = rand() % 4 + 1;
-	cout << "Adding " << num << endl;
-	for(int i = 0; i < num; i++){
-		float x = (rand() % 40) - 20;
-		float z = (rand() % 40) - 20;
-		TNPoint loc(x,-1,z);
-		TNTurret *tur = new TNTurret(loc,this);
-		re->addObject(tur);
-	}
+
 }
 
 TNManager::~TNManager()
@@ -39,6 +31,17 @@ void TNManager::exec(){
     input->start();
     re->start();
     cout << "TNManager waiting for thread exit" << endl;
+
+    int num = rand() % 4 + 1;
+	cout << "Adding " << num << endl;
+	for(int i = 0; i < num; i++){
+		float x = (rand() % 40) - 20;
+		float z = (rand() % 40) - 20;
+		TNPoint loc(x,-1,z);
+		TNTurret *tur = new TNTurret(loc,this);
+		re->addObject(tur);
+	}
+    physics->wait();
     re->wait();
     input->wait();
 }

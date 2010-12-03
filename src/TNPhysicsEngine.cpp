@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "TNUtil.h"
 #include <iostream>
+#include <cstdio>
 
 using namespace std;
 
@@ -12,7 +13,8 @@ TNPhysicsEngine::TNPhysicsEngine()
     pthread_mutexattr_t attr;
     pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
     pthread_mutex_init(&mut,&attr);
-
+    pthread_mutex_init(&mq,&attr);
+    owner = NULL;
     this->start();
     //ctor
 }
@@ -24,10 +26,13 @@ TNPhysicsEngine::~TNPhysicsEngine()
 
 
 void TNPhysicsEngine::addObject(TNPhysicsObject *obj){
+    getLock();
     objs.push_back(obj);
+    releaseLock();
 }
 
 void TNPhysicsEngine::removeObject(TNPhysicsObject *obj){
+    getLock();
     vector<TNPhysicsObject*>::iterator itr;
     for(itr = objs.begin(); itr != objs.end(); itr++){
         if(*itr == obj){
@@ -35,6 +40,7 @@ void TNPhysicsEngine::removeObject(TNPhysicsObject *obj){
             break;
         }
     }
+    releaseLock();
     return;
 
 }
@@ -45,16 +51,21 @@ void TNPhysicsEngine::run(){
     int sleepTime = 10000;
     while ( !shutdownRequested() ){
         cycles++;
+
+        getLock();
         vector<TNPhysicsObject*>::iterator itr;
         for(itr = objs.begin(); itr != objs.end(); itr++){
             TNPhysicsObject *obj = *itr;
             obj->physicsFrame();
         }
+        releaseLock();
 
+        pthread_mutex_lock(&mq);
         for(itr = rq.begin(); itr != rq.end(); itr++){
             TNPhysicsObject *obj = *itr;
             removeObject(obj);
         }
+        pthread_mutex_unlock(&mq);
 
         if(t != time(0)){
             sleepTime = calcSleeptime(1, sleepTime, cycles, 30, 40);
@@ -67,13 +78,17 @@ void TNPhysicsEngine::run(){
 }
 
 void TNPhysicsEngine::queueForRemoval(TNPhysicsObject *obj){
-    getLock();
+    pthread_mutex_lock(&mq);
     rq.push_back(obj);
-    releaseLock();
+    pthread_mutex_unlock(&mq);
 }
 
 void TNPhysicsEngine::getLock(){
-    pthread_mutex_lock(&mut);
+    if(pthread_mutex_trylock(&mut)){
+        pthread_mutex_lock(&mut);
+    }
+
+    owner = pthread_self();
 }
 
 void TNPhysicsEngine::releaseLock(){

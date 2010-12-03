@@ -43,6 +43,8 @@ class TNRenderEngine : public TNThread
         void forward(float dist);
         void right(float speed);
 
+		void getObjectList(vector<TNObject*> &objList);
+
         void getLock();
         void releaseLock();
 

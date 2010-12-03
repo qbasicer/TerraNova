@@ -17,11 +17,12 @@ class TNManager
         TNInputManager *getInput(){return input;}
         void setInput(TNInputManager *in){input = in;}
         TNRenderEngine *getRenderEngine(){return re;}
-        void setRenderEngine(TNRenderEngine *eng){re = eng;}
+        void setRenderEngine(TNRenderEngine *eng);
         TNTextureManager *getTextureManager(){return textures;}
 
         TNPhysicsEngine *getPhysicsEngine(){return physics;}
-
+		void newEnemy(){numEnemies++;}
+		void destroyEnemy();
 
 
         void exec();
@@ -31,6 +32,7 @@ class TNManager
         TNRenderEngine *re;
         TNTextureManager *textures;
         TNPhysicsEngine *physics;
+        int numEnemies;
     private:
 
 };

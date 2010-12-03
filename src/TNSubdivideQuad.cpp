@@ -27,7 +27,7 @@ void TNSubdivideQuad::render(){
     if(textureId){
         glBindTexture( GL_TEXTURE_2D, textureId);
     }
-
+	material.render();
     float step = 1/(float)divisions;
     for(float i = 0; i < 1; i += step){
         for(float j = 0; j < 1; j += step){

@@ -2,6 +2,7 @@
 
 #include <iostream>
 using namespace std;
+#include <TNTurret.h>
 
 /* TNManager is essentially the central management for the entire application */
 
@@ -9,6 +10,23 @@ TNManager::TNManager()
 {
     textures = new TNTextureManager();
     physics = new TNPhysicsEngine();
+	numEnemies = 0;
+	srand(time(0));
+
+
+}
+
+void TNManager::setRenderEngine(TNRenderEngine *eng){
+	re = eng;
+	int num = rand() % 4 + 1;
+	cout << "Adding " << num << endl;
+	for(int i = 0; i < num; i++){
+		float x = (rand() % 40) - 20;
+		float z = (rand() % 40) - 20;
+		TNPoint loc(x,-1,z);
+		TNTurret *tur = new TNTurret(loc,this);
+		re->addObject(tur);
+	}
 }
 
 TNManager::~TNManager()
@@ -25,7 +43,22 @@ void TNManager::exec(){
     input->wait();
 }
 
+void TNManager::destroyEnemy(){
+	numEnemies--;
+	if(numEnemies == 0){
+		int num = rand() % 4 + 1;
+		for(int i = 0; i < num; i++){
+			float x = (rand() % 40) - 20;
+			float z = (rand() % 40) - 20;
+			TNPoint loc(x,-1,z);
+			TNTurret *tur = new TNTurret(loc,this);
+			re->addObject(tur);
+		}
+	}
+}
+
 void TNManager::shutdown(){
+	physics->stop();
     input->stop();
     re->stop();
 }

@@ -38,16 +38,29 @@ TNTurret::TNTurret(TNPoint loc, TNManager *mgr)
 
     lastFire = meTime();
     hasFired = 0;
+	health = 50;
+	manager->newEnemy();
 
     //ctor
 }
 
 TNTurret::~TNTurret()
 {
+	manager->destroyEnemy();
     //dtor
 }
 
+void TNTurret::hurt(float amt){
+	TNObject::hurt(amt);
+	manager->getRenderEngine()->removeObject(this);
+	delete this;
+	
+}
+
 void TNTurret::render(){
+	if(health <= 0){
+		return;
+	}
     glPushMatrix();
     glTranslatef(location.x(), location.y()+(BASE_SIZE/2.0), location.z());
     base.render();
@@ -84,9 +97,9 @@ void TNTurret::render(){
     }
 
     if(rot - deg > 1){
-        rot -= 0.5;
+        rot -= 0.4;
     }else if(rot - deg < -1){
-        rot += 0.5;
+        rot += 0.4;
     }else if(meTime() - lastFire > 10){
         cout << "FIRE!!!" << (meTime() - lastFire) << endl;
         cout << "meTime():" << meTime() << " lastFire:" << lastFire << endl;
@@ -102,7 +115,7 @@ void TNTurret::render(){
 
 void TNTurret::fireGun(){
     TNPoint fireLoc(location.x(), location.y()+(BASE_SIZE)+(TOP_SIZE/2), location.z());
-    TNVector fireVector(3*SIN_DEG(rot),0,3*COS_DEG(rot));
+    TNVector fireVector(8*SIN_DEG(rot),0,8*COS_DEG(rot));
     TNProjectile *proj = new TNProjectile(fireLoc, fireVector,this,manager);
 }
 

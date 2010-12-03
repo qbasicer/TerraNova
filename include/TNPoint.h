@@ -14,10 +14,12 @@ class TNPoint
         void setX(float x){tx = x;}
         void setY(float y){ty = y;}
         void setZ(float z){tz = z;}
+		int isSet(){return bSet;}
     protected:
         float tx;
         float ty;
         float tz;
+		int bSet;
     private:
 };
 

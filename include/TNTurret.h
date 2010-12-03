@@ -12,6 +12,8 @@ class TNTurret : public TNObject
         TNTurret(TNPoint loc, TNManager *mgr);
         virtual ~TNTurret();
         virtual void render();
+		virtual float getRadius(){return 1.0f;}
+		virtual void hurt(float amt);
     protected:
         TNCube base;
         TNCube top;

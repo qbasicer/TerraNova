@@ -28,6 +28,8 @@ TNSDLInput::~TNSDLInput()
     //dtor
 }
 
+#define WSPEED	3.0
+
 /* function to handle key press events */
 void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
     switch ( keysym->sym )
@@ -41,28 +43,28 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->forward(0.0);
         }else{
-            manager->getRenderEngine()->forward(2.0);
+            manager->getRenderEngine()->forward(WSPEED);
         }
         break;
     case SDLK_s:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->forward(0.0);
         }else{
-            manager->getRenderEngine()->forward(-2.0);
+            manager->getRenderEngine()->forward(-WSPEED);
         }
         break;
     case SDLK_d:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->right(0.0);
         }else{
-            manager->getRenderEngine()->right(2.0);
+            manager->getRenderEngine()->right(WSPEED);
         }
         break;
     case SDLK_a:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->right(0.0);
         }else{
-            manager->getRenderEngine()->right(-2.0);
+            manager->getRenderEngine()->right(-WSPEED);
         }
         break;
 	case SDLK_F1:

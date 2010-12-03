@@ -21,6 +21,7 @@ class TNPlayer : public TNPhysicsObject, public TNObject
         float getHealth(){return health;}
         void hurt(float amt){health -= amt;}
         void fireGun();
+		double lastShot;
         virtual void render(){}
     protected:
         TNCamera *camera;

@@ -17,6 +17,9 @@ TNPlayer::TNPlayer(TNManager *mgr)
     isFlying = 0;
     health = 100;
     manager = mgr;
+	lastShot = 0;
+	forwardSpeed = 0;
+	rightSpeed = 0;
 }
 
 TNPlayer::~TNPlayer()
@@ -25,22 +28,34 @@ TNPlayer::~TNPlayer()
 }
 
 void TNPlayer::setRightSpeed(float speed){
-    cout << "Setting right speed to " << speed << endl;
     rightSpeed = speed;
     updateDirectionVelocity();
 }
 
 void TNPlayer::fireGun(){
-    float yaw = camera->getYaw();
-    float pitch = -camera->getPitch();
-    float y = SIN_DEG(pitch);
-    TNVector vec(SIN_DEG(yaw)*4,y*4,-COS_DEG(yaw)*4,0);
-
-    TNProjectile *proj = new TNProjectile(TNPoint(-loc.x(),loc.y(),-loc.z()), vec,this,manager);
+	if(meTime() - lastShot > 0.5){
+		float yaw = camera->getYaw();
+		float pitch = -camera->getPitch();
+		float y = SIN_DEG(pitch);
+		TNVector vec(SIN_DEG(yaw)*8,y*8,-COS_DEG(yaw)*8,0);
+	
+		TNProjectile *proj = new TNProjectile(TNPoint(-loc.x(),loc.y(),-loc.z()), vec,this,manager);
+		lastShot = meTime();
+	}
 }
 
 void TNPlayer::updateDirectionVelocity(){
+	if(loc.x() > 19){
+		loc.setX(19);
+	}else if(loc.x() < -19){
+		loc.setX(-19);
+	}
 
+	if(loc.z() > 19){
+		loc.setZ(19);
+	}else if(loc.z() < -19){
+		loc.setZ(-19);
+	}
     float yaw = camera->getYaw();
     float pitch = -camera->getPitch();
     float y = 0;
@@ -50,7 +65,6 @@ void TNPlayer::updateDirectionVelocity(){
     TNVector vec(-SIN_DEG(yaw),y,COS_DEG(yaw),0);
     TNVector up(0,1,0);
     TNVector side = TNVector::crossProduct(vec,up);
-
     vec.setLength(forwardSpeed);
 
     side.setLength(rightSpeed);

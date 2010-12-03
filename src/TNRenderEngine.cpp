@@ -73,11 +73,11 @@ void TNRenderEngine::yawBy(double x){
 
 
 /* Ambient Light Values */
-GLfloat LightAmbient[]  = { 0.8f, 0.8f, 0.8f, 1.0f };
+GLfloat LightAmbient[]  = { 1.8f, 1.8f, 1.8f, 1.0f };
 /* Diffuse Light Values */
 GLfloat LightDiffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
 /* Light Position */
-GLfloat LightPosition[] = { 0.0f, 0.0f, 2.0f, 1.0f };
+GLfloat LightPosition[] = { 0.0f, 10.0f, 2.0f, 1.0f };
 
 
 void TNRenderEngine::init(){
@@ -172,6 +172,9 @@ void TNRenderEngine::init(){
     /* Setup The Diffuse Light */
     glLightfv( GL_LIGHT1, GL_DIFFUSE, LightDiffuse );
 
+	glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f);
+
+
     /* Position The Light */
 
 
@@ -217,6 +220,12 @@ void TNRenderEngine::render(){
     releaseLock();
 }
 
+void TNRenderEngine::getObjectList(vector<TNObject*> &objList){
+	getLock();
+	objList = objects;
+	releaseLock();
+}
+
 void TNRenderEngine::run(){
     int t = time(0);
     unsigned long long frames = 0;
@@ -224,7 +233,7 @@ void TNRenderEngine::run(){
     int isActive = 1;
     init();
 
-    int size = 10;
+    int size = 20;
     TNPoint qp1(-size,-1.0,-size);
     TNPoint qp2(-size,-1.0,size);
     TNPoint qp3(size,-1.0,size);
@@ -232,32 +241,79 @@ void TNRenderEngine::run(){
 
     manager->getTextureManager()->addTexture("grass_small","grass_small.bmp");
     manager->getTextureManager()->addTexture("grass","grass.bmp");
+	manager->getTextureManager()->addTexture("rock","rock.bmp");
+	manager->getTextureManager()->addTexture("sky","sky.bmp");
 
     TNSubdivideQuad quad(qp1,qp2,qp3,qp4);
     quad.subdivideBy(20);
 
-    TNTurret turret(TNPoint(0,-1,3), manager);
-    addObject(&turret);
+	float height = 5;
+	for(int i = -size; i < size; i += 5){
+		TNPoint p1 (-size, -1, i);
+		TNPoint p4 (-size, -1, i+height);
+		TNPoint p3 (-size, -1+height, i+height);
+		TNPoint p2 (-size, -1+height, i);
+		TNSubdivideQuad *wall = new TNSubdivideQuad(p1,p2,p3,p4);
+    	wall->subdivideBy(5);
+    	GLuint textId = manager->getTextureManager()->getTextureIdByName("rock");
+		wall->setTexture(textId);
+		addObject(wall);
+	}
 
-    TNTurret turret2(TNPoint(10,-1,-10), manager);
-    addObject(&turret2);
+	for(int i = -size; i < size; i += 5){
+		TNPoint p1 (size, -1, i);
+		TNPoint p2 (size, -1, i+height);
+		TNPoint p3 (size, -1+height, i+height);
+		TNPoint p4 (size, -1+height, i);
+		TNSubdivideQuad *wall = new TNSubdivideQuad(p1,p2,p3,p4);
+    	wall->subdivideBy(5);
+    	GLuint textId = manager->getTextureManager()->getTextureIdByName("rock");
+		wall->setTexture(textId);
+		addObject(wall);
+	}
 
-    TNTurret turret3(TNPoint(10,-1,10), manager);
-    addObject(&turret3);
+	for(int i = -size; i < size; i += 5){
+		TNPoint p1 (i, -1, size);
+		TNPoint p4 (i+height, -1, size);
+		TNPoint p3 (i+height, -1+height, size);
+		TNPoint p2 (i, -1+height, size);
+		TNSubdivideQuad *wall = new TNSubdivideQuad(p1,p2,p3,p4);
+    	wall->subdivideBy(5);
+    	GLuint textId = manager->getTextureManager()->getTextureIdByName("rock");
+		wall->setTexture(textId);
+		addObject(wall);
+	}
 
-    TNTurret turret4(TNPoint(-10,-1,10), manager);
-    addObject(&turret4);
-
-    //TNQuad quad(qp1,qp2,qp3,qp4);
+	for(int i = -size; i < size; i += 5){
+		TNPoint p1 (i, -1, -size);
+		TNPoint p2 (i+height, -1, -size);
+		TNPoint p3 (i+height, -1+height, -size);
+		TNPoint p4 (i, -1+height, -size);
+		TNSubdivideQuad *wall = new TNSubdivideQuad(p1,p2,p3,p4);
+    	wall->subdivideBy(5);
+    	GLuint textId = manager->getTextureManager()->getTextureIdByName("rock");
+		wall->setTexture(textId);
+		addObject(wall);
+	}
+	int skySize = size*3;
+	TNPoint sp1(-skySize,height*(1.5),skySize);
+	TNPoint sp2(skySize,height*(1.5),skySize);
+	TNPoint sp3(skySize,height*(1.5),-skySize);
+	TNPoint sp4(-skySize,height*(1.5),-skySize);
+    TNSubdivideQuad skyq(sp1,sp2,sp3,sp4);
+    skyq.subdivideBy(3);
+	skyq.setTexture(manager->getTextureManager()->getTextureIdByName("sky"));
+	TNMaterial sky;
+	sky.setAmbient(1.0,1.0,1.0,1.0);
+	sky.setSpecular(0.0,0.0,0.0,1.0);
+	sky.setDiffuse(1.0,1.0,1.0,1.0);
+	sky.setShiny(10.0);
+	skyq.setMaterial(sky);
+	addObject(&skyq);
+	
 
     GLuint textId = manager->getTextureManager()->getTextureIdByName("grass");
     addObject(&quad);
-
-    TNAxisLines lines(TNPoint(0,0,0));
-    addObject(&lines);
-
-    TNSphere sphereTest(TNPoint(0,0,-1),0.25);
-    addObject(&sphereTest);
 
     quad.setTexture(textId);
 

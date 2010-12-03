@@ -13,6 +13,7 @@ class TNProjectile : public TNObject, public TNPhysicsObject
         virtual ~TNProjectile();
         virtual void physicsFrame();
         virtual void render(){ball->render();}
+		void remove();
     protected:
         TNPoint origin;
         TNVector vector;

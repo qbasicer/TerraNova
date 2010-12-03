@@ -11,9 +11,7 @@ OBJFILES := $(patsubst %.cpp,%.o,$(wildcard src/*.cpp))
 
 all: terranova
 
-
-
-terranova: $(OBJFILES)
+terranova: $(OBJFILES) main.o
 	$(CC) -o terranova $(LDFLAGS) $(OBJFILES) main.o
 
 main.o: main.cpp
@@ -21,4 +19,9 @@ main.o: main.cpp
 
 %.o: %.cpp
 	$(COMPILE) -o $@ $<
+
+.PHONY: clean
+
+clean:
+	rm -f *.o terranova src/*.o
 

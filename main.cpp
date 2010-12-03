@@ -11,10 +11,8 @@
 
 
 #include "TNRenderEngine.h"
-#include "TNPolygon.h"
 #include "TNSDLInput.h"
 #include "TNManager.h"
-#include "TNQuad.h"
 
 #include <cstdlib>
 #include <cstdio>
@@ -54,12 +52,6 @@ int main( int argc, char **argv )
     TNCamera *cam = re.getCamera();
     cam->setPitch(0);
     cam->setYaw(0);
-
-    TNPoint p1(0.0,1.0,0.0);
-    TNPoint p2(-1.0,-1.0,0.0);
-    TNPoint p3(1.0,-1.0,0.0);
-    TNPolygon poly(p1,p2,p3);
-    re.addObject(&poly);
 
     cout << "Entering event loop" << endl;
 

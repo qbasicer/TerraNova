@@ -31,8 +31,6 @@ TNQuad::TNQuad(TNPoint p1, TNPoint p2, TNPoint p3, TNPoint p4)
     v2 = TNVector::subtract(p3,p4);
     n4 = TNVector::crossProduct(v1,v2).norm();
 
-    cout << "Cross product: "<<n4.x() << ","<<n4.y() << ","<<n4.z() << endl;
-
     useMat = true;
 
     //Looking from front

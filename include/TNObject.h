@@ -18,9 +18,13 @@ class TNObject
         /* May or may not be honoured by objects! */
         /* Ie quads and polys */
         virtual void setObjectLocation(TNPoint loc){this->location = loc;}
+		virtual TNPoint getObjectLocation(){return location;}
+		virtual void hurt(float amt){health -= amt;}
+		virtual float getRadius(){return -1.0f;}
     protected:
         TNPoint location;
         TNMaterial material;
+		float health;
     private:
 };
 

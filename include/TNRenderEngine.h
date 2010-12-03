@@ -41,6 +41,7 @@ class TNRenderEngine : public TNThread
         void yawBy(double x);
 
         void forward(float dist);
+        void right(float speed);
 
         void getLock();
         void releaseLock();

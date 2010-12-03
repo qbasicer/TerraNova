@@ -267,8 +267,6 @@ void TNRenderEngine::run(){
                 //Now calculate how much time we'd have to sleep
                 timePerFrame = 1000000 - timePerFrame;
                 sleepTime = timePerFrame / 60;
-
-                cout << "Changing sleep to " << sleepTime << endl;
             }else if(isActive && frames < 30){
                 //Calculate amount of time sleeping
                 float timePerFrame = (sleepTime * frames);
@@ -335,6 +333,11 @@ void TNRenderEngine::removeObject(TNObject *obj){
 
 void TNRenderEngine::forward(float dist){
     player->setForwardSpeed(dist);
+}
+
+void TNRenderEngine::right(float dist){
+    cout << "Setting right speed to " << dist << endl;
+    player->setRightSpeed(dist);
 }
 
 void TNRenderEngine::getLock(){

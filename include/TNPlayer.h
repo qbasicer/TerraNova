@@ -12,10 +12,12 @@ class TNPlayer : public TNPhysicsObject
         virtual void cameraRender(){camera->render();}
         virtual TNCamera* getCamera(){return camera;};
         void setForwardSpeed(float speed){forwardSpeed = speed;}
+        void setRightSpeed(float speed);
         void updateDirectionVelocity();
     protected:
         TNCamera *camera;
         float forwardSpeed;
+        float rightSpeed;
         int isFlying;
     private:
 };

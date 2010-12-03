@@ -51,6 +51,20 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
             manager->getRenderEngine()->forward(-2.0);
         }
         break;
+    case SDLK_d:
+        if(state == SDL_KEY_UP){
+            manager->getRenderEngine()->right(0.0);
+        }else{
+            manager->getRenderEngine()->right(2.0);
+        }
+        break;
+    case SDLK_a:
+        if(state == SDL_KEY_UP){
+            manager->getRenderEngine()->right(0.0);
+        }else{
+            manager->getRenderEngine()->right(-2.0);
+        }
+        break;
 	case SDLK_F1:
 	    /* F1 key was pressed
 	     * this toggles fullscreen mode

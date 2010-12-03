@@ -82,7 +82,7 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 
 void TNSDLInput::run(){
     int done = 0;
-    sleep(1);
+    usleep(100000);
     cout << "Starting input processing" << endl;
     int t = time(0);
     int cycles = 0;

@@ -100,7 +100,7 @@ void TNTurret::render(){
         rot -= 0.4;
     }else if(rot - deg < -1){
         rot += 0.4;
-    }else if(meTime() - lastFire > 10){
+    }else if(meTime() - lastFire > 1){
         cout << "FIRE!!!" << (meTime() - lastFire) << endl;
         cout << "meTime():" << meTime() << " lastFire:" << lastFire << endl;
         lastFire = meTime();

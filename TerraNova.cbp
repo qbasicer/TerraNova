@@ -65,8 +65,10 @@
 		<Unit filename="src/TNAxisLines.cpp" />
 		<Unit filename="src/TNBitmapOverlay.cpp" />
 		<Unit filename="src/TNCamera.cpp" />
+		<Unit filename="src/TNCube.cpp" />
 		<Unit filename="src/TNInputManager.cpp" />
 		<Unit filename="src/TNManager.cpp" />
+		<Unit filename="src/TNMaterial.cpp" />
 		<Unit filename="src/TNObject.cpp" />
 		<Unit filename="src/TNPhysicsEngine.cpp" />
 		<Unit filename="src/TNPhysicsObject.cpp" />
@@ -74,13 +76,16 @@
 		<Unit filename="src/TNPlayerCamera.cpp" />
 		<Unit filename="src/TNPoint.cpp" />
 		<Unit filename="src/TNPolygon.cpp" />
+		<Unit filename="src/TNProjectile.cpp" />
 		<Unit filename="src/TNQuad.cpp" />
 		<Unit filename="src/TNRenderEngine.cpp" />
 		<Unit filename="src/TNSDLInput.cpp" />
+		<Unit filename="src/TNSphere.cpp" />
 		<Unit filename="src/TNSubdivideQuad.cpp" />
 		<Unit filename="src/TNTexture.cpp" />
 		<Unit filename="src/TNTextureManager.cpp" />
 		<Unit filename="src/TNThread.cpp" />
+		<Unit filename="src/TNTurret.cpp" />
 		<Unit filename="src/TNUtil.cpp" />
 		<Unit filename="src/TNVector.cpp" />
 		<Extensions>

@@ -39,7 +39,6 @@ void TNPhysicsObject::physicsFrame(){
     //If this is the first call, note the time so we can calculate elapsed next time around
     if(last == 0){
         last = meTime();
-        cout << "First run, bailing" << endl;
         return;
     }
 

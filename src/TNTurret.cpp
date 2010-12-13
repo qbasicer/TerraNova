@@ -54,7 +54,7 @@ void TNTurret::hurt(float amt){
 	TNObject::hurt(amt);
 	manager->getRenderEngine()->removeObject(this);
 	delete this;
-	
+
 }
 
 void TNTurret::render(){
@@ -101,8 +101,6 @@ void TNTurret::render(){
     }else if(rot - deg < -1){
         rot += 0.2;
     }else if(meTime() - lastFire > 1){
-        cout << "FIRE!!!" << (meTime() - lastFire) << endl;
-        cout << "meTime():" << meTime() << " lastFire:" << lastFire << endl;
         lastFire = meTime();
         hasFired = 1;
         barrel.getBack()->setMaterial(fire);

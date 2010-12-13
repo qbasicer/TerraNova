@@ -31,7 +31,7 @@ void TNManager::exec(){
     input->start();
     re->start();
     cout << "TNManager waiting for thread exit" << endl;
-
+	sleep(2);
     int num = rand() % 4 + 1;
 	cout << "Adding " << num << endl;
 	for(int i = 0; i < num; i++){

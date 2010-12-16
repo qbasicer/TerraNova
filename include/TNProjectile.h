@@ -12,7 +12,7 @@ class TNProjectile : public TNObject, public TNPhysicsObject
         TNProjectile(TNPoint origin, TNVector vec, TNObject *immune, TNManager *mgr);
         virtual ~TNProjectile();
         virtual void physicsFrame();
-        virtual void render(){ball->render();}
+        virtual void render(){if(enabled){ball->render();}}
 		void remove();
     protected:
         TNPoint origin;
@@ -21,6 +21,7 @@ class TNProjectile : public TNObject, public TNPhysicsObject
         TNSphere *ball;
         TNMaterial fire;
         TNObject *immune;
+        int enabled;
     private:
 };
 

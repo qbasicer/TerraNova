@@ -7,6 +7,7 @@ class TNPhysicsEngine;
 
 #include "TNPhysicsObject.h"
 #include "TNThread.h"
+#include "TNObject.h"
 
 class TNPhysicsEngine  : public TNThread
 {
@@ -18,6 +19,7 @@ class TNPhysicsEngine  : public TNThread
 
         virtual void queueForRemoval(TNPhysicsObject *obj);
         virtual void queueForAddition(TNPhysicsObject *obj);
+        virtual void removeObject(TNObject* obj);
         void getLock();
         void releaseLock();
     protected:

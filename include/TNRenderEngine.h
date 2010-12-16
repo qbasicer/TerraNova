@@ -53,6 +53,7 @@ class TNRenderEngine : public TNThread
         virtual void run();
     private:
         vector<TNObject*> objects;
+
         TNPlayer *player;
         TNCamera *camera;
         SDL_Surface *surface;

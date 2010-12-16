@@ -31,23 +31,27 @@ TNProjectile::TNProjectile(TNPoint origin, TNVector vec, TNObject *immune, TNMan
 
     manager->getRenderEngine()->addObject(this);
     manager->getPhysicsEngine()->queueForAddition(this);
-
+    enabled = 1;
 
 
 }
 
 TNProjectile::~TNProjectile()
 {
+    printf("Farewell :( %p better known as %p\n",(TNPhysicsObject*)this,this);
     //dtor
 }
 
 void TNProjectile::remove(){
-	manager->getRenderEngine()->removeObject(this);
-    manager->getPhysicsEngine()->queueForRemoval(this);
+    enabled = 0;
+    manager->delayedDeletion(ball);
+    manager->delayedDeletion(this);
+
 
 }
 
 void TNProjectile::physicsFrame(){
+    if(!enabled){return;}
     // Recalculate physics then copy that value to the renderer
     TNPhysicsObject::physicsFrame();
     ball->setObjectLocation(loc);
@@ -55,7 +59,6 @@ void TNProjectile::physicsFrame(){
 	float dist = TNVector::subtract(loc,origin).getLength();
 	if(dist > 20){
         remove();
-        delete this;
         return;
 	}else if(dist > 1){
 	    manager->getRenderEngine()->getLock();
@@ -93,7 +96,6 @@ void TNProjectile::physicsFrame(){
 			cout << "********" << endl;
             manager->getRenderEngine()->getPlayer()->hurt(50);
             remove();
-            delete this;
 
         }
     }

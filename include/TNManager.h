@@ -7,8 +7,10 @@ class TNManager;
 #include "TNRenderEngine.h"
 #include "TNTextureManager.h"
 #include "TNPhysicsEngine.h"
+#include "TNThread.h"
+#include <vector>
 
-class TNManager
+class TNManager : public TNThread
 {
     public:
         TNManager();
@@ -23,16 +25,19 @@ class TNManager
         TNPhysicsEngine *getPhysicsEngine(){return physics;}
 		void newEnemy(){numEnemies++;}
 		void destroyEnemy();
-
+        void delayedDeletion(TNObject *obj);
 
         void exec();
         void shutdown();
     protected:
+        std::vector<TNObject*> deferredDelete;
         TNInputManager *input;
         TNRenderEngine *re;
         TNTextureManager *textures;
         TNPhysicsEngine *physics;
         int numEnemies;
+        pthread_mutex_t mut;
+        virtual void run();
     private:
 
 };

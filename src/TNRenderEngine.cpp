@@ -11,6 +11,7 @@
 #include "TNUtil.h"
 #include "TNTurret.h"
 #include "TNSphere.h"
+#include "TNCircle.h"
 
 #define SCREEN_WIDTH    1024
 #define SCREEN_HEIGHT   768
@@ -197,6 +198,7 @@ void TNRenderEngine::init(){
 }
 
 void TNRenderEngine::render(){
+    TNCircle circle(0.5,0.5,0.05,20);
     getLock();
 
     if(player->getHealth() <= 0){
@@ -212,6 +214,8 @@ void TNRenderEngine::render(){
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity( );
     camera->render();
+    glPushMatrix();
+
     glLightfv( GL_LIGHT1, GL_POSITION, LightPosition );
     for(unsigned int i = 0; i < objects.size();i++){
         glPushMatrix();
@@ -219,6 +223,25 @@ void TNRenderEngine::render(){
         glPopMatrix();
     }
     releaseLock();
+
+    glPopMatrix();
+
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    float w = ((float)height/(float)width)*0.5;
+    glOrtho(0,1,0.5-w,0.5+w,-1,1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    circle.render();
+
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+
+    glFlush();
+
+
 }
 
 void TNRenderEngine::getObjectList(vector<TNObject*> &objList){

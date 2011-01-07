@@ -229,7 +229,7 @@
 	"TNPoint.h"
 	"TNVector.h"
 
-1291409857 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
+1294366925 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNRenderEngine.cpp
 	"TNRenderEngine.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -241,6 +241,7 @@
 	"TNUtil.h"
 	"TNTurret.h"
 	"TNSphere.h"
+	"TNCircle.h"
 
 1291166906 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCamera.cpp
 	<GL/gl.h>
@@ -285,7 +286,7 @@
 1288741404 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNInputManager.cpp
 	"TNInputManager.h"
 
-1292539810 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
+1292541757 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNManager.cpp
 	"TNManager.h"
 	<iostream>
 	<TNTurret.h>
@@ -387,7 +388,7 @@
 	<TNPoint.h>
 	"TNPhysicsEngine.h"
 
-1292539842 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsEngine.cpp
+1292542474 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNPhysicsEngine.cpp
 	"TNPhysicsEngine.h"
 	<unistd.h>
 	"TNUtil.h"
@@ -439,7 +440,7 @@
 	<TNObject.h>
 	"TNQuad.h"
 
-1291322888 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCube.cpp
+1292542005 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCube.cpp
 	"TNCube.h"
 	<GL/gl.h>
 	<GL/glu.h>
@@ -458,7 +459,7 @@
 	"TNObject.h"
 	<GL/glu.h>
 
-1292539992 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNProjectile.cpp
+1292542320 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNProjectile.cpp
 	"TNProjectile.h"
 	<iostream>
 	<vector>
@@ -469,4 +470,14 @@
 	<TNPhysicsObject.h>
 	<TNManager.h>
 	<TNSphere.h>
+
+1294367068 source:/home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/src/TNCircle.cpp
+	"TNCircle.h"
+	"TNUtil.h"
+	<GL/gl.h>
+	<GL/glu.h>
+	<cmath>
+
+1294366988 /home/qbasicer/Documents/school/fall10/cs4735/project/TerraNova/include/TNCircle.h
+	<TNObject.h>
 

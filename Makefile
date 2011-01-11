@@ -1,18 +1,16 @@
 
 
-CC = g++
-
 CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags` -g
 LDFLAGS=`sdl-config --libs` -L/usr/X11R6/lib -L/usr/local/lib -lGL -lGLU -lm -g
 
-COMPILE = $(CC) $(CFLAGS) -c
+COMPILE = $(CXX) $(CFLAGS) -c
 
 OBJFILES := $(patsubst %.cpp,%.o,$(wildcard src/*.cpp))
 
 all: terranova
 
 terranova: $(OBJFILES) main.o
-	$(CC) -o terranova $(LDFLAGS) $(OBJFILES) main.o
+	$(CXX) -o terranova $(LDFLAGS) $(OBJFILES) main.o
 
 main.o: main.cpp
 	$(COMPILE) -o main.o main.cpp

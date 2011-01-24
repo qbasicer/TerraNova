@@ -1,7 +1,7 @@
 
 
-CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags` -g
-LDFLAGS=`sdl-config --libs` -L/usr/X11R6/lib -L/usr/local/lib -lGL -lGLU -lm -g
+CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags` -pg -g
+LDFLAGS=`sdl-config --libs` -L/usr/X11R6/lib -L/usr/local/lib -lGL -lGLU -lm -pg -g
 
 COMPILE = $(CXX) $(CFLAGS) -c
 

@@ -20,6 +20,8 @@ using namespace std;
 
 TNSDLInput::TNSDLInput(TNManager *imgr):TNInputManager(imgr)
 {
+    xspeed = 0;
+    yspeed = 0;
     //ctor
 }
 
@@ -42,29 +44,37 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
     case SDLK_w:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->forward(0.0);
+            xspeed = 0;
         }else{
             manager->getRenderEngine()->forward(WSPEED);
+            xspeed = WSPEED;
         }
         break;
     case SDLK_s:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->forward(0.0);
+            xspeed = 0;
         }else{
             manager->getRenderEngine()->forward(-WSPEED);
+            xspeed = -WSPEED;
         }
         break;
     case SDLK_d:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->right(0.0);
+            yspeed = 0;
         }else{
             manager->getRenderEngine()->right(WSPEED);
+            yspeed = WSPEED;
         }
         break;
     case SDLK_a:
         if(state == SDL_KEY_UP){
             manager->getRenderEngine()->right(0.0);
+            yspeed = 0;
         }else{
             manager->getRenderEngine()->right(-WSPEED);
+            yspeed = -WSPEED;
         }
         break;
     case SDLK_r:
@@ -83,6 +93,12 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 	    break;
 	default:
 	    break;
+	}
+
+	if(xspeed == 0 && yspeed == 0){
+	    manager->getRenderEngine()->setAccuracy(0.0);
+	}else{
+	    manager->getRenderEngine()->setAccuracy(1.0);
 	}
 
     return;
@@ -136,7 +152,6 @@ void TNSDLInput::run(){
 
                     c_x = manager->getRenderEngine()->getScreenHeight()>>1;
                     c_y = manager->getRenderEngine()->getScreenWidth()>>1;
-
                     SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
 
                     SDL_GetMouseState(&x,&y);

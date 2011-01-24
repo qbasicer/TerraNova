@@ -48,11 +48,16 @@ class TNRenderEngine : public TNThread
         void getLock();
         void releaseLock();
 
+        double getAccuracy(){return accuracy;}
+        void setAccuracy(double acc){accuracy = acc;}
+
         pthread_t owner;
     protected:
         virtual void run();
     private:
         vector<TNObject*> objects;
+
+        double accuracy;
 
         TNPlayer *player;
         TNCamera *camera;

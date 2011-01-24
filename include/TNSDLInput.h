@@ -18,6 +18,8 @@ class TNSDLInput : public TNInputManager
         void handleKeyPress(SDL_keysym *keysym, enum SDLKeyState state );
 		int useMouse;
     private:
+        float xspeed;
+        float yspeed;
 };
 
 #endif // TNSDLINPUT_H

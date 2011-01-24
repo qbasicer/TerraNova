@@ -34,6 +34,7 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     pthread_mutexattr_t attr;
     pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
     pthread_mutex_init(&mut,&attr);
+    accuracy = 0;
     owner = NULL;
 }
 
@@ -198,7 +199,8 @@ void TNRenderEngine::init(){
 }
 
 void TNRenderEngine::render(){
-    TNCircle circle(0.5,0.5,0.05,20);
+    double csize = 0.01 + accuracy*0.04;
+    TNCircle circle(0.5,0.5,csize,20);
     getLock();
 
     if(player->getHealth() <= 0){

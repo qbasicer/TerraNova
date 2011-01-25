@@ -96,7 +96,7 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 	}
 
 	if(xspeed == 0 && yspeed == 0){
-	    manager->getRenderEngine()->setAccuracy(0.0);
+	    manager->getRenderEngine()->setAccuracy(0.1);
 	}else{
 	    manager->getRenderEngine()->setAccuracy(1.0);
 	}

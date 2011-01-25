@@ -34,9 +34,17 @@ void TNPlayer::setRightSpeed(float speed){
 
 void TNPlayer::fireGun(){
 	if(meTime() - lastShot > 0.5){
-		float yaw = camera->getYaw();
-		float pitch = -camera->getPitch();
+	    float accuracy = manager->getRenderEngine()->getAccuracy();
+	    float dev_x = (((float)(random() % 100)/100.0)-0.5) * accuracy * 5;
+		float dev_y = (((float)(random() % 100)/100.0)-0.5) * accuracy * 5;
+		float yaw = camera->getYaw() + dev_x;
+		float pitch = -camera->getPitch() + dev_y;
 		float y = SIN_DEG(pitch);
+
+		cout << "dev_x " << dev_x << ", " << "dev_y " << dev_y << " accuracy " << accuracy << endl;
+		cout << "yaw " << yaw << ", " << "pitch " << pitch << endl;
+
+
 		TNVector vec(SIN_DEG(yaw)*8,y*8,-COS_DEG(yaw)*8,0);
 
 		TNProjectile *proj = new TNProjectile(TNPoint(-loc.x(),loc.y(),-loc.z()), vec,this,manager);

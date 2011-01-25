@@ -10,10 +10,10 @@
 	<File name="include/TNCamera.h" open="0" top="0" tabpos="3">
 		<Cursor position="526" topLine="0" />
 	</File>
-	<File name="include/TNCircle.h" open="1" top="0" tabpos="2">
+	<File name="include/TNCircle.h" open="0" top="0" tabpos="2">
 		<Cursor position="762" topLine="0" />
 	</File>
-	<File name="include/TNCube.h" open="1" top="0" tabpos="4">
+	<File name="include/TNCube.h" open="0" top="0" tabpos="4">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="include/TNInputManager.h" open="0" top="0" tabpos="0">
@@ -22,7 +22,7 @@
 	<File name="include/TNManager.h" open="0" top="0" tabpos="6">
 		<Cursor position="843" topLine="0" />
 	</File>
-	<File name="include/TNObject.h" open="1" top="0" tabpos="6">
+	<File name="include/TNObject.h" open="0" top="0" tabpos="6">
 		<Cursor position="627" topLine="0" />
 	</File>
 	<File name="include/TNPhysicsEngine.h" open="0" top="0" tabpos="0">
@@ -40,14 +40,14 @@
 	<File name="include/TNProjectile.h" open="0" top="0" tabpos="2">
 		<Cursor position="448" topLine="0" />
 	</File>
-	<File name="include/TNQuad.h" open="0" top="0" tabpos="4">
+	<File name="include/TNQuad.h" open="1" top="0" tabpos="2">
 		<Cursor position="37" topLine="0" />
 	</File>
-	<File name="include/TNRenderEngine.h" open="0" top="0" tabpos="4">
-		<Cursor position="1252" topLine="13" />
+	<File name="include/TNRenderEngine.h" open="1" top="0" tabpos="5">
+		<Cursor position="1341" topLine="22" />
 	</File>
 	<File name="include/TNSDLInput.h" open="0" top="0" tabpos="7">
-		<Cursor position="325" topLine="0" />
+		<Cursor position="451" topLine="0" />
 	</File>
 	<File name="include/TNTexture.h" open="0" top="0" tabpos="0">
 		<Cursor position="269" topLine="0" />
@@ -55,8 +55,8 @@
 	<File name="include/TNTextureManager.h" open="0" top="0" tabpos="0">
 		<Cursor position="434" topLine="0" />
 	</File>
-	<File name="include/TNUtil.h" open="1" top="0" tabpos="5">
-		<Cursor position="318" topLine="0" />
+	<File name="include/TNUtil.h" open="1" top="0" tabpos="3">
+		<Cursor position="455" topLine="0" />
 	</File>
 	<File name="include/TNVector.h" open="0" top="0" tabpos="0">
 		<Cursor position="162" topLine="0" />
@@ -70,13 +70,13 @@
 	<File name="src/TNBitmapOverlay.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="27" topLine="0" />
 	</File>
-	<File name="src/TNCamera.cpp" open="1" top="0" tabpos="8">
+	<File name="src/TNCamera.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="468" topLine="0" />
 	</File>
-	<File name="src/TNCircle.cpp" open="1" top="0" tabpos="3">
+	<File name="src/TNCircle.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="467" topLine="0" />
 	</File>
-	<File name="src/TNCube.cpp" open="1" top="0" tabpos="1">
+	<File name="src/TNCube.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="22" topLine="0" />
 	</File>
 	<File name="src/TNInputManager.cpp" open="0" top="0" tabpos="0">
@@ -89,13 +89,13 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="src/TNPhysicsEngine.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="2221" topLine="50" />
+		<Cursor position="1715" topLine="48" />
 	</File>
 	<File name="src/TNPhysicsObject.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="1401" topLine="16" />
+		<Cursor position="1680" topLine="18" />
 	</File>
-	<File name="src/TNPlayer.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="363" topLine="0" />
+	<File name="src/TNPlayer.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="303" topLine="9" />
 	</File>
 	<File name="src/TNPoint.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="211" topLine="0" />
@@ -109,11 +109,11 @@
 	<File name="src/TNQuad.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="625" topLine="0" />
 	</File>
-	<File name="src/TNRenderEngine.cpp" open="1" top="1" tabpos="7">
-		<Cursor position="4674" topLine="188" />
+	<File name="src/TNRenderEngine.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="6517" topLine="215" />
 	</File>
 	<File name="src/TNSDLInput.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="652" topLine="18" />
+		<Cursor position="2036" topLine="54" />
 	</File>
 	<File name="src/TNSubdivideQuad.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1277" topLine="12" />
@@ -125,7 +125,7 @@
 		<Cursor position="429" topLine="0" />
 	</File>
 	<File name="src/TNTurret.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="3046" topLine="69" />
+		<Cursor position="3013" topLine="69" />
 	</File>
 	<File name="src/TNUtil.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="2103" topLine="0" />

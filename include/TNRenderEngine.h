@@ -54,6 +54,8 @@ class TNRenderEngine : public TNThread
         pthread_t owner;
     protected:
         virtual void run();
+
+        float getFractionalHealth();
     private:
         vector<TNObject*> objects;
 
@@ -66,6 +68,7 @@ class TNRenderEngine : public TNThread
         int height;
         TNManager *manager;
         pthread_mutex_t mut;
+        TNMaterial healthbarmaterial;
 };
 
 #endif // TNRENDERENGINE_H

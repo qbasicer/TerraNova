@@ -18,6 +18,7 @@
 #define SCREEN_BPP      24
 
 
+
 using namespace std;
 
 TNRenderEngine::TNRenderEngine(TNManager *manager)
@@ -36,6 +37,12 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     pthread_mutex_init(&mut,&attr);
     accuracy = 0;
     owner = NULL;
+
+    healthbarmaterial = TNMaterial();
+    healthbarmaterial.setAmbient(1.0,0.0,0.0,1.0);
+    healthbarmaterial.setDiffuse(0.0,0.0,0.0,0.0);
+    healthbarmaterial.setShiny(0);
+    healthbarmaterial.setSpecular(0.0,0.0,0.0,0.0);
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -198,20 +205,25 @@ void TNRenderEngine::init(){
     cout << "Finished initing" << endl;
 }
 
+float TNRenderEngine::getFractionalHealth(){
+    return (float)player->getHealth() / (float)PLAYER_STARTHEALTH;
+}
+
 void TNRenderEngine::render(){
     double csize = 0.01 + accuracy*0.04;
     TNCircle circle(0.5,0.5,csize,20);
-    getLock();
 
-    if(player->getHealth() <= 0){
-        cout << "*************" << endl;
-        cout << "* You died! *" << endl;
-        cout << "*************" << endl;
-        cout << "Insert coin to play again!" << endl;
-
-        manager->shutdown();
-        return;
+    if(getFractionalHealth() >= 0.5){
+        float expanded = (getFractionalHealth() - 0.5) * 2;
+        healthbarmaterial.setAmbient(1.0 - expanded,1.0,0.0,1.0);
+    }else{
+        float expanded = getFractionalHealth() * 2;
+        healthbarmaterial.setAmbient(1.0,expanded,0.0,1.0);
     }
+
+    TNQuad health(TNPoint(0,0,0),TNPoint(1.0 * getFractionalHealth() ,0,0), TNPoint(1 * getFractionalHealth(),0.15,0), TNPoint(0,0.15,0));
+    health.setMaterial(healthbarmaterial);
+    getLock();
 
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity( );
@@ -235,13 +247,25 @@ void TNRenderEngine::render(){
     glOrtho(0,1,0.5-w,0.5+w,-1,1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
     circle.render();
+    health.render();
 
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
 
     glFlush();
+
+    if(player->getHealth() <= 0){
+        cout << "*************" << endl;
+        cout << "* You died! *" << endl;
+        cout << "*************" << endl;
+        cout << "Insert coin to play again!" << endl;
+
+        manager->shutdown();
+        return;
+    }
 
 
 }

@@ -15,7 +15,7 @@ TNPlayer::TNPlayer(TNManager *mgr)
 {
     camera = new TNPlayerCamera(this);
     isFlying = 0;
-    health = 100;
+    health = PLAYER_STARTHEALTH;
     manager = mgr;
 	lastShot = 0;
 	forwardSpeed = 0;

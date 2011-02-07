@@ -40,6 +40,8 @@
 			<Add option="`sdl-config --libs`" />
 		</Linker>
 		<Unit filename="cb.bmp" />
+		<Unit filename="include/TNArduinoCodec.h" />
+		<Unit filename="include/TNArduinoInput.h" />
 		<Unit filename="include/TNAxisLines.h" />
 		<Unit filename="include/TNBitmapOverlay.h" />
 		<Unit filename="include/TNCamera.h" />
@@ -68,6 +70,8 @@
 		<Unit filename="include/TNUtil.h" />
 		<Unit filename="include/TNVector.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/TNArduinoCodec.cpp" />
+		<Unit filename="src/TNArduinoInput.cpp" />
 		<Unit filename="src/TNAxisLines.cpp" />
 		<Unit filename="src/TNBitmapOverlay.cpp" />
 		<Unit filename="src/TNCamera.cpp" />

@@ -69,6 +69,10 @@ class TNRenderEngine : public TNThread
         TNManager *manager;
         pthread_mutex_t mut;
         TNMaterial healthbarmaterial;
+
+        float vertclip;
+        float horizclip;
+
 };
 
 #endif // TNRENDERENGINE_H

@@ -245,6 +245,12 @@ void TNRenderEngine::render(){
     glLoadIdentity();
     float w = ((float)height/(float)width)*0.5;
     glOrtho(0,1,0.5-w,0.5+w,-1,1);
+
+
+    horizclip = 0;
+    //Defines how much of the screen is cut off
+    vertclip = 0.5-w;
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 

@@ -1,6 +1,7 @@
 #ifndef TNPOINT_H
 #define TNPOINT_H
 
+#include <string>
 
 class TNPoint
 {
@@ -15,6 +16,7 @@ class TNPoint
         void setY(float y){ty = y;}
         void setZ(float z){tz = z;}
 		int isSet(){return bSet;}
+		std::string toString();
     protected:
         float tx;
         float ty;

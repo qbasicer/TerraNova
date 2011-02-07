@@ -1,5 +1,7 @@
 #include "TNPoint.h"
 
+#include <sstream>
+
 TNPoint::TNPoint(float x, float y, float z)
 {
     this->tx = x;
@@ -20,4 +22,10 @@ void TNPoint::set(float x, float y, float z){
     ty = y;
     tz = z;
 	bSet = 1;
+}
+
+std::string TNPoint::toString(){
+    std::ostringstream str;
+    str << "(" << tx << "," << ty << "," << tz << ")";
+    return str.str();
 }

@@ -45,7 +45,9 @@ void TNPlayer::fireGun(){
 		cout << "yaw " << yaw << ", " << "pitch " << pitch << endl;
 
 
-		TNVector vec(SIN_DEG(yaw)*8,y*8,-COS_DEG(yaw)*8,0);
+
+		TNVector vec(COS_DEG(pitch)*SIN_DEG(yaw)*8,y*8,-COS_DEG(yaw)*8*COS_DEG(pitch),0);
+		cout << "x:"<< vec.x() << " y:"<<vec.y()<<" z:"<< vec.z() <<endl;
 
 		TNProjectile *proj = new TNProjectile(TNPoint(-loc.x(),loc.y(),-loc.z()), vec,this,manager);
 		lastShot = meTime();

@@ -93,13 +93,11 @@ void TNPhysicsEngine::removeObject(TNObject *obj){
         TNPhysicsObject* cobj = dynamic_cast<TNPhysicsObject*>(obj);
 
         if(cobj){
-            printf("Removed physics object %p\n",cobj);
             removeObject(cobj);
             releaseLock();
             return;
         }
     }
-    printf("No physics object %p here\n",obj);
     releaseLock();
 }
 
@@ -111,7 +109,6 @@ void TNPhysicsEngine::queueForRemoval(TNPhysicsObject *obj){
 
 void TNPhysicsEngine::queueForAddition(TNPhysicsObject *obj){
     pthread_mutex_lock(&mq);
-    printf("Adding physics object %p\n",obj);
     aq.push_back(obj);
     pthread_mutex_unlock(&mq);
 }

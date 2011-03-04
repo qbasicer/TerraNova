@@ -215,7 +215,6 @@ void TNSDLInput::run(){
 #ifndef USE_WAIT
 		if(t != time(0)){
 		    sleepTime = calcSleeptime(1, sleepTime, cycles, 80, 100);
-		    cout << cycles << " cycles, sleep time: " << sleepTime << endl;
 		    cycles = 0;
 		    if(sleepTime < 1000){
 		        cerr << "WARNING!!! Can't keep input up! (" << sleepTime << ")" << endl;

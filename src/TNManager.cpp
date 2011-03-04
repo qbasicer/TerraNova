@@ -43,8 +43,11 @@ void TNManager::exec(){
 	}
 	cout << "Starting manager thread" << endl;
 	start();
-	cout << "Waiting for physics to shut down" << endl;
+
+	// Wait for the thread state to stabalize
+    usleep(1000);
     physics->wait();
+    cout << "Physics shut down" << endl;
     cout << "Waiting for render engine to shut down" << endl;
     re->wait();
     cout << "Waiting for input to shut down" << endl;
@@ -74,7 +77,6 @@ void TNManager::run(){
         for(unsigned int i = 0; i < deferredDelete.size(); i++){
 
             TNObject* obj = deferredDelete[i];
-            printf("Removing object %p\n",obj);
             re->removeObject(obj);
             physics->removeObject(obj);
             delete obj;
@@ -105,7 +107,6 @@ void TNManager::delayedDeletion(TNObject *obj){
         cout << endl<<  "****" << endl << "Failed to add to deferred deletion list" << endl <<"****" << endl <<  endl;
         shutdown();
     }
-    printf("Setting object for delayedDeletion %p\n",obj);
     deferredDelete.push_back(obj);
 
     sem_post(&sem);

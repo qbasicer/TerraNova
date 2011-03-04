@@ -38,8 +38,7 @@ TNProjectile::TNProjectile(TNPoint origin, TNVector vec, TNObject *immune, TNMan
 
 TNProjectile::~TNProjectile()
 {
-    printf("Farewell :( %p better known as %p\n",(TNPhysicsObject*)this,this);
-    //dtor
+
 }
 
 void TNProjectile::remove(){

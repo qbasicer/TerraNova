@@ -9,6 +9,7 @@ class TNManager;
 #include "TNPhysicsEngine.h"
 #include "TNThread.h"
 #include <vector>
+#include <semaphore.h>
 
 class TNManager : public TNThread
 {
@@ -36,8 +37,8 @@ class TNManager : public TNThread
         TNTextureManager *textures;
         TNPhysicsEngine *physics;
         int numEnemies;
-        pthread_mutex_t mut;
         virtual void run();
+        sem_t sem;
     private:
 
 };

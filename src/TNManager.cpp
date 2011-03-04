@@ -13,11 +13,7 @@ TNManager::TNManager()
     physics = new TNPhysicsEngine();
 	numEnemies = 0;
 	srand(time(0));
-	pthread_mutexattr_t attr;
-    pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
-    pthread_mutex_init(&mut,&attr);
-
-
+	sem_init(&sem, 0, 1);
 }
 
 void TNManager::setRenderEngine(TNRenderEngine *eng){
@@ -74,7 +70,7 @@ void TNManager::destroyEnemy(){
 
 void TNManager::run(){
     while(!shutdownRequested()){
-        pthread_mutex_lock(&mut);
+        sem_wait(&sem);
         for(unsigned int i = 0; i < deferredDelete.size(); i++){
 
             TNObject* obj = deferredDelete[i];
@@ -84,16 +80,26 @@ void TNManager::run(){
             delete obj;
         }
         deferredDelete.clear();
-        pthread_mutex_unlock(&mut);
+        sem_post(&sem);
         sleep(1);
     }
 }
 
 void TNManager::delayedDeletion(TNObject *obj){
     double start = meTime();
-    while(pthread_mutex_trylock(&mut)){
+    int tries = 0;
+    while(sem_trywait(&sem)){
         cout << "Waiting to get lock..." << endl;
-        usleep(100);
+        tries++;
+        usleep(10000);
+        if(tries > 100){
+            cout << "**********************" << endl;
+            cout << "**********************" << endl;
+            cout << "* Danger Danger!     *" << endl;
+            cout << "**********************" << endl;
+            cout << "**********************" << endl;
+            break;
+        }
     }
     if(meTime() > (start+1.0)){
         cout << endl<<  "****" << endl << "Failed to add to deferred deletion list" << endl <<"****" << endl <<  endl;
@@ -102,7 +108,7 @@ void TNManager::delayedDeletion(TNObject *obj){
     printf("Setting object for delayedDeletion %p\n",obj);
     deferredDelete.push_back(obj);
 
-    pthread_mutex_unlock(&mut);
+    sem_post(&sem);
 }
 
 

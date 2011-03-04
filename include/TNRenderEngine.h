@@ -15,6 +15,7 @@ class TNRenderEngine;
 #include "TNThread.h"
 #include "TNManager.h"
 #include "TNPlayer.h"
+#include <semaphore.h>
 
 using namespace std;
 
@@ -67,6 +68,7 @@ class TNRenderEngine : public TNThread
         int width;
         int height;
         TNManager *manager;
+        sem_t sem;
         pthread_mutex_t mut;
         TNMaterial healthbarmaterial;
 

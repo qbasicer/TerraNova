@@ -15,7 +15,7 @@ TNSubdivideQuad::TNSubdivideQuad(TNPoint p1, TNPoint p2, TNPoint p3, TNPoint p4)
     divisions = 1;
     pts = NULL;
     pthread_mutex_init(&mut,NULL);
-    renderingMode(1);
+    renderingMode(0);
 }
 
 TNSubdivideQuad::~TNSubdivideQuad()
@@ -71,9 +71,6 @@ void TNSubdivideQuad::render(){
                 TNPoint l2 = lerp(sideA2,sideB2,j);
                 TNPoint l3 = lerp(sideA2,sideB2,j+step);
                 TNPoint l4 = lerp(sideA1,sideB1,j+step);
-                if(j == 0 && i == 0){
-                    cout << "Rendering " << l1.toString() << " of " << p1.toString() << endl;
-                }
                 fastRenderQuad(l1,nl1,l2,nl2,l3,nl3,l4,nl4);
 
             }
@@ -83,9 +80,6 @@ void TNSubdivideQuad::render(){
 	    pthread_mutex_lock(&mut);
 	    for(int i = 0; i < divisions-1; i++){
             for(int j = 0; j < divisions -1; j++){
-                if(j == 0 && i == 0){
-                    cout << "Rendering " << pts[MAP(i,j)]->toString() << " of " << p1.toString() << endl;
-                }
                 renderStoredQuad(MAP(i,j),MAP(i,j+1),MAP(i+1,j+1),MAP(i+1,j));
             }
 	    }

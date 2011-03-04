@@ -35,6 +35,8 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     pthread_mutexattr_t attr;
     pthread_mutexattr_settype(&attr,PTHREAD_MUTEX_RECURSIVE);
     pthread_mutex_init(&mut,&attr);
+
+    sem_init(&sem, 0, 1);
     accuracy = 0;
     owner = NULL;
 
@@ -469,9 +471,26 @@ void TNRenderEngine::right(float dist){
 }
 
 void TNRenderEngine::getLock(){
+    int tries = 0;
+    if(sem_trywait(&sem)){
+        if(owner != pthread_self()){
+            while(!sem_trywait(&sem)){
+                usleep(10000);
+                tries++;
+                if(tries > 100){
+                    break;
+                }
+            }
+        }
+    }
+
+    owner = pthread_self();
+    return;
+
     if(pthread_mutex_trylock(&mut)){
         if(owner != pthread_self()){
             while(!pthread_mutex_trylock(&mut)){
+
                 usleep(10000);
             }
         }
@@ -481,6 +500,8 @@ void TNRenderEngine::getLock(){
 }
 
 void TNRenderEngine::releaseLock(){
+    sem_post(&sem);
+    return;
     pthread_mutex_unlock(&mut);
 }
 

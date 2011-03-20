@@ -20,6 +20,8 @@ TNPlayer::TNPlayer(TNManager *mgr)
 	lastShot = 0;
 	forwardSpeed = 0;
 	rightSpeed = 0;
+	xab = 0;
+	yab = 0;
 }
 
 TNPlayer::~TNPlayer()
@@ -39,6 +41,10 @@ void TNPlayer::fireGun(){
 		float dev_y = (((float)(random() % 100)/100.0)-0.5) * accuracy * 5;
 		float yaw = camera->getYaw() + dev_x;
 		float pitch = -camera->getPitch() + dev_y;
+
+		pitch += 60 * yab;
+		yaw += 60 * xab;
+
 		float y = SIN_DEG(pitch);
 
 		TNVector vec(COS_DEG(pitch)*SIN_DEG(yaw)*8,y*8,-COS_DEG(yaw)*8*COS_DEG(pitch),0);

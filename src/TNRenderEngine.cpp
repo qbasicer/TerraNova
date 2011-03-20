@@ -45,6 +45,8 @@ TNRenderEngine::TNRenderEngine(TNManager *manager)
     healthbarmaterial.setDiffuse(0.0,0.0,0.0,0.0);
     healthbarmaterial.setShiny(0);
     healthbarmaterial.setSpecular(0.0,0.0,0.0,0.0);
+    xhv = 0.5;
+    xhh = 0.5;
 }
 
 TNRenderEngine::~TNRenderEngine()
@@ -207,13 +209,36 @@ void TNRenderEngine::init(){
     cout << "Finished initing" << endl;
 }
 
+
+void TNRenderEngine::moveCrosshairsUp(double amt){
+    amt = amt / 5000.0;
+    xhv += amt;
+    if(xhv > 0.9){
+        xhv = 0.9;
+    }else if(xhv < 0.1){
+        xhv= 0.1;
+    }
+}
+
+void TNRenderEngine::moveCrosshairsRight(double amt){
+    amt = -amt / 5000.0;
+    xhh += amt;
+    if(xhh > 1.0){
+        xhh = 1.0;
+    }else if(xhv < 0.0){
+        xhh= 0.0;
+    }
+}
+
 float TNRenderEngine::getFractionalHealth(){
     return (float)player->getHealth() / (float)PLAYER_STARTHEALTH;
 }
 
 void TNRenderEngine::render(){
     double csize = 0.01 + accuracy*0.04;
-    TNCircle circle(0.5,0.5,csize,20);
+    TNCircle circle(xhh,xhv,csize,20);
+
+    getPlayer()->setAimingBias(xhh-0.5,xhv-0.5);
 
     if(getFractionalHealth() >= 0.5){
         float expanded = (getFractionalHealth() - 0.5) * 2;

@@ -52,6 +52,9 @@ class TNRenderEngine : public TNThread
         double getAccuracy(){return accuracy;}
         void setAccuracy(double acc){accuracy = acc;}
 
+        void moveCrosshairsUp(double amt);
+        void moveCrosshairsRight(double amt);
+
         pthread_t owner;
     protected:
         virtual void run();
@@ -71,6 +74,9 @@ class TNRenderEngine : public TNThread
         sem_t sem;
         pthread_mutex_t mut;
         TNMaterial healthbarmaterial;
+
+        double xhv;
+        double xhh;
 
         float vertclip;
         float horizclip;

@@ -13,6 +13,7 @@
 #include "TNRenderEngine.h"
 #include "TNSDLInput.h"
 #include "TNManager.h"
+#include "TNArduinoInput.h"
 
 #include <cstdlib>
 #include <cstdio>
@@ -42,6 +43,8 @@ int main( int argc, char **argv )
 
 	TNRenderEngine re(&mgr);
 	TNSDLInput in(&mgr);
+	TNArduinoInput ar(&mgr);
+	ar.start();
 	mgr.setInput(&in);
 	mgr.setRenderEngine(&re);
 
@@ -57,9 +60,10 @@ int main( int argc, char **argv )
 
     //re.bounce();
 
-    mgr.exec();
-
     cout << "Finished event loop" << endl;
+    mgr.exec();
+    ar.stop();
+    ar.wait();
 
     SDL_Quit();
 

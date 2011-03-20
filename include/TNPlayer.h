@@ -23,12 +23,15 @@ class TNPlayer : public TNPhysicsObject, public TNObject
         void fireGun();
 		double lastShot;
         virtual void render(){}
+        virtual void setAimingBias(double x, double y){xab = x; yab = y;}
     protected:
         TNCamera *camera;
         float forwardSpeed;
         float rightSpeed;
         int isFlying;
         TNManager *manager;
+        double xab;
+        double yab;
     private:
 };
 

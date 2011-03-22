@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="include/TNArduinoCodec.h" open="0" top="0" tabpos="0">
-		<Cursor position="818" topLine="0" />
+	<File name="include/TNArduinoCodec.h" open="1" top="0" tabpos="6">
+		<Cursor position="717" topLine="0" />
 	</File>
 	<File name="include/TNArduinoInput.h" open="1" top="0" tabpos="5">
-		<Cursor position="24" topLine="0" />
+		<Cursor position="478" topLine="0" />
 	</File>
 	<File name="include/TNAxisLines.h" open="0" top="0" tabpos="0">
 		<Cursor position="89" topLine="0" />
@@ -37,7 +37,7 @@
 	<File name="include/TNPhysicsObject.h" open="0" top="0" tabpos="8">
 		<Cursor position="1002" topLine="8" />
 	</File>
-	<File name="include/TNPlayer.h" open="1" top="0" tabpos="7">
+	<File name="include/TNPlayer.h" open="0" top="0" tabpos="7">
 		<Cursor position="763" topLine="0" />
 	</File>
 	<File name="include/TNPoint.h" open="0" top="0" tabpos="8">
@@ -52,7 +52,7 @@
 	<File name="include/TNQuad.h" open="0" top="0" tabpos="2">
 		<Cursor position="37" topLine="0" />
 	</File>
-	<File name="include/TNRenderEngine.h" open="1" top="0" tabpos="6">
+	<File name="include/TNRenderEngine.h" open="0" top="0" tabpos="6">
 		<Cursor position="1793" topLine="22" />
 	</File>
 	<File name="include/TNSDLInput.h" open="0" top="0" tabpos="7">
@@ -67,8 +67,8 @@
 	<File name="include/TNTextureManager.h" open="0" top="0" tabpos="0">
 		<Cursor position="434" topLine="0" />
 	</File>
-	<File name="include/TNUtil.h" open="0" top="0" tabpos="3">
-		<Cursor position="455" topLine="0" />
+	<File name="include/TNUtil.h" open="1" top="0" tabpos="7">
+		<Cursor position="119" topLine="0" />
 	</File>
 	<File name="include/TNVector.h" open="0" top="0" tabpos="0">
 		<Cursor position="162" topLine="0" />
@@ -77,10 +77,10 @@
 		<Cursor position="910" topLine="20" />
 	</File>
 	<File name="src/TNArduinoCodec.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="2296" topLine="90" />
+		<Cursor position="1529" topLine="20" />
 	</File>
 	<File name="src/TNArduinoInput.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="2024" topLine="35" />
+		<Cursor position="2673" topLine="73" />
 	</File>
 	<File name="src/TNAxisLines.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="65" topLine="0" />
@@ -101,7 +101,7 @@
 		<Cursor position="78" topLine="0" />
 	</File>
 	<File name="src/TNManager.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="2142" topLine="40" />
+		<Cursor position="2032" topLine="59" />
 	</File>
 	<File name="src/TNObject.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
@@ -112,8 +112,8 @@
 	<File name="src/TNPhysicsObject.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="1680" topLine="18" />
 	</File>
-	<File name="src/TNPlayer.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="861" topLine="23" />
+	<File name="src/TNPlayer.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="1190" topLine="23" />
 	</File>
 	<File name="src/TNPoint.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="468" topLine="0" />
@@ -128,10 +128,10 @@
 		<Cursor position="625" topLine="0" />
 	</File>
 	<File name="src/TNRenderEngine.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="5066" topLine="200" />
+		<Cursor position="5574" topLine="182" />
 	</File>
 	<File name="src/TNSDLInput.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="4039" topLine="132" />
+		<Cursor position="2115" topLine="72" />
 	</File>
 	<File name="src/TNSubdivideQuad.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="5157" topLine="157" />

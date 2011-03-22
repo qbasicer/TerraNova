@@ -55,6 +55,8 @@ class TNRenderEngine : public TNThread
         void moveCrosshairsUp(double amt);
         void moveCrosshairsRight(double amt);
 
+        void resetScope(){setAccuracy(0); xhh = 0.5; xhv = 0.5;}
+
         pthread_t owner;
     protected:
         virtual void run();

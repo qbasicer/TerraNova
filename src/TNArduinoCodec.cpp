@@ -74,6 +74,7 @@ int TNArduinoCodec::getReading(senvalues *val){
         unsigned char szBuffer[RDBSIZE];
         int rd = 0;
         unsigned char *ptr = szBuffer;
+        double s = meTime();
         while(rd < (NO_CHANS*BYTES_PER_CHAN+1)){
             int rdi = readData(ptr, (NO_CHANS*BYTES_PER_CHAN+1)-rd);
             if(rdi < 0){
@@ -82,6 +83,10 @@ int TNArduinoCodec::getReading(senvalues *val){
             rd += rdi;
             usleep(1000);
             ptr = ptr + rdi;
+            if(meTime() - s > 5.0){
+                wait();
+                s = meTime();
+            }
         }
         if(szBuffer[NO_CHANS*BYTES_PER_CHAN] != '\n'){
             calibrate();
@@ -117,6 +122,11 @@ int TNArduinoCodec::getReading(senvalues *val){
 }
 
 void TNArduinoCodec::wait(){
+    if(fd <= 0){
+        return;
+    }
+    double s = meTime();
+
     do{
         printf("Waiting for device to become ready\n");
         char szBuffer[2];
@@ -124,10 +134,15 @@ void TNArduinoCodec::wait(){
         while(read(fd,szBuffer,2) < 0){
             usleep(10000);
             tries++;
-            if(tries > 1000){
+            if(tries > 1000 || meTime() - s > 5.0){
                 printf("Giving up on device\n");
                 closeDevice();
+                return;
             }
+        }
+        if(meTime() - s > 5.0){
+            printf("Giving up on device\n");
+            closeDevice();
         }
     }while(!calibrate());
 
@@ -135,9 +150,13 @@ void TNArduinoCodec::wait(){
 }
 
 bool TNArduinoCodec::calibrate(){
+    if(fd <= 0){
+        return false;
+    }
     unsigned char szBuffer[2];
     int cal = 0;
     int step = 0;
+    double s = meTime();
     while(!cal){
         int rdi = readData(szBuffer, 1);
         if(rdi == 1){
@@ -145,7 +164,7 @@ bool TNArduinoCodec::calibrate(){
                 cal = 1;
             }
             step++;
-        }else if(rdi < 0){
+        }else if(rdi < 0 || meTime() - s > 5.0){
             printf("!!! Calibration aborted\n");
             return false;
         }

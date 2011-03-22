@@ -16,6 +16,7 @@ class TNArduinoInput : public TNInputManager
         virtual void run();
         char* buffer;
         void avg(struct senvalues *v, struct senvalues *av);
+        TNArduinoCodec *waitDev();
     private:
 };
 

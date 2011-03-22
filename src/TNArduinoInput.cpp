@@ -2,6 +2,9 @@
 #include "TNArduinoInput.h"
 #include "TNArduinoCodec.h"
 #include <iostream>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -11,7 +14,7 @@ using namespace std;
 TNArduinoInput::TNArduinoInput(TNManager *imgr):TNInputManager(imgr)
 {
     buffer = (char*)malloc(BUFER_SIZE);
-    codec = new TNArduinoCodec("/dev/ttyUSB0");
+    codec = NULL;
 
     cout << "************************" << endl;
     cout << "* Arduino Sensor Input *" << endl;
@@ -52,11 +55,30 @@ void TNArduinoInput::avg(senvalues *v, senvalues *av){
 
 }
 
-void TNArduinoInput::run(){
-    if (!codec->openDevice()){
-        cout << "Failed to open Arduino input device" << endl;
-        return;
+TNArduinoCodec *TNArduinoInput::waitDev(){
+    struct stat buf;
+    TNArduinoCodec *cod = NULL;
+    cout << "Looking for device" << endl;
+    while(stat("/dev/ttyUSB0", &buf) == -1){
+        if(shutdownRequested()){
+            return NULL;
+        }
+        usleep(1000);
     }
+    cout << "Opening device" << endl;
+    cod = new TNArduinoCodec("/dev/ttyUSB0");
+
+    if (!cod->openDevice()){
+        cout << "Failed to open Arduino input device" << endl;
+        delete cod;
+        return NULL;
+    }
+    return cod;
+}
+
+void TNArduinoInput::run(){
+    codec = this->waitDev();
+
     cout << "Arduino start" << endl;
     senvalues v;
 
@@ -77,7 +99,14 @@ void TNArduinoInput::run(){
                 cout << "Failed to get a reading" << endl;
                 perror("codec->getReading()");
                 codec->closeDevice();
-                return;
+
+                delete codec;
+                codec = NULL;
+                manager->getRenderEngine()->resetScope();
+                codec = this->waitDev();
+                if(codec == NULL){
+                    return;
+                }
             }else{
                 //Wait for the device to become available
                 while(codec->openDevice()){

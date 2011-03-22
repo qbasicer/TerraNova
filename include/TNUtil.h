@@ -3,6 +3,19 @@
 
 #include <TNPoint.h>
 #include <TNVector.h>
+#include <stdint.h>
+
+struct senvalues {
+    uint16_t ax;
+    uint16_t ay;
+    uint16_t az;
+    uint16_t gx;
+    uint16_t gy;
+    uint16_t d1;
+};
+
+
+
 
 TNPoint lerp(TNPoint a, TNPoint b, float perc);
 TNVector vlerp(TNVector a, TNVector b, float perc);

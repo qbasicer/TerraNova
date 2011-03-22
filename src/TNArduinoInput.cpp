@@ -1,8 +1,11 @@
-#include "TNArduinoInput.h"
 #include "TNUtil.h"
+#include "TNArduinoInput.h"
+#include "TNArduinoCodec.h"
 #include <iostream>
 
 using namespace std;
+
+#define SMOOTHING   5
 
 
 TNArduinoInput::TNArduinoInput(TNManager *imgr):TNInputManager(imgr)
@@ -24,6 +27,31 @@ TNArduinoInput::~TNArduinoInput()
     cout << "************************" << endl;
 }
 
+
+void TNArduinoInput::avg(senvalues *v, senvalues *av){
+    unsigned int ax = 0;
+    unsigned int ay = 0;
+    unsigned int az = 0;
+    unsigned int gx = 0;
+    unsigned int gy = 0;
+    for(int i = 0; i < SMOOTHING; i++){
+        ax += av[i].ax;
+        ay += av[i].ay;
+        az += av[i].az;
+
+        gx += av[i].gx;
+        gy += av[i].gy;
+
+    }
+    v->ax = (ax/SMOOTHING);
+    v->ay = (ay/SMOOTHING);
+    v->az = (az/SMOOTHING);
+
+    v->gx = (gx/SMOOTHING);
+    v->gy = (gy/SMOOTHING);
+
+}
+
 void TNArduinoInput::run(){
     if (!codec->openDevice()){
         cout << "Failed to open Arduino input device" << endl;
@@ -31,13 +59,17 @@ void TNArduinoInput::run(){
     }
     cout << "Arduino start" << endl;
     senvalues v;
+
+    senvalues av[5];
+    int ptr = 0;
+
+
     int ecount = 0;
     int cycles = 0;
     int ccycle = 0;
     int sleepTime = 10000;
     usleep(100000);
     int t = time(0);
-    int target = 0;
     while(!shutdownRequested()){
         if(!codec->getReading(&v)){
             ecount++;
@@ -57,9 +89,33 @@ void TNArduinoInput::run(){
             if(v.d1){
                 manager->getRenderEngine()->getPlayer()->fireGun();
             }
-            double gx = v.gx - 303;
-            double gy = v.gy - 303;
-            cout << "gx:" << gx << " gy:"<< gy << endl;
+
+            ptr = (ptr + 1)%SMOOTHING;
+            memcpy((void*)&av[ptr],(void*)&v,sizeof(senvalues));
+
+            avg(&v,av);
+
+
+            double acc = 0;
+
+
+            double gacc = abs(v.gx - 307) + abs(v.gy - 307);
+            gacc = gacc / 367.0;
+
+
+            double aacc = (abs(v.ax - 330)/111.0 + abs(v.ay - 330)/111.0 + abs(v.az - 330)/111.0)/3.0;
+            cout << "ax:" << v.ax << " ay:" << v.ay << " az:" << v.az << endl;
+            acc = gacc + aacc;
+            if(acc > 2.5){
+                acc = 2.5;
+            }
+
+            cout << "Accuracy: " << acc << " gacc:" << gacc << " aacc:" << aacc << endl;
+            manager->getRenderEngine()->setAccuracy(acc);
+
+            double gx = v.gx - 307;
+            double gy = v.gy - 306;
+            //cout << "gx:" << gx << " gy:"<< gy << endl;
             if(gx < 400 && (gx > 3 || gx < -3)){
                 //manager->getRenderEngine()->pitchBy(-(double)gx*0.01);
                 manager->getRenderEngine()->moveCrosshairsUp((double)gx);

@@ -1,9 +1,10 @@
 #ifndef TNARDUINOINPUT_H
 #define TNARDUINOINPUT_H
 
+#include "TNUtil.h"
+
 #include <TNInputManager.h>
 #include <TNArduinoCodec.h>
-
 
 class TNArduinoInput : public TNInputManager
 {
@@ -14,6 +15,7 @@ class TNArduinoInput : public TNInputManager
         TNArduinoCodec *codec;
         virtual void run();
         char* buffer;
+        void avg(struct senvalues *v, struct senvalues *av);
     private:
 };
 

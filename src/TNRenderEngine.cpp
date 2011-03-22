@@ -225,7 +225,7 @@ void TNRenderEngine::moveCrosshairsRight(double amt){
     xhh += amt;
     if(xhh > 1.0){
         xhh = 1.0;
-    }else if(xhv < 0.0){
+    }else if(xhh < 0.0){
         xhh= 0.0;
     }
 }
@@ -237,6 +237,22 @@ float TNRenderEngine::getFractionalHealth(){
 void TNRenderEngine::render(){
     double csize = 0.01 + accuracy*0.04;
     TNCircle circle(xhh,xhv,csize,20);
+
+    if(xhv > 0.8){
+        double amt = 0.8- xhv;
+        pitchBy(amt*5);
+    }else if(xhv < 0.2){
+        double amt = 0.2 - xhv;
+        pitchBy(amt*5);
+    }
+
+    if(xhh > 0.8){
+        double amt = 0.8 - xhh;
+        yawBy(-amt*5);
+    }else if(xhh < 0.2){
+        double amt = 0.2 - xhh;
+        yawBy(-amt*5);
+    }
 
     getPlayer()->setAimingBias(xhh-0.5,xhv-0.5);
 

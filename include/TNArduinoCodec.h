@@ -2,7 +2,7 @@
 #define TNARDUINOCODEC_H
 
 #include <string>
-
+#include "TNUtil.h"
 
 #define EST_SYM_SEC 80
 #define NO_CHANS    5
@@ -10,15 +10,6 @@
 #define BACKER      10
 #define BUFER_SIZE  (EST_SYM_SEC * NO_CHANS * BYTES_PER_CHAN * BACKER)
 #define RDBSIZE     (NO_CHANS*BYTES_PER_CHAN*2)
-
-struct senvalues {
-    unsigned short ax;
-    unsigned short ay;
-    unsigned short az;
-    unsigned short gx;
-    unsigned short gy;
-    unsigned short d1;
-};
 
 class TNArduinoCodec
 {
@@ -29,12 +20,11 @@ class TNArduinoCodec
         bool openDevice();
         bool closeDevice();
 
-        int readData(char* vals, int max);
-
         int getReading(senvalues *val);
 
     protected:
         std::string fileName;
+        int readData(unsigned char* vals, int max);
         bool calibrate();
         void wait();
         int errs;

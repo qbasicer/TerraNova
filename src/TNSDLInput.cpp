@@ -96,9 +96,9 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 	}
 
 	if(xspeed == 0 && yspeed == 0){
-	    manager->getRenderEngine()->setAccuracy(0.1);
+	    //manager->getRenderEngine()->setAccuracy(0.1);
 	}else{
-	    manager->getRenderEngine()->setAccuracy(1.0);
+	    //manager->getRenderEngine()->setAccuracy(1.0);
 	}
 
     return;
@@ -106,7 +106,7 @@ void TNSDLInput::handleKeyPress( SDL_keysym *keysym, enum SDLKeyState state ){
 
 void TNSDLInput::run(){
     int done = 0;
-	sleep(1);
+	usleep(1000000);
     cout << "Starting input processing" << endl;
     int t = time(0);
     int cycles = 0;

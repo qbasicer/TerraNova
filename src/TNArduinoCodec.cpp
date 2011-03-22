@@ -71,9 +71,9 @@ bool TNArduinoCodec::closeDevice(){
 
 int TNArduinoCodec::getReading(senvalues *val){
     if(fd >= 0){
-        char szBuffer[RDBSIZE];
+        unsigned char szBuffer[RDBSIZE];
         int rd = 0;
-        char *ptr = szBuffer;
+        unsigned char *ptr = szBuffer;
         while(rd < (NO_CHANS*BYTES_PER_CHAN+1)){
             int rdi = readData(ptr, (NO_CHANS*BYTES_PER_CHAN+1)-rd);
             if(rdi < 0){
@@ -135,7 +135,7 @@ void TNArduinoCodec::wait(){
 }
 
 bool TNArduinoCodec::calibrate(){
-    char szBuffer[2];
+    unsigned char szBuffer[2];
     int cal = 0;
     int step = 0;
     while(!cal){
@@ -156,7 +156,7 @@ bool TNArduinoCodec::calibrate(){
 }
 
 
-int TNArduinoCodec::readData(char* vals, int len){
+int TNArduinoCodec::readData(unsigned char* vals, int len){
     if(fd >= 0){
         int rc = read(fd,vals,len);
         if(rc < 0){

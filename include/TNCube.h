@@ -12,6 +12,7 @@ class TNCube : public TNObject
         virtual ~TNCube();
         virtual void render();
         void setSize(float size){this->size = size;build();}
+        virtual void setMaterial(TNMaterial mat);
         TNQuad *getFront(){return front;}
         TNQuad *getBack(){return back;}
         TNQuad *getRight(){return right;}

@@ -423,7 +423,7 @@ void TNRenderEngine::run(){
         if(t != time(0)){
 			double base = meTime();
 			double delta = 1.0f;
-            cout << "FPS: "<<frames << " " << ((1000000*delta - sleepTime*frames) / 10000*delta) << "%" << endl;
+            cout << "Render FPS: "<<frames << " " << ((1000000*delta - sleepTime*frames) / 10000*delta) << "%" << endl;
             cout << "Player health: " << player->getHealth() << endl;
             if(isActive && frames > 60){
                 //Calculate amount of time sleeping

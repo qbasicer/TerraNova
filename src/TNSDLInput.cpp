@@ -14,7 +14,7 @@
 
 using namespace std;
 
-#define USE_WAIT
+//#define USE_WAIT
 
 #include "TNSDLInput.h"
 
@@ -195,12 +195,10 @@ void TNSDLInput::run(){
                     break;
                 }
             case SDL_KEYUP:
-                cout << "Keyup" << endl;
                 /* handle key presses */
 			    handleKeyPress(&event.key.keysym, SDL_KEY_UP);
 			    break;
             case SDL_KEYDOWN:
-                cout << "Keydown" << endl;
 			    /* handle key presses */
 			    handleKeyPress(&event.key.keysym, SDL_KEY_DOWN);
 			    break;

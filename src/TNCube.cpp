@@ -28,6 +28,13 @@ void TNCube::render(){
 
 }
 
+void TNCube::setMaterial(TNMaterial mat){
+    left->setMaterial(mat);
+    right->setMaterial(mat);
+    front->setMaterial(mat);
+    back->setMaterial(mat);
+}
+
 void TNCube::build(){
     float hsize = size/2;
     TNPoint p1(hsize,hsize,hsize);

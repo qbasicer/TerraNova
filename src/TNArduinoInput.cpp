@@ -133,13 +133,13 @@ void TNArduinoInput::run(){
 
 
             double aacc = (abs(v.ax - 330)/111.0 + abs(v.ay - 330)/111.0 + abs(v.az - 330)/111.0)/3.0;
-            cout << "ax:" << v.ax << " ay:" << v.ay << " az:" << v.az << endl;
+            //cout << "ax:" << v.ax << " ay:" << v.ay << " az:" << v.az << endl;
             acc = gacc + aacc;
             if(acc > 2.5){
                 acc = 2.5;
             }
 
-            cout << "Accuracy: " << acc << " gacc:" << gacc << " aacc:" << aacc << endl;
+            //cout << "Accuracy: " << acc << " gacc:" << gacc << " aacc:" << aacc << endl;
             manager->getRenderEngine()->setAccuracy(acc);
 
             double gx = v.gx - 307;

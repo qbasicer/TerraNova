@@ -23,7 +23,10 @@ class TNTurret : public TNObject
         double lastFire;
         TNMaterial blackPlastic;
         TNMaterial fire;
+        TNMaterial silver;
+        TNMaterial gold;
         int hasFired;
+        double ctime;
     private:
         void fireGun();
 };

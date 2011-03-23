@@ -34,12 +34,27 @@ TNTurret::TNTurret(TNPoint loc, TNManager *mgr)
     fire.setSpecular(1.50,0.50,0.50, 1.0f);
     fire.setShiny(100.0f);
 
+    silver.setAmbient(0.1995f, 0.1995f, 0.1995f, 1.0f);
+    silver.setDiffuse(0.50754, 0.50754, 0.50754, 1.0f);
+    silver.setSpecular(0.508273, 0.508273, 0.508273, 1.0f);
+    silver.setShiny(51.2);
+
+    base.setMaterial(silver);
+    top.setMaterial(silver);
+    barrel.setMaterial(silver);
+
     barrel.getBack()->setMaterial(blackPlastic);
 
     lastFire = meTime();
     hasFired = 0;
 	health = 50;
+	ctime = meTime();
+
+	rot = random() % 360;
+
 	manager->newEnemy();
+
+
 
     //ctor
 }
@@ -50,10 +65,14 @@ TNTurret::~TNTurret()
     //dtor
 }
 
+//Fresh turrets can't get hurt
 void TNTurret::hurt(float amt){
-	TNObject::hurt(amt);
-	manager->getRenderEngine()->removeObject(this);
-	delete this;
+    if(meTime() - ctime < 5){
+        return;
+    }
+    TNObject::hurt(amt);
+    manager->getRenderEngine()->removeObject(this);
+    delete this;
 
 }
 
@@ -61,6 +80,14 @@ void TNTurret::render(){
 	if(health <= 0){
 		return;
 	}
+
+	if(ctime > 0 && meTime() - ctime > 5){
+	    ctime = 0;
+	    base.setMaterial(gold);
+        top.setMaterial(gold);
+        barrel.setMaterial(gold);
+	}
+
     glPushMatrix();
     glTranslatef(location.x(), location.y()+(BASE_SIZE/2.0), location.z());
     base.render();
@@ -80,10 +107,22 @@ void TNTurret::render(){
     barrel.render();
     glPopMatrix();
 
+    //Fresh turrents don't do any rotational logic
+    if(ctime > 0){
+        return;
+    }
+
     TNPoint player = manager->getRenderEngine()->getPlayer()->getLocation();
     player.setZ(-player.z());
     player.setX(-player.x());
+
+
+
     float opp = (location.x() - player.x()) / (location.z()  - player.z());
+
+
+    float cdist = abs(location.x() - player.x()) + abs(location.z() - player.z());
+
 
     //cout << "Player is at (" << player.x() << "," << player.z() << ")" << endl;
     //cout << "Turret is at (" << location.x() << "," << location.z() << ")" << endl;
@@ -96,18 +135,40 @@ void TNTurret::render(){
         deg += 180;
     }
 
-    if(rot - deg > 1){
+    //clamp value
+    if(deg < 0){
+        deg += 360;
+    }
+
+    //Set barrel back to black
+    if(hasFired && meTime() - lastFire > 0.5){
+        barrel.getBack()->setMaterial(blackPlastic);
+        hasFired = 0;
+    }
+
+    //Rotational logic
+    //First to cases handle the wrap-around
+    if(rot - deg < -180){
+        rot -= 0.2;
+    }else if(rot - deg > 180){
+        rot += 0.2;
+    }else if(rot - deg > 1 && rot > deg){
         rot -= 0.2;
     }else if(rot - deg < -1){
         rot += 0.2;
-    }else if(meTime() - lastFire > 1){
+    }else if(meTime() - lastFire > 1 && cdist < 25){
         lastFire = meTime();
         hasFired = 1;
         barrel.getBack()->setMaterial(fire);
         fireGun();
-    }else if(meTime() - lastFire > 0.5 && hasFired){
-        barrel.getBack()->setMaterial(blackPlastic);
-        hasFired = 0;
+    }
+
+    //Clamp values here too
+    if (rot > 360){
+        rot -= 360;
+
+    }else if(rot < 0){
+        rot += 360;
     }
 }
 

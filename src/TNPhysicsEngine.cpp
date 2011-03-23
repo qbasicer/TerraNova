@@ -76,7 +76,7 @@ void TNPhysicsEngine::run(){
 
         if(t != time(0)){
             sleepTime = calcSleeptime(1, sleepTime, cycles, 30, 40);
-            cout << "Physics FPS:" << cycles << endl;
+            cout << "Physics FPS: "<<cycles << " " << ((1000000*(1.0) - sleepTime*cycles) / 10000*(1.0)) << "%" << endl;
 		    cycles = 0;
 		    t = time(0);
 		}

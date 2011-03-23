@@ -1,9 +1,9 @@
 
 
-CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags` -pg -g
+CFLAGS = -Wall -O2 -Iinclude `sdl-config --cflags` -pg -g -march=native -pipe
 LDFLAGS=`sdl-config --libs` -L/usr/X11R6/lib -L/usr/local/lib -lGL -lGLU -lm -pg -g
 
-COMPILE = $(CXX) $(CFLAGS) -c -g
+COMPILE = $(CXX) $(CFLAGS) -c -g -pg
 
 OBJFILES := $(patsubst %.cpp,%.o,$(wildcard src/*.cpp))
 

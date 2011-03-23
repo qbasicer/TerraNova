@@ -14,7 +14,7 @@
 
 using namespace std;
 
-//#define USE_WAIT
+#define USE_WAIT
 
 #include "TNSDLInput.h"
 
@@ -152,7 +152,6 @@ void TNSDLInput::run(){
 
                     c_x = manager->getRenderEngine()->getScreenHeight()>>1;
                     c_y = manager->getRenderEngine()->getScreenWidth()>>1;
-                    SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
 
                     SDL_GetMouseState(&x,&y);
                     SDL_WarpMouse(c_x,c_y);
@@ -160,7 +159,6 @@ void TNSDLInput::run(){
                     x = -c_x + x;
                     y = -c_y + y;
 
-                    SDL_EventState(SDL_MOUSEMOTION, SDL_ENABLE);
                     manager->getRenderEngine()->yawBy((double)x*0.1);
                     manager->getRenderEngine()->pitchBy((double)y*0.1);
 
@@ -197,10 +195,12 @@ void TNSDLInput::run(){
                     break;
                 }
             case SDL_KEYUP:
+                cout << "Keyup" << endl;
                 /* handle key presses */
 			    handleKeyPress(&event.key.keysym, SDL_KEY_UP);
 			    break;
             case SDL_KEYDOWN:
+                cout << "Keydown" << endl;
 			    /* handle key presses */
 			    handleKeyPress(&event.key.keysym, SDL_KEY_DOWN);
 			    break;

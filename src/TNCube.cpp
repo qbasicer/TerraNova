@@ -20,10 +20,10 @@ TNCube::TNCube(float h, float w, float d){
 
     left = new TNQuad(p1,p2,p3,p4);
 
-    p1 = TNPoint(-w,h,d);
-    p2 = TNPoint(-w,-h,d);
-    p3 = TNPoint(w,-h,d);
-    p4 = TNPoint(w,h,d);
+    p1 = TNPoint(w,h,d);
+    p2 = TNPoint(-w,h,d);
+    p3 = TNPoint(-w,-h,d);
+    p4 = TNPoint(w,-h,d);
 
     back = new TNQuad(p1,p2,p3,p4);
 

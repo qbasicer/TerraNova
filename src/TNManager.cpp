@@ -4,6 +4,7 @@
 using namespace std;
 #include <TNTurret.h>
 #include <TNUtil.h>
+#include <TNHealthPowerup.h>
 
 /* TNManager is essentially the central management for the entire application */
 
@@ -68,6 +69,11 @@ void TNManager::destroyEnemy(){
 			TNTurret *tur = new TNTurret(loc,this);
 			re->addObject(tur);
 		}
+		float x = (rand() % 40) - 20;
+        float z = (rand() % 40) - 20;
+        TNPoint loc(x,-0.5, z);
+		TNHealthPowerup *h = new TNHealthPowerup(loc, this);
+		re->addObject(h);
 	}
 }
 

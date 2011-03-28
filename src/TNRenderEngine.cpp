@@ -342,6 +342,7 @@ void TNRenderEngine::run(){
     manager->getTextureManager()->addTexture("grass","grass.bmp");
 	manager->getTextureManager()->addTexture("rock","rock.bmp");
 	manager->getTextureManager()->addTexture("sky","sky.bmp");
+	manager->getTextureManager()->addTexture("health","health.bmp");
 
     TNSubdivideQuad quad(qp1,qp2,qp3,qp4);
     quad.subdivideBy(20);

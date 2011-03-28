@@ -9,6 +9,7 @@ class TNCube : public TNObject
     public:
         TNCube(){size = 0.0f;}
         TNCube(float size);
+        TNCube(float h, float w, float d);
         virtual ~TNCube();
         virtual void render();
         void setSize(float size){this->size = size;build();}

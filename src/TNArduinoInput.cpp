@@ -142,8 +142,8 @@ void TNArduinoInput::run(){
             //cout << "Accuracy: " << acc << " gacc:" << gacc << " aacc:" << aacc << endl;
             manager->getRenderEngine()->setAccuracy(acc);
 
-            double gx = v.gx - 307;
-            double gy = v.gy - 306;
+            double gx = v.gx - 317;
+            double gy = v.gy - 316;
             //cout << "gx:" << gx << " gy:"<< gy << endl;
             if(gx < 400 && (gx > 3 || gx < -3)){
                 //manager->getRenderEngine()->pitchBy(-(double)gx*0.01);
